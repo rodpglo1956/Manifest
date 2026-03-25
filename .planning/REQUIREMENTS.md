@@ -63,11 +63,11 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Invoicing
 
-- [ ] **INV-01**: User can create an invoice from a delivered load with auto-populated data
-- [ ] **INV-02**: Invoice number auto-generates (INV-YYYYMM-SEQUENCE)
-- [ ] **INV-03**: User can edit invoice details (bill-to, amounts, dates, notes)
-- [ ] **INV-04**: User can mark invoice as sent, paid, or void
-- [ ] **INV-05**: Overdue invoices auto-detected daily (due_date < today, status = sent)
+- [x] **INV-01**: User can create an invoice from a delivered load with auto-populated data
+- [x] **INV-02**: Invoice number auto-generates (INV-YYYYMM-SEQUENCE)
+- [x] **INV-03**: User can edit invoice details (bill-to, amounts, dates, notes)
+- [x] **INV-04**: User can mark invoice as sent, paid, or void
+- [x] **INV-05**: Overdue invoices auto-detected daily (due_date < today, status = sent)
 - [ ] **INV-06**: Invoice PDF generation and download
 - [ ] **INV-07**: Invoice list with filters (status, date range, broker/customer)
 
@@ -336,11 +336,11 @@ Which phases cover which requirements. Updated during roadmap creation.
 | DISP-06 | Phase 3 | Complete |
 | DISP-07 | Phase 3 | Complete |
 | DISP-08 | Phase 3 | Complete |
-| INV-01 | Phase 4 | Pending |
-| INV-02 | Phase 4 | Pending |
-| INV-03 | Phase 4 | Pending |
-| INV-04 | Phase 4 | Pending |
-| INV-05 | Phase 4 | Pending |
+| INV-01 | Phase 4 | Complete |
+| INV-02 | Phase 4 | Complete |
+| INV-03 | Phase 4 | Complete |
+| INV-04 | Phase 4 | Complete |
+| INV-05 | Phase 4 | Complete |
 | INV-06 | Phase 4 | Pending |
 | INV-07 | Phase 4 | Pending |
 | DASH-01 | Phase 4 | Pending |
