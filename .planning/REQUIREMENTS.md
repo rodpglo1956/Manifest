@@ -53,9 +53,9 @@ Requirements for initial release. Each maps to roadmap phases.
 ### Dispatch
 
 - [x] **DISP-01**: Dispatcher can assign a driver and vehicle to a load (creates dispatch record)
-- [ ] **DISP-02**: Dispatch board shows unassigned loads and available drivers
-- [ ] **DISP-03**: Active dispatches list shows ETA and current status
-- [ ] **DISP-04**: Driver availability view shows who is free, on a load, or off
+- [x] **DISP-02**: Dispatch board shows unassigned loads and available drivers
+- [x] **DISP-03**: Active dispatches list shows ETA and current status
+- [x] **DISP-04**: Driver availability view shows who is free, on a load, or off
 - [x] **DISP-05**: Driver PWA shows current dispatch card with load summary
 - [x] **DISP-06**: Driver can accept or reject dispatch assignments in PWA
 - [x] **DISP-07**: Driver can send notes to dispatcher from PWA
@@ -329,9 +329,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | LOAD-16 | Phase 2 | Complete |
 | LOAD-17 | Phase 2 | Complete |
 | DISP-01 | Phase 3 | Complete |
-| DISP-02 | Phase 3 | Pending |
-| DISP-03 | Phase 3 | Pending |
-| DISP-04 | Phase 3 | Pending |
+| DISP-02 | Phase 3 | Complete |
+| DISP-03 | Phase 3 | Complete |
+| DISP-04 | Phase 3 | Complete |
 | DISP-05 | Phase 3 | Complete |
 | DISP-06 | Phase 3 | Complete |
 | DISP-07 | Phase 3 | Complete |
