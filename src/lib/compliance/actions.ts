@@ -442,6 +442,8 @@ export async function getDriversWithDQStatus(): Promise<
     last_name: string
     completeness: number
     missingCount: number
+    cdl_expiry: string | null
+    medical_card_expiry: string | null
   }>
 > {
   const supabase = await createClient()
@@ -469,9 +471,15 @@ export async function getDriversWithDQStatus(): Promise<
     const dq = dqMap.get(d.id)
     if (dq) {
       const { percentage, missing: missingList } = calculateDQCompleteness(dq)
-      return { ...d, completeness: percentage, missingCount: missingList.length }
+      return {
+        ...d,
+        completeness: percentage,
+        missingCount: missingList.length,
+        cdl_expiry: dq.cdl_expiry,
+        medical_card_expiry: dq.medical_card_expiry,
+      }
     }
-    return { ...d, completeness: 0, missingCount: 8 }
+    return { ...d, completeness: 0, missingCount: 8, cdl_expiry: null, medical_card_expiry: null }
   })
 }
 
@@ -823,6 +831,33 @@ export async function getComplianceDashboard(): Promise<{
     recentAlerts: (recentAlerts ?? []) as ComplianceAlert[],
     upcomingItems: (upcomingItems ?? []) as ComplianceItem[],
   }
+}
+
+// ---------- Alert Actions ----------
+
+/**
+ * Acknowledge a compliance alert.
+ */
+export async function acknowledgeComplianceAlert(
+  alertId: string
+): Promise<{ error?: string }> {
+  const supabase = await createClient()
+  const { data: { user } } = await supabase.auth.getUser()
+  if (!user) return { error: 'Not authenticated' }
+
+  const { error } = await supabase
+    .from('compliance_alerts')
+    .update({
+      acknowledged: true,
+      acknowledged_by: user.id,
+      acknowledged_at: new Date().toISOString(),
+    })
+    .eq('id', alertId)
+
+  if (error) return { error: error.message }
+
+  revalidatePath('/compliance')
+  return {}
 }
 
 // ---------- Helpers ----------
