@@ -22,7 +22,7 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Driver Management
 
-- [ ] **DRVR-01**: Admin/dispatcher can add a driver with name, contact info, license details, and hire date
+- [x] **DRVR-01**: Admin/dispatcher can add a driver with name, contact info, license details, and hire date
 - [ ] **DRVR-02**: Admin/dispatcher can edit driver information
 - [ ] **DRVR-03**: Admin/dispatcher can deactivate/terminate a driver
 - [ ] **DRVR-04**: Admin/dispatcher can search and filter driver list by status
@@ -32,15 +32,15 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Load Management
 
-- [ ] **LOAD-01**: User can create a load with pickup details (company, address, date, time window, reference)
-- [ ] **LOAD-02**: User can create a load with delivery details (company, address, date, time window, reference)
-- [ ] **LOAD-03**: User can set freight details (commodity, weight, pieces, equipment type, temperature, hazmat flag)
-- [ ] **LOAD-04**: User can set rate details (rate, type, miles, fuel surcharge, accessorials, total revenue)
-- [ ] **LOAD-05**: User can set broker/source info (name, MC, contact, phone, email)
-- [ ] **LOAD-06**: Load number auto-generates if not provided (ORG-PREFIX-SEQUENCE)
-- [ ] **LOAD-07**: Load status lifecycle works end-to-end: booked → dispatched → in_transit → at_pickup → loaded → at_delivery → delivered → invoiced → paid
-- [ ] **LOAD-08**: Every status change writes to load_status_history with timestamp, user, location, notes
-- [ ] **LOAD-09**: Load status changes broadcast via Supabase Realtime
+- [x] **LOAD-01**: User can create a load with pickup details (company, address, date, time window, reference)
+- [x] **LOAD-02**: User can create a load with delivery details (company, address, date, time window, reference)
+- [x] **LOAD-03**: User can set freight details (commodity, weight, pieces, equipment type, temperature, hazmat flag)
+- [x] **LOAD-04**: User can set rate details (rate, type, miles, fuel surcharge, accessorials, total revenue)
+- [x] **LOAD-05**: User can set broker/source info (name, MC, contact, phone, email)
+- [x] **LOAD-06**: Load number auto-generates if not provided (ORG-PREFIX-SEQUENCE)
+- [x] **LOAD-07**: Load status lifecycle works end-to-end: booked → dispatched → in_transit → at_pickup → loaded → at_delivery → delivered → invoiced → paid
+- [x] **LOAD-08**: Every status change writes to load_status_history with timestamp, user, location, notes
+- [x] **LOAD-09**: Load status changes broadcast via Supabase Realtime
 - [ ] **LOAD-10**: User can upload documents (BOL, rate confirmation, POD) to a load
 - [ ] **LOAD-11**: Driver can upload BOL/POD via mobile camera in Driver PWA
 - [ ] **LOAD-12**: User can filter loads by status, driver, date range, broker
@@ -81,8 +81,8 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Vehicles (Basic)
 
-- [ ] **VEHI-01**: Basic vehicles table exists for load and driver assignment references
-- [ ] **VEHI-02**: Vehicle record includes unit number, VIN, year, make, model, type, status
+- [x] **VEHI-01**: Basic vehicles table exists for load and driver assignment references
+- [x] **VEHI-02**: Vehicle record includes unit number, VIN, year, make, model, type, status
 
 ### Marie AI
 
@@ -302,24 +302,24 @@ Which phases cover which requirements. Updated during roadmap creation.
 | AUTH-08 | Phase 1 | Complete |
 | AUTH-09 | Phase 1 | Complete |
 | AUTH-10 | Phase 1 | Complete |
-| DRVR-01 | Phase 2 | Pending |
+| DRVR-01 | Phase 2 | Complete |
 | DRVR-02 | Phase 2 | Pending |
 | DRVR-03 | Phase 2 | Pending |
 | DRVR-04 | Phase 2 | Pending |
 | DRVR-05 | Phase 2 | Pending |
 | DRVR-06 | Phase 2 | Pending |
 | DRVR-07 | Phase 2 | Pending |
-| VEHI-01 | Phase 2 | Pending |
-| VEHI-02 | Phase 2 | Pending |
-| LOAD-01 | Phase 2 | Pending |
-| LOAD-02 | Phase 2 | Pending |
-| LOAD-03 | Phase 2 | Pending |
-| LOAD-04 | Phase 2 | Pending |
-| LOAD-05 | Phase 2 | Pending |
-| LOAD-06 | Phase 2 | Pending |
-| LOAD-07 | Phase 2 | Pending |
-| LOAD-08 | Phase 2 | Pending |
-| LOAD-09 | Phase 2 | Pending |
+| VEHI-01 | Phase 2 | Complete |
+| VEHI-02 | Phase 2 | Complete |
+| LOAD-01 | Phase 2 | Complete |
+| LOAD-02 | Phase 2 | Complete |
+| LOAD-03 | Phase 2 | Complete |
+| LOAD-04 | Phase 2 | Complete |
+| LOAD-05 | Phase 2 | Complete |
+| LOAD-06 | Phase 2 | Complete |
+| LOAD-07 | Phase 2 | Complete |
+| LOAD-08 | Phase 2 | Complete |
+| LOAD-09 | Phase 2 | Complete |
 | LOAD-10 | Phase 2 | Pending |
 | LOAD-11 | Phase 2 | Pending |
 | LOAD-12 | Phase 2 | Pending |
