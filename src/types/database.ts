@@ -72,6 +72,7 @@ export type Profile = {
   role: UserRole
   phone: string | null
   avatar_url: string | null
+  notification_preferences?: NotificationPreferences
   created_at: string
   updated_at: string
 }
@@ -259,6 +260,31 @@ export type InvoiceNumberSequence = {
   org_id: string
   year_month: string
   last_number: number
+}
+
+// Phase 6: Alert types
+export type AlertType = 'late_pickup' | 'driver_silent' | 'overdue_invoice' | 'dispatch_conflict' | 'eta_risk' | 'unassigned_load'
+
+export type AlertSeverity = 'info' | 'warning' | 'critical'
+
+// Phase 6: Daily snapshot type
+export type DailySnapshot = {
+  id: string
+  org_id: string
+  snapshot_date: string
+  loads_booked: number
+  loads_delivered: number
+  loads_canceled: number
+  revenue: number
+  total_miles: number
+  revenue_per_mile: number
+  on_time_deliveries: number
+  total_deliveries: number
+  on_time_percentage: number
+  active_drivers: number
+  invoices_generated: number
+  invoices_paid: number
+  created_at: string
 }
 
 // Phase 5: Marie AI types
@@ -456,6 +482,15 @@ export type Database = {
           error_message?: string | null
         }
         Update: Partial<Omit<MarieQuery, 'id' | 'created_at'>>
+        Relationships: []
+      }
+      daily_snapshots: {
+        Row: DailySnapshot
+        Insert: Omit<DailySnapshot, 'id' | 'created_at'> & {
+          id?: string
+          created_at?: string
+        }
+        Update: Partial<Omit<DailySnapshot, 'id' | 'created_at'>>
         Relationships: []
       }
       push_subscriptions: {
