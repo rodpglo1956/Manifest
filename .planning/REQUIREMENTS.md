@@ -26,8 +26,8 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **DRVR-02**: Admin/dispatcher can edit driver information
 - [x] **DRVR-03**: Admin/dispatcher can deactivate/terminate a driver
 - [x] **DRVR-04**: Admin/dispatcher can search and filter driver list by status
-- [ ] **DRVR-05**: Admin can link a driver record to a user account (generates invitation)
-- [ ] **DRVR-06**: Driver can view own profile in Driver PWA (read-only except phone and emergency contact)
+- [x] **DRVR-05**: Admin can link a driver record to a user account (generates invitation)
+- [x] **DRVR-06**: Driver can view own profile in Driver PWA (read-only except phone and emergency contact)
 - [x] **DRVR-07**: Driver detail page shows contact info, license info, assigned vehicle, load history
 
 ### Load Management
@@ -42,12 +42,12 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **LOAD-08**: Every status change writes to load_status_history with timestamp, user, location, notes
 - [x] **LOAD-09**: Load status changes broadcast via Supabase Realtime
 - [x] **LOAD-10**: User can upload documents (BOL, rate confirmation, POD) to a load
-- [ ] **LOAD-11**: Driver can upload BOL/POD via mobile camera in Driver PWA
+- [x] **LOAD-11**: Driver can upload BOL/POD via mobile camera in Driver PWA
 - [ ] **LOAD-12**: User can filter loads by status, driver, date range, broker
 - [ ] **LOAD-13**: Load board view shows loads in kanban layout by status
 - [ ] **LOAD-14**: Load detail page shows full info, status timeline, documents, notes, rate breakdown
-- [ ] **LOAD-15**: Driver PWA shows current active load prominently with status update buttons
-- [ ] **LOAD-16**: Driver PWA shows load history (past 30 days)
+- [x] **LOAD-15**: Driver PWA shows current active load prominently with status update buttons
+- [x] **LOAD-16**: Driver PWA shows load history (past 30 days)
 - [ ] **LOAD-17**: Bulk actions: dispatch multiple loads, export CSV
 
 ### Dispatch
@@ -306,8 +306,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | DRVR-02 | Phase 2 | Complete |
 | DRVR-03 | Phase 2 | Complete |
 | DRVR-04 | Phase 2 | Complete |
-| DRVR-05 | Phase 2 | Pending |
-| DRVR-06 | Phase 2 | Pending |
+| DRVR-05 | Phase 2 | Complete |
+| DRVR-06 | Phase 2 | Complete |
 | DRVR-07 | Phase 2 | Complete |
 | VEHI-01 | Phase 2 | Complete |
 | VEHI-02 | Phase 2 | Complete |
@@ -321,12 +321,12 @@ Which phases cover which requirements. Updated during roadmap creation.
 | LOAD-08 | Phase 2 | Complete |
 | LOAD-09 | Phase 2 | Complete |
 | LOAD-10 | Phase 2 | Complete |
-| LOAD-11 | Phase 2 | Pending |
+| LOAD-11 | Phase 2 | Complete |
 | LOAD-12 | Phase 2 | Pending |
 | LOAD-13 | Phase 2 | Pending |
 | LOAD-14 | Phase 2 | Pending |
-| LOAD-15 | Phase 2 | Pending |
-| LOAD-16 | Phase 2 | Pending |
+| LOAD-15 | Phase 2 | Complete |
+| LOAD-16 | Phase 2 | Complete |
 | LOAD-17 | Phase 2 | Pending |
 | DISP-01 | Phase 3 | Pending |
 | DISP-02 | Phase 3 | Pending |

@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: in-progress
-stopped_at: Completed 02-03-PLAN.md
-last_updated: "2026-03-25T04:46:15.000Z"
-last_activity: 2026-03-25 -- Plan 02-03 complete (vehicle CRUD and load creation wizard)
+status: completed
+stopped_at: Completed 02-06-PLAN.md
+last_updated: "2026-03-25T04:56:57.406Z"
+last_activity: 2026-03-25 -- Plan 02-06 complete (Driver PWA loads, self-profile, account linking)
 progress:
   total_phases: 12
-  completed_phases: 1
+  completed_phases: 2
   total_plans: 9
-  completed_plans: 7
-  percent: 66
+  completed_plans: 9
+  percent: 83
 ---
 
 # Project State
@@ -26,11 +26,11 @@ See: .planning/PROJECT.md (updated 2026-03-24)
 ## Current Position
 
 Phase: 2 of 12 (Loads, Drivers & Vehicles)
-Plan: 3 of 6 in current phase
-Status: Plan 02-03 Complete
-Last activity: 2026-03-25 -- Plan 02-03 complete (vehicle CRUD and load creation wizard)
+Plan: 6 of 6 in current phase
+Status: Plan 02-06 Complete (Phase 2 Complete)
+Last activity: 2026-03-25 -- Plan 02-06 complete (Driver PWA loads, self-profile, account linking)
 
-Progress: [██████░░░░] 66%
+Progress: [████████░░] 83%
 
 ## Performance Metrics
 
@@ -54,6 +54,8 @@ Progress: [██████░░░░] 66%
 | Phase 02 P02 | 5min | 2 tasks | 12 files |
 | Phase 02 P03 | 9min | 2 tasks | 14 files |
 | Phase 02 P04 | 3min | 2 tasks | 7 files |
+| Phase 02 P06 | 6min | 2 tasks | 14 files |
+| Phase 02 P05 | 6min | 2 tasks | 16 files |
 
 ## Accumulated Context
 
@@ -81,6 +83,9 @@ Recent decisions affecting current work:
 - [02-03]: Load wizard uses single react-hook-form instance with FormProvider for shared state across 5 steps
 - [02-03]: Per-step validation via trigger(STEP_FIELDS[stepKey]) before allowing step advancement
 - [02-03]: Total revenue computed server-side (rate + fuel_surcharge + accessorial_charges)
+- [02-06]: Driver status buttons exclude 'canceled' -- cancellation is admin-only
+- [02-06]: Driver document upload limited to BOL and POD (no rate_confirmation)
+- [02-06]: Account linking uses same invitation pattern as team invites with driver role metadata
 
 ### Pending Todos
 
@@ -92,6 +97,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-25T04:46:15Z
-Stopped at: Completed 02-03-PLAN.md
-Resume file: .planning/phases/02-loads-drivers-vehicles/02-03-SUMMARY.md
+Last session: 2026-03-25T04:55:04Z
+Stopped at: Completed 02-06-PLAN.md
+Resume file: .planning/phases/02-loads-drivers-vehicles/02-06-SUMMARY.md
