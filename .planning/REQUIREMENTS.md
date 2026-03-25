@@ -52,14 +52,14 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Dispatch
 
-- [ ] **DISP-01**: Dispatcher can assign a driver and vehicle to a load (creates dispatch record)
+- [x] **DISP-01**: Dispatcher can assign a driver and vehicle to a load (creates dispatch record)
 - [ ] **DISP-02**: Dispatch board shows unassigned loads and available drivers
 - [ ] **DISP-03**: Active dispatches list shows ETA and current status
 - [ ] **DISP-04**: Driver availability view shows who is free, on a load, or off
 - [ ] **DISP-05**: Driver PWA shows current dispatch card with load summary
-- [ ] **DISP-06**: Driver can accept or reject dispatch assignments in PWA
-- [ ] **DISP-07**: Driver can send notes to dispatcher from PWA
-- [ ] **DISP-08**: Dispatch status changes broadcast via Supabase Realtime
+- [x] **DISP-06**: Driver can accept or reject dispatch assignments in PWA
+- [x] **DISP-07**: Driver can send notes to dispatcher from PWA
+- [x] **DISP-08**: Dispatch status changes broadcast via Supabase Realtime
 
 ### Invoicing
 
@@ -328,14 +328,14 @@ Which phases cover which requirements. Updated during roadmap creation.
 | LOAD-15 | Phase 2 | Complete |
 | LOAD-16 | Phase 2 | Complete |
 | LOAD-17 | Phase 2 | Complete |
-| DISP-01 | Phase 3 | Pending |
+| DISP-01 | Phase 3 | Complete |
 | DISP-02 | Phase 3 | Pending |
 | DISP-03 | Phase 3 | Pending |
 | DISP-04 | Phase 3 | Pending |
 | DISP-05 | Phase 3 | Pending |
-| DISP-06 | Phase 3 | Pending |
-| DISP-07 | Phase 3 | Pending |
-| DISP-08 | Phase 3 | Pending |
+| DISP-06 | Phase 3 | Complete |
+| DISP-07 | Phase 3 | Complete |
+| DISP-08 | Phase 3 | Complete |
 | INV-01 | Phase 4 | Pending |
 | INV-02 | Phase 4 | Pending |
 | INV-03 | Phase 4 | Pending |
