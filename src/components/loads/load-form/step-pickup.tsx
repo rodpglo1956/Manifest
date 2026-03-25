@@ -11,6 +11,22 @@ export function StepPickup() {
       <h2 className="text-lg font-semibold text-gray-900">Pickup Details</h2>
 
       <div>
+        <label htmlFor="pickup_company" className="block text-sm font-medium mb-1">
+          Company Name *
+        </label>
+        <input
+          id="pickup_company"
+          type="text"
+          {...register('pickup_company')}
+          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+          placeholder="ABC Warehouse"
+        />
+        {errors.pickup_company && (
+          <p className="mt-1 text-sm text-red-600">{errors.pickup_company.message}</p>
+        )}
+      </div>
+
+      <div>
         <label htmlFor="pickup_address" className="block text-sm font-medium mb-1">
           Address *
         </label>
@@ -133,6 +149,19 @@ export function StepPickup() {
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
           />
         </div>
+      </div>
+
+      <div>
+        <label htmlFor="pickup_reference" className="block text-sm font-medium mb-1">
+          Reference / PO Number
+        </label>
+        <input
+          id="pickup_reference"
+          type="text"
+          {...register('pickup_reference')}
+          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+          placeholder="PO-12345"
+        />
       </div>
 
       <div>

@@ -4,6 +4,7 @@ import { z } from 'zod'
 // Each step can be validated independently via trigger() validation
 
 export const pickupSchema = z.object({
+  pickup_company: z.string().min(1, 'Pickup company is required'),
   pickup_address: z.string().min(1, 'Pickup address is required'),
   pickup_city: z.string().min(1, 'Pickup city is required'),
   pickup_state: z.string().length(2, 'State must be 2 characters'),
@@ -12,10 +13,12 @@ export const pickupSchema = z.object({
   pickup_time: z.string().optional().default(''),
   pickup_contact_name: z.string().optional().default(''),
   pickup_contact_phone: z.string().optional().default(''),
+  pickup_reference: z.string().optional().default(''),
   pickup_notes: z.string().optional().default(''),
 })
 
 export const deliverySchema = z.object({
+  delivery_company: z.string().min(1, 'Delivery company is required'),
   delivery_address: z.string().min(1, 'Delivery address is required'),
   delivery_city: z.string().min(1, 'Delivery city is required'),
   delivery_state: z.string().length(2, 'State must be 2 characters'),
@@ -24,6 +27,7 @@ export const deliverySchema = z.object({
   delivery_time: z.string().optional().default(''),
   delivery_contact_name: z.string().optional().default(''),
   delivery_contact_phone: z.string().optional().default(''),
+  delivery_reference: z.string().optional().default(''),
   delivery_notes: z.string().optional().default(''),
 })
 

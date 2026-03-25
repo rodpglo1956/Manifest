@@ -11,6 +11,22 @@ export function StepDelivery() {
       <h2 className="text-lg font-semibold text-gray-900">Delivery Details</h2>
 
       <div>
+        <label htmlFor="delivery_company" className="block text-sm font-medium mb-1">
+          Company Name *
+        </label>
+        <input
+          id="delivery_company"
+          type="text"
+          {...register('delivery_company')}
+          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+          placeholder="XYZ Distribution"
+        />
+        {errors.delivery_company && (
+          <p className="mt-1 text-sm text-red-600">{errors.delivery_company.message}</p>
+        )}
+      </div>
+
+      <div>
         <label htmlFor="delivery_address" className="block text-sm font-medium mb-1">
           Address *
         </label>
@@ -133,6 +149,19 @@ export function StepDelivery() {
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
           />
         </div>
+      </div>
+
+      <div>
+        <label htmlFor="delivery_reference" className="block text-sm font-medium mb-1">
+          Reference / PO Number
+        </label>
+        <input
+          id="delivery_reference"
+          type="text"
+          {...register('delivery_reference')}
+          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+          placeholder="DEL-67890"
+        />
       </div>
 
       <div>

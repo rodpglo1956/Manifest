@@ -10,10 +10,10 @@ export async function createLoad(formData: FormData) {
 
   // String fields
   const stringFields = [
-    'pickup_address', 'pickup_city', 'pickup_state', 'pickup_zip',
-    'pickup_date', 'pickup_time', 'pickup_contact_name', 'pickup_contact_phone', 'pickup_notes',
-    'delivery_address', 'delivery_city', 'delivery_state', 'delivery_zip',
-    'delivery_date', 'delivery_time', 'delivery_contact_name', 'delivery_contact_phone', 'delivery_notes',
+    'pickup_company', 'pickup_address', 'pickup_city', 'pickup_state', 'pickup_zip',
+    'pickup_date', 'pickup_time', 'pickup_contact_name', 'pickup_contact_phone', 'pickup_reference', 'pickup_notes',
+    'delivery_company', 'delivery_address', 'delivery_city', 'delivery_state', 'delivery_zip',
+    'delivery_date', 'delivery_time', 'delivery_contact_name', 'delivery_contact_phone', 'delivery_reference', 'delivery_notes',
     'commodity', 'weight_unit', 'equipment_type', 'rate_type',
     'broker_name', 'broker_contact', 'broker_phone', 'broker_email',
     'broker_mc_number', 'broker_reference', 'notes',
@@ -85,6 +85,7 @@ export async function createLoad(formData: FormData) {
     created_by: user.id,
 
     // Pickup
+    pickup_company: parsed.data.pickup_company,
     pickup_address: parsed.data.pickup_address,
     pickup_city: parsed.data.pickup_city,
     pickup_state: parsed.data.pickup_state,
@@ -93,9 +94,11 @@ export async function createLoad(formData: FormData) {
     pickup_time: parsed.data.pickup_time || null,
     pickup_contact_name: parsed.data.pickup_contact_name || null,
     pickup_contact_phone: parsed.data.pickup_contact_phone || null,
+    pickup_reference: parsed.data.pickup_reference || null,
     pickup_notes: parsed.data.pickup_notes || null,
 
     // Delivery
+    delivery_company: parsed.data.delivery_company,
     delivery_address: parsed.data.delivery_address,
     delivery_city: parsed.data.delivery_city,
     delivery_state: parsed.data.delivery_state,
@@ -104,6 +107,7 @@ export async function createLoad(formData: FormData) {
     delivery_time: parsed.data.delivery_time || null,
     delivery_contact_name: parsed.data.delivery_contact_name || null,
     delivery_contact_phone: parsed.data.delivery_contact_phone || null,
+    delivery_reference: parsed.data.delivery_reference || null,
     delivery_notes: parsed.data.delivery_notes || null,
 
     // Freight

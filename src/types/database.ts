@@ -112,6 +112,7 @@ export type Load = {
   status: LoadStatus
 
   // Pickup
+  pickup_company: string | null
   pickup_address: string | null
   pickup_city: string | null
   pickup_state: string | null
@@ -120,9 +121,11 @@ export type Load = {
   pickup_time: string | null
   pickup_contact_name: string | null
   pickup_contact_phone: string | null
+  pickup_reference: string | null
   pickup_notes: string | null
 
   // Delivery
+  delivery_company: string | null
   delivery_address: string | null
   delivery_city: string | null
   delivery_state: string | null
@@ -131,6 +134,7 @@ export type Load = {
   delivery_time: string | null
   delivery_contact_name: string | null
   delivery_contact_phone: string | null
+  delivery_reference: string | null
   delivery_notes: string | null
 
   // Freight
