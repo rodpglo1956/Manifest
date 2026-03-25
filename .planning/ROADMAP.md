@@ -91,11 +91,13 @@ Plans:
   3. Invoice PDF can be generated and downloaded
   4. Command dashboard shows stat cards (active loads, booked today, drivers on duty, revenue MTD), activity feed, and quick actions
   5. Driver PWA shows current load card with quick status update, and Owner-Operator dashboard shows stats scoped to own loads
-**Plans**: TBD
+**Plans**: 4 plans
 
 Plans:
-- [ ] 04-01: TBD
-- [ ] 04-02: TBD
+- [ ] 04-01-PLAN.md -- Database migration (invoices table, trigger, pg_cron, storage), TypeScript types, invoice-status module, Zod schema, StatusBadge extension, Realtime hook
+- [ ] 04-02-PLAN.md -- Invoice CRUD UI: server actions, form component, list/filters, detail, edit, sidebar update, load detail integration
+- [ ] 04-03-PLAN.md -- Invoice PDF generation with @react-pdf/renderer and API route handler
+- [ ] 04-04-PLAN.md -- Dashboards: Command stat cards/activity feed/quick actions, Driver PWA current load, Owner-Operator scoped stats
 
 ### Phase 5: Marie AI & Smart Routing
 **Goal**: Users can interact with an AI operations assistant that answers questions about their operations and executes actions, and dispatchers get ranked driver suggestions when assigning loads
@@ -239,7 +241,7 @@ Note: Phases 7, 8, and 10 can execute in parallel after Phase 4. Phase 9 require
 | 1. Auth & Organization | 3/3 | Complete    | 2026-03-25 |
 | 2. Loads, Drivers & Vehicles | 6/6 | Complete    | 2026-03-25 |
 | 3. Dispatch | 3/3 | Complete    | 2026-03-25 |
-| 4. Invoicing & Dashboard | 0/2 | Not started | - |
+| 4. Invoicing & Dashboard | 0/4 | Not started | - |
 | 5. Marie AI & Smart Routing | 0/2 | Not started | - |
 | 6. Alerts, Analytics & Enhanced Dispatch | 0/3 | Not started | - |
 | 7. Compliance | 0/2 | Not started | - |
