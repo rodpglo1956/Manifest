@@ -183,6 +183,9 @@ Recent decisions affecting current work:
 - [08-03]: Timeline visualization for assignment history using relative positioning and CSS dots
 - [Phase 08]: Driver issue report creates both maintenance record and proactive alert for dispatcher notification
 - [Phase 08]: OO dashboard inline maintenance form with expandable more-options for vendor, odometer, warranty fields
+- [08-04]: Sidebar uses collapsible group pattern with Set-based expanded state and auto-expand on fleet pages
+- [08-04]: Recharts Tooltip formatter uses Number() cast for ValueType compatibility (per 06-04 convention)
+- [08-04]: Fleet sub-nav exact match for /fleet (Vehicles), prefix match for sub-pages
 
 ### Pending Todos
 

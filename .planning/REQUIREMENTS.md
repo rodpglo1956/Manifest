@@ -165,7 +165,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **FLET-06**: Fuel transaction logging (manual or fuel card sync)
 - [x] **FLET-07**: Cost per mile calculation per vehicle and fleet-wide
 - [x] **FLET-08**: Vehicle assignment history tracking
-- [ ] **FLET-09**: Fleet dashboard: vehicles by status, maintenance due, cost per mile, top expensive vehicles
+- [x] **FLET-09**: Fleet dashboard: vehicles by status, maintenance due, cost per mile, top expensive vehicles
 - [x] **FLET-10**: Driver PWA: assigned vehicle info, pre-trip inspection form, report issue, fuel log entry
 
 ### CRM
@@ -406,7 +406,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | FLET-06 | Phase 8 | Complete |
 | FLET-07 | Phase 8 | Complete |
 | FLET-08 | Phase 8 | Complete |
-| FLET-09 | Phase 8 | Pending |
+| FLET-09 | Phase 8 | Complete |
 | FLET-10 | Phase 8 | Complete |
 | CRM-01 | Phase 9 | Pending |
 | CRM-02 | Phase 9 | Pending |
