@@ -2,11 +2,12 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Users, Bell } from 'lucide-react'
+import { Users, Bell, CreditCard } from 'lucide-react'
 
 const settingsNav = [
   { href: '/settings/team', label: 'Team', icon: Users },
   { href: '/settings/notifications', label: 'Notifications', icon: Bell },
+  { href: '/settings/billing', label: 'Billing', icon: CreditCard },
 ]
 
 export default function SettingsLayout({
