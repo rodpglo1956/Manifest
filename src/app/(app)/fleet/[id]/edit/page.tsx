@@ -25,7 +25,7 @@ export default async function EditVehiclePage({ params }: EditVehiclePageProps) 
 
   const { data: vehicle } = await supabase
     .from('vehicles')
-    .select('id, unit_number, vin, year, make, model, vehicle_type, status')
+    .select('*')
     .eq('id', id)
     .single() as { data: Vehicle | null }
 
@@ -39,10 +39,10 @@ export default async function EditVehiclePage({ params }: EditVehiclePageProps) 
     <div>
       <div className="mb-6">
         <Link
-          href="/fleet"
+          href={`/fleet/${id}`}
           className="text-sm text-gray-500 hover:text-gray-700 transition-colors"
         >
-          &larr; Back to Fleet
+          &larr; Back to Vehicle
         </Link>
         <h1 className="text-2xl font-semibold text-gray-900 mt-2">
           Edit Vehicle: {vehicle.unit_number}
@@ -58,7 +58,19 @@ export default async function EditVehiclePage({ params }: EditVehiclePageProps) 
             make: vehicle.make ?? '',
             model: vehicle.model ?? '',
             vehicle_type: vehicle.vehicle_type,
+            vehicle_class: vehicle.vehicle_class ?? 'other',
+            fuel_type: vehicle.fuel_type ?? 'diesel',
             status: vehicle.status,
+            license_plate: vehicle.license_plate ?? '',
+            license_state: vehicle.license_state ?? '',
+            registration_expiry: vehicle.registration_expiry ?? '',
+            current_odometer: vehicle.current_odometer ?? undefined,
+            avg_mpg: vehicle.avg_mpg ?? undefined,
+            purchase_date: vehicle.purchase_date ?? '',
+            purchase_price: vehicle.purchase_price ?? undefined,
+            current_value: vehicle.current_value ?? undefined,
+            insurance_policy: vehicle.insurance_policy ?? '',
+            notes: vehicle.notes ?? '',
           }}
           action={boundAction}
           isEdit
