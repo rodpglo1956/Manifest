@@ -819,14 +819,73 @@ export async function getCrmDashboard() {
     .order('days_to_pay', { ascending: true })
     .limit(10)
 
+  // Enrich expiring agreements with company names
+  const rawAgreements = (expiringAgreements ?? []) as CrmRateAgreement[]
+  const agreementCompanyIds = [...new Set(rawAgreements.map(a => a.company_id))]
+  let agreementCompanyMap = new Map<string, string>()
+  if (agreementCompanyIds.length > 0) {
+    const { data: agComps } = await supabase
+      .from('crm_companies')
+      .select('id, name')
+      .in('id', agreementCompanyIds)
+    agreementCompanyMap = new Map((agComps ?? []).map(c => [c.id, c.name]))
+  }
+  const enrichedAgreements = rawAgreements.map(a => ({
+    ...a,
+    company_name: agreementCompanyMap.get(a.company_id) ?? null,
+  }))
+
   return {
     error: null,
     data: {
       topCompanies: topCompanies ?? [],
-      expiringAgreements: expiringAgreements ?? [],
+      expiringAgreements: enrichedAgreements,
       pendingFollowUps: pendingFollowUps ?? 0,
       prospectCount: prospectCount ?? 0,
       brokerPayPerformance: brokerPayPerformance ?? [],
     },
   }
+}
+
+// ============================================================
+// Lane-Company linking action
+// ============================================================
+
+export async function linkLaneCompany(input: {
+  lane_id: string
+  company_id: string
+  relationship: 'shipper' | 'broker' | 'receiver'
+  contracted_rate?: number | null
+  contract_start?: string | null
+  contract_end?: string | null
+}) {
+  const { error, supabase, orgId } = await getAuthContext()
+  if (error) return { error: { form: [error] }, data: null }
+
+  // Verify lane belongs to org
+  const { data: lane } = await supabase
+    .from('crm_lanes')
+    .select('id')
+    .eq('id', input.lane_id)
+    .eq('org_id', orgId!)
+    .single()
+  if (!lane) return { error: { form: ['Lane not found'] }, data: null }
+
+  const { data, error: dbError } = await supabase
+    .from('crm_lane_companies')
+    .insert({
+      lane_id: input.lane_id,
+      company_id: input.company_id,
+      relationship: input.relationship,
+      contracted_rate: input.contracted_rate ?? null,
+      contract_start: input.contract_start ?? null,
+      contract_end: input.contract_end ?? null,
+    })
+    .select()
+    .single()
+
+  if (dbError) return { error: { form: [dbError.message] }, data: null }
+
+  revalidatePath('/crm')
+  return { error: null, data }
 }
