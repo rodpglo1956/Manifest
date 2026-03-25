@@ -629,6 +629,83 @@ export type CrmActivity = {
   created_at: string
 }
 
+// Phase 10: Billing types
+export type BillingPlan = 'free' | 'starter' | 'professional' | 'enterprise'
+export type BillingCycle = 'monthly' | 'annual'
+export type BillingStatus = 'trialing' | 'active' | 'past_due' | 'canceled' | 'paused' | 'unpaid'
+export type BillingInvoiceStatus = 'draft' | 'open' | 'paid' | 'void' | 'uncollectible'
+
+export type BillingAccount = {
+  id: string
+  org_id: string
+  stripe_customer_id: string | null
+  stripe_subscription_id: string | null
+  plan: BillingPlan
+  billing_cycle: BillingCycle
+  monthly_rate: number | null
+  annual_rate: number | null
+  trial_ends_at: string | null
+  current_period_start: string | null
+  current_period_end: string | null
+  status: BillingStatus
+  payment_method_last4: string | null
+  payment_method_brand: string | null
+  cancellation_reason: string | null
+  canceled_at: string | null
+  created_at: string
+  updated_at: string
+}
+
+export type PlanLimits = {
+  id: string
+  plan: BillingPlan
+  max_vehicles: number
+  max_drivers: number
+  max_loads_per_month: number
+  max_users: number
+  compliance_module: boolean
+  ifta_module: boolean
+  crm_module: boolean
+  ai_assistant: boolean
+  ai_queries_per_month: number
+  voice_minutes_per_month: number
+  api_access: boolean
+  white_label: boolean
+  priority_support: boolean
+  created_at: string
+}
+
+export type UsageRecord = {
+  id: string
+  org_id: string
+  period_start: string
+  period_end: string
+  vehicles_count: number
+  drivers_count: number
+  loads_count: number
+  users_count: number
+  ai_queries_count: number
+  voice_minutes_used: number
+  created_at: string
+  updated_at: string
+}
+
+export type BillingInvoice = {
+  id: string
+  org_id: string
+  stripe_invoice_id: string | null
+  amount: number
+  tax: number
+  total: number
+  status: BillingInvoiceStatus
+  period_start: string | null
+  period_end: string | null
+  due_date: string | null
+  paid_at: string | null
+  pdf_url: string | null
+  created_at: string
+}
+
 // Phase 8: Fleet management types
 export type MaintenanceRecord = {
   id: string
@@ -1186,6 +1263,72 @@ export type Database = {
           follow_up_date?: string | null
         }
         Update: Partial<Omit<CrmActivity, 'id' | 'created_at'>>
+        Relationships: []
+      }
+      billing_accounts: {
+        Row: BillingAccount
+        Insert: Omit<BillingAccount, 'id' | 'created_at' | 'updated_at' | 'stripe_customer_id' | 'stripe_subscription_id' | 'monthly_rate' | 'annual_rate' | 'trial_ends_at' | 'current_period_start' | 'current_period_end' | 'payment_method_last4' | 'payment_method_brand' | 'cancellation_reason' | 'canceled_at'> & {
+          id?: string
+          created_at?: string
+          updated_at?: string
+          stripe_customer_id?: string | null
+          stripe_subscription_id?: string | null
+          monthly_rate?: number | null
+          annual_rate?: number | null
+          trial_ends_at?: string | null
+          current_period_start?: string | null
+          current_period_end?: string | null
+          payment_method_last4?: string | null
+          payment_method_brand?: string | null
+          cancellation_reason?: string | null
+          canceled_at?: string | null
+        }
+        Update: Partial<Omit<BillingAccount, 'id' | 'created_at'>> & {
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      plan_limits: {
+        Row: PlanLimits
+        Insert: Omit<PlanLimits, 'id' | 'created_at'> & {
+          id?: string
+          created_at?: string
+        }
+        Update: Partial<Omit<PlanLimits, 'id' | 'created_at'>>
+        Relationships: []
+      }
+      usage_records: {
+        Row: UsageRecord
+        Insert: Omit<UsageRecord, 'id' | 'created_at' | 'updated_at' | 'vehicles_count' | 'drivers_count' | 'loads_count' | 'users_count' | 'ai_queries_count' | 'voice_minutes_used'> & {
+          id?: string
+          created_at?: string
+          updated_at?: string
+          vehicles_count?: number
+          drivers_count?: number
+          loads_count?: number
+          users_count?: number
+          ai_queries_count?: number
+          voice_minutes_used?: number
+        }
+        Update: Partial<Omit<UsageRecord, 'id' | 'created_at'>> & {
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      billing_invoices: {
+        Row: BillingInvoice
+        Insert: Omit<BillingInvoice, 'id' | 'created_at' | 'stripe_invoice_id' | 'tax' | 'period_start' | 'period_end' | 'due_date' | 'paid_at' | 'pdf_url'> & {
+          id?: string
+          created_at?: string
+          stripe_invoice_id?: string | null
+          tax?: number
+          period_start?: string | null
+          period_end?: string | null
+          due_date?: string | null
+          paid_at?: string | null
+          pdf_url?: string | null
+        }
+        Update: Partial<Omit<BillingInvoice, 'id' | 'created_at'>>
         Relationships: []
       }
     }
