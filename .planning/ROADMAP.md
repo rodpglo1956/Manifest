@@ -183,11 +183,14 @@ Plans:
   3. Activities (calls, emails, notes, meetings) are logged per company/contact/lane, and follow-up reminders send push notifications on the due date
   4. CRM dashboard shows revenue by company, expiring rate agreements, pending follow-ups, and broker pay performance
   5. Cross-module automation works: load completion updates CRM stats, DOT inspection auto-completes compliance items, CDL expiry flags across modules, fuel feeds IFTA, and Marie checks CRM/compliance before actions
-**Plans**: TBD
+**Plans**: 5 plans
 
 Plans:
-- [ ] 09-01: TBD
-- [ ] 09-02: TBD
+- [ ] 09-01-PLAN.md -- Database migration (6 CRM tables with RLS), TypeScript types, Zod schemas, CRM helpers
+- [ ] 09-02-PLAN.md -- CRM server actions (CRUD for companies, contacts, lanes, rates, activities, dashboard) and pg_cron edge functions (stats updater, follow-up reminder, load delivery trigger)
+- [ ] 09-03-PLAN.md -- Company CRUD UI with type tabs, company detail page with contacts and activity timeline, sidebar CRM section
+- [ ] 09-04-PLAN.md -- Lanes page with MapLibre arc visualization, lane detail with companies and rate agreements, rate agreement form
+- [ ] 09-05-PLAN.md -- CRM dashboard (revenue, expiring agreements, follow-ups, broker performance), activities feed page, OO customers, cross-module triggers (inspection->compliance, CDL expiry, Marie RPC)
 
 ### Phase 10: Billing & Subscriptions
 **Goal**: Manifest can charge customers via Stripe Connect with tiered plans, usage tracking, trial management, and self-service subscription management
@@ -255,7 +258,7 @@ Note: Phases 7, 8, and 10 can execute in parallel after Phase 4. Phase 9 require
 | 6. Alerts, Analytics & Enhanced Dispatch | 0/3 | Not started | - |
 | 7. Compliance | 5/5 | Complete    | 2026-03-25 |
 | 8. Fleet Management | 5/5 | Complete    | 2026-03-25 |
-| 9. CRM & Cross-Module Integration | 0/2 | Not started | - |
+| 9. CRM & Cross-Module Integration | 0/5 | Not started | - |
 | 10. Billing & Subscriptions | 0/2 | Not started | - |
 | 11. Reporting & Notifications | 0/2 | Not started | - |
 | 12. Onboarding, PWA, Security & Polish | 0/3 | Not started | - |
