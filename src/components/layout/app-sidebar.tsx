@@ -9,6 +9,7 @@ import {
   Package,
   Navigation,
   FileText,
+  Shield,
   Settings,
 } from 'lucide-react'
 
@@ -19,6 +20,7 @@ const navItems = [
   { href: '/fleet', label: 'Fleet', icon: Truck, active: true },
   { href: '/dispatch', label: 'Dispatch', icon: Navigation, active: true },
   { href: '/invoices', label: 'Invoices', icon: FileText, active: true },
+  { href: '/compliance', label: 'Compliance', icon: Shield, active: true },
   { href: '/settings/team', label: 'Settings', icon: Settings, active: true },
 ]
 
