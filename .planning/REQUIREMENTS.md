@@ -119,10 +119,10 @@ Requirements for initial release. Each maps to roadmap phases.
 ### Analytics Foundation
 
 - [x] **ANLY-01**: Daily snapshots generated nightly (loads, revenue, miles, on-time %, driver count)
-- [ ] **ANLY-02**: Revenue trend line chart (last 30 days)
-- [ ] **ANLY-03**: Load volume bar chart (booked vs delivered per week)
-- [ ] **ANLY-04**: On-time performance gauge chart (current month)
-- [ ] **ANLY-05**: Revenue per mile trend line chart (last 30 days)
+- [x] **ANLY-02**: Revenue trend line chart (last 30 days)
+- [x] **ANLY-03**: Load volume bar chart (booked vs delivered per week)
+- [x] **ANLY-04**: On-time performance gauge chart (current month)
+- [x] **ANLY-05**: Revenue per mile trend line chart (last 30 days)
 
 ### Push Notifications
 
@@ -377,10 +377,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 | PUSH-04 | Phase 6 | Complete |
 | PUSH-05 | Phase 6 | Complete |
 | ANLY-01 | Phase 6 | Complete |
-| ANLY-02 | Phase 6 | Pending |
-| ANLY-03 | Phase 6 | Pending |
-| ANLY-04 | Phase 6 | Pending |
-| ANLY-05 | Phase 6 | Pending |
+| ANLY-02 | Phase 6 | Complete |
+| ANLY-03 | Phase 6 | Complete |
+| ANLY-04 | Phase 6 | Complete |
+| ANLY-05 | Phase 6 | Complete |
 | EDSP-01 | Phase 6 | Pending |
 | EDSP-02 | Phase 6 | Pending |
 | EDSP-03 | Phase 6 | Complete |
