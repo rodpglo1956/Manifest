@@ -7,6 +7,7 @@ import {
   getStatusLabel,
   STATUS_ORDER,
 } from '@/lib/load-status'
+import type { LoadStatus } from '@/types/database'
 
 describe('Load Status Utility', () => {
   describe('LOAD_STATUSES', () => {
@@ -147,6 +148,78 @@ describe('Load Status Utility', () => {
       expect(STATUS_ORDER.dispatched).toBeLessThan(STATUS_ORDER.in_transit)
       expect(STATUS_ORDER.delivered).toBeLessThan(STATUS_ORDER.invoiced)
       expect(STATUS_ORDER.invoiced).toBeLessThan(STATUS_ORDER.paid)
+    })
+  })
+
+  describe('canTransition - complete lifecycle path', () => {
+    it('validates the full happy-path lifecycle from booked to paid', () => {
+      const lifecycle: LoadStatus[] = [
+        'booked',
+        'dispatched',
+        'in_transit',
+        'at_pickup',
+        'loaded',
+        'at_delivery',
+        'delivered',
+        'invoiced',
+        'paid',
+      ]
+
+      for (let i = 0; i < lifecycle.length - 1; i++) {
+        expect(
+          canTransition(lifecycle[i], lifecycle[i + 1]),
+          `${lifecycle[i]} -> ${lifecycle[i + 1]} should be valid`
+        ).toBe(true)
+      }
+    })
+
+    it('rejects all backward transitions in the lifecycle', () => {
+      const lifecycle: LoadStatus[] = [
+        'booked',
+        'dispatched',
+        'in_transit',
+        'at_pickup',
+        'loaded',
+        'at_delivery',
+        'delivered',
+        'invoiced',
+        'paid',
+      ]
+
+      for (let i = 1; i < lifecycle.length; i++) {
+        expect(
+          canTransition(lifecycle[i], lifecycle[i - 1]),
+          `${lifecycle[i]} -> ${lifecycle[i - 1]} should be invalid (backward)`
+        ).toBe(false)
+      }
+    })
+
+    it('rejects skipping steps (booked -> in_transit)', () => {
+      expect(canTransition('booked', 'in_transit')).toBe(false)
+    })
+
+    it('rejects skipping steps (dispatched -> at_pickup)', () => {
+      expect(canTransition('dispatched', 'at_pickup')).toBe(false)
+    })
+
+    it('rejects skipping steps (in_transit -> loaded)', () => {
+      expect(canTransition('in_transit', 'loaded')).toBe(false)
+    })
+  })
+
+  describe('VALID_TRANSITIONS structure', () => {
+    it('every status has an entry in VALID_TRANSITIONS', () => {
+      for (const status of LOAD_STATUSES) {
+        expect(VALID_TRANSITIONS).toHaveProperty(status)
+      }
+    })
+
+    it('all transition targets are valid LoadStatus values', () => {
+      for (const [, targets] of Object.entries(VALID_TRANSITIONS)) {
+        for (const target of targets) {
+          expect(LOAD_STATUSES).toContain(target)
+        }
+      }
     })
   })
 })
