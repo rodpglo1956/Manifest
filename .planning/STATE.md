@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: completed
-stopped_at: Completed 04-03-PLAN.md
-last_updated: "2026-03-25T06:20:11.951Z"
-last_activity: 2026-03-25 -- Plan 04-03 complete (Invoice PDF generation)
+stopped_at: Completed 04-04-PLAN.md
+last_updated: "2026-03-25T06:21:13.000Z"
+last_activity: 2026-03-25 -- Plan 04-04 complete (Dashboards)
 progress:
   total_phases: 12
-  completed_phases: 3
+  completed_phases: 4
   total_plans: 16
-  completed_plans: 14
-  percent: 88
+  completed_plans: 15
+  percent: 94
 ---
 
 # Project State
@@ -26,11 +26,11 @@ See: .planning/PROJECT.md (updated 2026-03-24)
 ## Current Position
 
 Phase: 4 of 12 (Invoicing & Dashboard)
-Plan: 3 of 4 in current phase
-Status: Plan 04-03 Complete
-Last activity: 2026-03-25 -- Plan 04-03 complete (Invoice PDF generation)
+Plan: 4 of 4 in current phase
+Status: Phase 04 Complete
+Last activity: 2026-03-25 -- Plan 04-04 complete (Dashboards)
 
-Progress: [█████████░] 88%
+Progress: [█████████░] 94%
 
 ## Performance Metrics
 
@@ -61,6 +61,7 @@ Progress: [█████████░] 88%
 | Phase 03 P02 | 4min | 2 tasks | 8 files |
 | Phase 03 P03 | 2min | 2 tasks | 5 files |
 | Phase 04 P01 | 3min | 2 tasks | 9 files |
+| Phase 04 P04 | 4min | 2 tasks | 9 files |
 | Phase 04 P03 | 2min | 2 tasks | 4 files |
 
 ## Accumulated Context
@@ -105,6 +106,9 @@ Recent decisions affecting current work:
 - [Phase 04]: Invoice number format INV-YYYYMM-NNNN with per-org per-month sequence table
 - [Phase 04]: pg_cron overdue scanner runs daily at 8am UTC, transitions sent->overdue when past due_date
 - [Phase 04]: Used z.input for InvoiceInput type maintaining zodResolver compatibility (per project convention)
+- [Phase 04]: Owner-Operator detection via org_members count === 1, all queries scoped by driver_id
+- [Phase 04]: Single Realtime channel with 3 .on() listeners for dashboard (loads, dispatches, invoices)
+- [Phase 04]: Activity feed uses separate queries + Map lookups instead of !inner joins for type safety
 - [Phase 04]: Used React.createElement in route.ts for PDF rendering to avoid JSX transform issues
 - [Phase 04]: PDF stored unconditionally in Supabase Storage on every generation with upsert
 
@@ -118,6 +122,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-25T06:20:11.949Z
-Stopped at: Completed 04-03-PLAN.md
+Last session: 2026-03-25T06:21:13.000Z
+Stopped at: Completed 04-04-PLAN.md
 Resume file: None

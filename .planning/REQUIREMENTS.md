@@ -73,11 +73,11 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Dashboard
 
-- [ ] **DASH-01**: Command mode dashboard shows stat cards: active loads, booked today, drivers on duty, revenue MTD
-- [ ] **DASH-02**: Dashboard shows recent activity feed (last 10 status changes, 5 dispatches, 5 invoices)
-- [ ] **DASH-03**: Dashboard quick actions: create load, dispatch driver, create invoice
-- [ ] **DASH-04**: Driver PWA dashboard shows current load card, next upcoming load, quick status update
-- [ ] **DASH-05**: Owner-Operator dashboard shows same stats scoped to own loads/vehicle
+- [x] **DASH-01**: Command mode dashboard shows stat cards: active loads, booked today, drivers on duty, revenue MTD
+- [x] **DASH-02**: Dashboard shows recent activity feed (last 10 status changes, 5 dispatches, 5 invoices)
+- [x] **DASH-03**: Dashboard quick actions: create load, dispatch driver, create invoice
+- [x] **DASH-04**: Driver PWA dashboard shows current load card, next upcoming load, quick status update
+- [x] **DASH-05**: Owner-Operator dashboard shows same stats scoped to own loads/vehicle
 
 ### Vehicles (Basic)
 
@@ -343,11 +343,11 @@ Which phases cover which requirements. Updated during roadmap creation.
 | INV-05 | Phase 4 | Complete |
 | INV-06 | Phase 4 | Complete |
 | INV-07 | Phase 4 | Pending |
-| DASH-01 | Phase 4 | Pending |
-| DASH-02 | Phase 4 | Pending |
-| DASH-03 | Phase 4 | Pending |
-| DASH-04 | Phase 4 | Pending |
-| DASH-05 | Phase 4 | Pending |
+| DASH-01 | Phase 4 | Complete |
+| DASH-02 | Phase 4 | Complete |
+| DASH-03 | Phase 4 | Complete |
+| DASH-04 | Phase 4 | Complete |
+| DASH-05 | Phase 4 | Complete |
 | MARI-01 | Phase 5 | Pending |
 | MARI-02 | Phase 5 | Pending |
 | MARI-03 | Phase 5 | Pending |
