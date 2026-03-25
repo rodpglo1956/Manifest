@@ -134,10 +134,10 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Enhanced Dispatch
 
-- [ ] **EDSP-01**: Map view showing unassigned loads and available drivers as pins
-- [ ] **EDSP-02**: Timeline/Gantt view of driver schedules with gaps
+- [x] **EDSP-01**: Map view showing unassigned loads and available drivers as pins
+- [x] **EDSP-02**: Timeline/Gantt view of driver schedules with gaps
 - [x] **EDSP-03**: Conflict detection warns when assigning driver with overlapping load
-- [ ] **EDSP-04**: Smart routing suggestion panel integrated into dispatch UI
+- [x] **EDSP-04**: Smart routing suggestion panel integrated into dispatch UI
 
 ### Compliance
 
@@ -381,10 +381,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 | ANLY-03 | Phase 6 | Complete |
 | ANLY-04 | Phase 6 | Complete |
 | ANLY-05 | Phase 6 | Complete |
-| EDSP-01 | Phase 6 | Pending |
-| EDSP-02 | Phase 6 | Pending |
+| EDSP-01 | Phase 6 | Complete |
+| EDSP-02 | Phase 6 | Complete |
 | EDSP-03 | Phase 6 | Complete |
-| EDSP-04 | Phase 6 | Pending |
+| EDSP-04 | Phase 6 | Complete |
 | COMP-01 | Phase 7 | Pending |
 | COMP-02 | Phase 7 | Pending |
 | COMP-03 | Phase 7 | Pending |
