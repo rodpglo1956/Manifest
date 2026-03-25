@@ -2,8 +2,10 @@
 
 import { useRealtimeDashboard } from '@/hooks/use-realtime-dashboard'
 import { StatCards } from './stat-cards'
+import { AlertFeed } from './alert-feed'
 import { ActivityFeed, type ActivityItem } from './activity-feed'
 import { QuickActions } from './quick-actions'
+import type { ProactiveAlert } from '@/types/database'
 
 interface DashboardViewProps {
   orgId: string
@@ -11,6 +13,7 @@ interface DashboardViewProps {
   bookedToday: number
   driversOnDuty: number
   revenueMtd: number
+  alerts: ProactiveAlert[]
   activityItems: ActivityItem[]
   isOwnerOperator?: boolean
   userName?: string
@@ -22,6 +25,7 @@ export function DashboardView({
   bookedToday,
   driversOnDuty,
   revenueMtd,
+  alerts,
   activityItems,
   isOwnerOperator,
   userName,
@@ -48,6 +52,9 @@ export function DashboardView({
         driversOnDuty={driversOnDuty}
         revenueMtd={revenueMtd}
       />
+
+      {/* Alert Feed -- above activity feed */}
+      <AlertFeed alerts={alerts} />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2">

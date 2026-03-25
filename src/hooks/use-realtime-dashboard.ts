@@ -55,6 +55,16 @@ export function useRealtimeDashboard(orgId: string | null) {
         },
         handleChange
       )
+      .on(
+        'postgres_changes',
+        {
+          event: '*',
+          schema: 'public',
+          table: 'proactive_alerts',
+          filter: `org_id=eq.${orgId}`,
+        },
+        handleChange
+      )
       .subscribe()
 
     return () => {

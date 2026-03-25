@@ -3,6 +3,7 @@ import { redirect } from 'next/navigation'
 import { startOfMonth, startOfToday, format } from 'date-fns'
 import { DashboardView } from './dashboard-view'
 import type { ActivityItem } from './activity-feed'
+import type { DailySnapshot, ProactiveAlert } from '@/types/database'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -84,6 +85,14 @@ export default async function DashboardPage() {
     .gte('delivery_date', monthStartStr)
   if (ownerDriverId) revenueMtdQuery.eq('driver_id', ownerDriverId)
 
+  // Fetch unacknowledged alerts
+  const alertsQuery = supabase
+    .from('proactive_alerts')
+    .select('*')
+    .eq('acknowledged', false)
+    .order('created_at', { ascending: false })
+    .limit(20)
+
   // Activity feed queries -- use type-safe selects without relational joins
   // (Database type doesn't define Relationships)
   const statusHistoryQuery = supabase
@@ -110,6 +119,7 @@ export default async function DashboardPage() {
     bookedToday,
     driversOnDuty,
     revenueMtdResult,
+    alertsResult,
     statusChanges,
     recentDispatches,
     recentInvoices,
@@ -118,6 +128,7 @@ export default async function DashboardPage() {
     bookedTodayQuery,
     driversOnDutyQuery,
     revenueMtdQuery,
+    alertsQuery,
     statusHistoryQuery,
     dispatchesQuery,
     invoicesQuery,
@@ -202,6 +213,7 @@ export default async function DashboardPage() {
       bookedToday={bookedToday.count ?? 0}
       driversOnDuty={driversOnDuty.count ?? 0}
       revenueMtd={totalRevenue}
+      alerts={(alertsResult.data ?? []) as ProactiveAlert[]}
       activityItems={activityItems}
       isOwnerOperator={isOwnerOperator}
       userName={profile?.full_name ?? undefined}
