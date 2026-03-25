@@ -263,7 +263,144 @@ export type InvoiceNumberSequence = {
 }
 
 // Phase 6: Alert types
-export type AlertType = 'late_pickup' | 'driver_silent' | 'overdue_invoice' | 'dispatch_conflict' | 'eta_risk' | 'unassigned_load'
+export type AlertType = 'late_pickup' | 'driver_silent' | 'overdue_invoice' | 'dispatch_conflict' | 'eta_risk' | 'unassigned_load' | 'compliance_overdue' | 'compliance_due_soon' | 'compliance_approaching'
+
+// Phase 7: Compliance types
+export type CarrierType = 'medical_transport' | 'box_truck' | 'hotshot' | 'straight_truck' | 'class_8' | 'mixed_fleet'
+
+export type ComplianceCategory =
+  | 'dot_inspection' | 'insurance' | 'ifta' | 'ucr'
+  | 'drug_testing' | 'driver_qualification' | 'vehicle_registration'
+  | 'operating_authority' | 'hazmat' | 'medical_card'
+  | 'cdl_renewal' | 'annual_inspection' | 'state_permit'
+  | 'bod_filing' | 'insurance_filing' | 'custom'
+
+export type ComplianceItemStatus = 'upcoming' | 'due_soon' | 'overdue' | 'completed' | 'waived' | 'not_applicable'
+
+export type ComplianceAlertType = 'approaching' | 'due_soon' | 'overdue' | 'expired' | 'completed'
+
+export type RecurrenceRule = 'annual' | 'biennial' | 'quarterly' | 'monthly' | 'custom'
+
+export type InspectionType = 'annual_dot' | 'pre_trip' | 'post_trip' | 'roadside' | 'state' | 'customer_required' | 'internal'
+
+export type InspectionResult = 'pass' | 'fail' | 'conditional'
+
+export type CdlClass = 'A' | 'B' | 'C' | 'none'
+
+export type ComplianceProfile = {
+  id: string
+  org_id: string
+  dot_number: string | null
+  mc_number: string | null
+  is_dot_regulated: boolean
+  carrier_type: CarrierType
+  operating_authority_status: string | null
+  insurance_provider: string | null
+  insurance_policy_number: string | null
+  insurance_expiry: string | null
+  ifta_license_number: string | null
+  ifta_expiry: string | null
+  ucr_registration_year: number | null
+  ucr_expiry: string | null
+  drug_testing_consortium: string | null
+  drug_testing_account_id: string | null
+  created_at: string
+  updated_at: string
+}
+
+export type ComplianceItem = {
+  id: string
+  org_id: string
+  compliance_profile_id: string
+  category: ComplianceCategory
+  title: string
+  description: string | null
+  due_date: string | null
+  completed_date: string | null
+  status: ComplianceItemStatus
+  assigned_to: string | null
+  vehicle_id: string | null
+  driver_id: string | null
+  document_urls: string[] | null
+  notes: string | null
+  recurrence_rule: RecurrenceRule | null
+  recurrence_months: number | null
+  alert_days_before: number[]
+  created_at: string
+  updated_at: string
+}
+
+export type ComplianceAlert = {
+  id: string
+  org_id: string
+  compliance_item_id: string
+  alert_type: ComplianceAlertType
+  days_until_due: number | null
+  message: string
+  acknowledged: boolean
+  acknowledged_by: string | null
+  acknowledged_at: string | null
+  notification_sent: boolean
+  created_at: string
+}
+
+export type DriverQualification = {
+  id: string
+  org_id: string
+  driver_id: string
+  cdl_number: string | null
+  cdl_state: string | null
+  cdl_class: CdlClass | null
+  cdl_expiry: string | null
+  medical_card_expiry: string | null
+  endorsements: string[] | null
+  restrictions: string[] | null
+  mvr_last_pulled: string | null
+  mvr_status: string | null
+  drug_test_last_date: string | null
+  drug_test_result: string | null
+  annual_review_date: string | null
+  road_test_date: string | null
+  application_date: string | null
+  hire_date: string | null
+  termination_date: string | null
+  dq_file_complete: boolean
+  missing_documents: string[] | null
+  created_at: string
+  updated_at: string
+}
+
+export type Inspection = {
+  id: string
+  org_id: string
+  vehicle_id: string
+  inspection_type: InspectionType
+  inspector_name: string | null
+  inspection_date: string
+  expiry_date: string | null
+  result: InspectionResult | null
+  defects_found: string[] | null
+  defects_corrected: string[] | null
+  document_urls: string[] | null
+  notes: string | null
+  created_at: string
+}
+
+export type IFTARecord = {
+  id: string
+  org_id: string
+  vehicle_id: string
+  quarter: string
+  jurisdiction: string
+  miles_traveled: number
+  gallons_purchased: number
+  tax_rate: number | null
+  tax_owed: number | null
+  tax_paid: number | null
+  net_tax: number | null
+  source: string
+  created_at: string
+}
 
 export type AlertSeverity = 'info' | 'warning' | 'critical'
 
@@ -513,6 +650,112 @@ export type Database = {
           acknowledged_by?: string | null
         }
         Update: Partial<Omit<ProactiveAlert, 'id' | 'created_at'>>
+        Relationships: []
+      }
+      compliance_profiles: {
+        Row: ComplianceProfile
+        Insert: Omit<ComplianceProfile, 'id' | 'created_at' | 'updated_at'> & {
+          id?: string
+          created_at?: string
+          updated_at?: string
+        }
+        Update: Partial<Omit<ComplianceProfile, 'id' | 'created_at'>> & {
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      compliance_items: {
+        Row: ComplianceItem
+        Insert: Omit<ComplianceItem, 'id' | 'created_at' | 'updated_at' | 'completed_date' | 'description' | 'assigned_to' | 'vehicle_id' | 'driver_id' | 'document_urls' | 'notes' | 'recurrence_rule' | 'recurrence_months'> & {
+          id?: string
+          created_at?: string
+          updated_at?: string
+          completed_date?: string | null
+          description?: string | null
+          assigned_to?: string | null
+          vehicle_id?: string | null
+          driver_id?: string | null
+          document_urls?: string[] | null
+          notes?: string | null
+          recurrence_rule?: RecurrenceRule | null
+          recurrence_months?: number | null
+        }
+        Update: Partial<Omit<ComplianceItem, 'id' | 'created_at'>> & {
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      compliance_alerts: {
+        Row: ComplianceAlert
+        Insert: Omit<ComplianceAlert, 'id' | 'created_at' | 'acknowledged' | 'acknowledged_by' | 'acknowledged_at' | 'notification_sent' | 'days_until_due'> & {
+          id?: string
+          created_at?: string
+          acknowledged?: boolean
+          acknowledged_by?: string | null
+          acknowledged_at?: string | null
+          notification_sent?: boolean
+          days_until_due?: number | null
+        }
+        Update: Partial<Omit<ComplianceAlert, 'id' | 'created_at'>>
+        Relationships: []
+      }
+      driver_qualifications: {
+        Row: DriverQualification
+        Insert: Omit<DriverQualification, 'id' | 'created_at' | 'updated_at' | 'dq_file_complete' | 'missing_documents'> & {
+          id?: string
+          created_at?: string
+          updated_at?: string
+          dq_file_complete?: boolean
+          missing_documents?: string[] | null
+          cdl_number?: string | null
+          cdl_state?: string | null
+          cdl_class?: CdlClass | null
+          cdl_expiry?: string | null
+          medical_card_expiry?: string | null
+          endorsements?: string[] | null
+          restrictions?: string[] | null
+          mvr_last_pulled?: string | null
+          mvr_status?: string | null
+          drug_test_last_date?: string | null
+          drug_test_result?: string | null
+          annual_review_date?: string | null
+          road_test_date?: string | null
+          application_date?: string | null
+          hire_date?: string | null
+          termination_date?: string | null
+        }
+        Update: Partial<Omit<DriverQualification, 'id' | 'created_at'>> & {
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      inspections: {
+        Row: Inspection
+        Insert: Omit<Inspection, 'id' | 'created_at' | 'inspector_name' | 'expiry_date' | 'result' | 'defects_found' | 'defects_corrected' | 'document_urls' | 'notes'> & {
+          id?: string
+          created_at?: string
+          inspector_name?: string | null
+          expiry_date?: string | null
+          result?: InspectionResult | null
+          defects_found?: string[] | null
+          defects_corrected?: string[] | null
+          document_urls?: string[] | null
+          notes?: string | null
+        }
+        Update: Partial<Omit<Inspection, 'id' | 'created_at'>>
+        Relationships: []
+      }
+      ifta_records: {
+        Row: IFTARecord
+        Insert: Omit<IFTARecord, 'id' | 'created_at' | 'tax_rate' | 'tax_owed' | 'tax_paid' | 'net_tax'> & {
+          id?: string
+          created_at?: string
+          tax_rate?: number | null
+          tax_owed?: number | null
+          tax_paid?: number | null
+          net_tax?: number | null
+        }
+        Update: Partial<Omit<IFTARecord, 'id' | 'created_at'>>
         Relationships: []
       }
     }

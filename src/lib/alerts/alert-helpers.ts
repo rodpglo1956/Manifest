@@ -79,4 +79,7 @@ export const ALERT_TYPE_LABELS: Record<AlertType, string> = {
   dispatch_conflict: 'Dispatch Conflict',
   eta_risk: 'ETA Risk',
   unassigned_load: 'Unassigned Load',
+  compliance_overdue: 'Compliance Overdue',
+  compliance_due_soon: 'Compliance Due Soon',
+  compliance_approaching: 'Compliance Approaching',
 }

@@ -1,4 +1,4 @@
-type StatusVariant = 'driver' | 'vehicle' | 'load' | 'dispatch' | 'invoice'
+type StatusVariant = 'driver' | 'vehicle' | 'load' | 'dispatch' | 'invoice' | 'compliance' | 'inspection'
 
 interface StatusBadgeProps {
   status: string
@@ -43,6 +43,19 @@ const colorMap: Record<StatusVariant, Record<string, { dot: string; bg: string; 
     paid: { dot: 'bg-green-500', bg: 'bg-green-50', text: 'text-green-700' },
     overdue: { dot: 'bg-red-500', bg: 'bg-red-50', text: 'text-red-700' },
     void: { dot: 'bg-gray-400', bg: 'bg-gray-100', text: 'text-gray-500' },
+  },
+  compliance: {
+    upcoming: { dot: 'bg-blue-500', bg: 'bg-blue-50', text: 'text-blue-700' },
+    due_soon: { dot: 'bg-yellow-500', bg: 'bg-yellow-50', text: 'text-yellow-700' },
+    overdue: { dot: 'bg-red-500', bg: 'bg-red-50', text: 'text-red-700' },
+    completed: { dot: 'bg-green-500', bg: 'bg-green-50', text: 'text-green-700' },
+    waived: { dot: 'bg-gray-400', bg: 'bg-gray-100', text: 'text-gray-600' },
+    not_applicable: { dot: 'bg-gray-300', bg: 'bg-gray-50', text: 'text-gray-500' },
+  },
+  inspection: {
+    pass: { dot: 'bg-green-500', bg: 'bg-green-50', text: 'text-green-700' },
+    fail: { dot: 'bg-red-500', bg: 'bg-red-50', text: 'text-red-700' },
+    conditional: { dot: 'bg-yellow-500', bg: 'bg-yellow-50', text: 'text-yellow-700' },
   },
 }
 
