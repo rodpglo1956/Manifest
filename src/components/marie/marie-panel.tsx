@@ -1,8 +1,10 @@
 'use client'
 
+import { useEffect, useRef } from 'react'
 import { X } from 'lucide-react'
 import { MarieChat } from './marie-chat'
 import { useMarie } from './use-marie'
+import { createClient } from '@/lib/supabase/client'
 
 interface MariePanelProps {
   isOpen: boolean
@@ -11,6 +13,27 @@ interface MariePanelProps {
 
 export function MariePanel({ isOpen, onClose }: MariePanelProps) {
   const { messages, isLoading, sendQuery } = useMarie()
+  const hasCheckedAlerts = useRef(false)
+
+  // MARI-09: Summarize unacknowledged proactive alerts when panel opens
+  useEffect(() => {
+    if (!isOpen || hasCheckedAlerts.current || messages.length > 0) return
+    hasCheckedAlerts.current = true
+
+    async function checkAlerts() {
+      const supabase = createClient()
+      const { count } = await supabase
+        .from('proactive_alerts')
+        .select('*', { count: 'exact', head: true })
+        .eq('acknowledged', false)
+
+      if (count && count > 0) {
+        sendQuery(`Summarize my ${count} unacknowledged alert${count > 1 ? 's' : ''}.`)
+      }
+    }
+
+    checkAlerts()
+  }, [isOpen, messages.length, sendQuery])
 
   return (
     <>

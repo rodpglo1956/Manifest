@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase/server'
 import { InvoicePDF } from '@/components/invoices/invoice-pdf'
 import { NextResponse } from 'next/server'
 import React from 'react'
+import type { Invoice } from '@/types/database'
 
 export async function GET(
   _request: Request,
@@ -12,12 +13,13 @@ export async function GET(
     const { id } = await params
     const supabase = await createClient()
 
-    // Fetch invoice with joined load data
-    const { data: invoice, error: invoiceError } = await supabase
+    // Fetch invoice
+    const { data, error: invoiceError } = await supabase
       .from('invoices')
-      .select('*, loads(load_number, pickup_company, delivery_company)')
+      .select('*')
       .eq('id', id)
       .single()
+    const invoice = data as Invoice | null
 
     if (invoiceError || !invoice) {
       return NextResponse.json(
@@ -33,15 +35,22 @@ export async function GET(
       .eq('id', invoice.org_id)
       .single()
 
+    // Fetch related load for reference numbers
+    const { data: load } = invoice.load_id
+      ? await supabase.from('loads').select('load_number, pickup_company, delivery_company').eq('id', invoice.load_id).single()
+      : { data: null }
+
     // Prepare invoice data with joined relations
     const invoiceWithRelations = {
       ...invoice,
       organizations: org ?? null,
+      loads: load ?? null,
     }
 
     // Render PDF to buffer
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const buffer = await renderToBuffer(
-      React.createElement(InvoicePDF, { invoice: invoiceWithRelations })
+      React.createElement(InvoicePDF, { invoice: invoiceWithRelations }) as any
     )
 
     // Store PDF in Supabase Storage unconditionally
