@@ -101,9 +101,9 @@ Requirements for initial release. Each maps to roadmap phases.
 
 - [x] **ROUT-01**: API endpoint returns ranked driver suggestions for a load
 - [x] **ROUT-02**: Ranking considers proximity (30%), availability (25%), equipment match (20%), on-time performance (15%), lane familiarity (10%)
-- [ ] **ROUT-03**: Dispatch UI shows "Suggested" tab with ranked recommendations and score breakdown
-- [ ] **ROUT-04**: One-click assign from suggestion list
-- [ ] **ROUT-05**: Override button for manual driver selection
+- [x] **ROUT-03**: Dispatch UI shows "Suggested" tab with ranked recommendations and score breakdown
+- [x] **ROUT-04**: One-click assign from suggestion list
+- [x] **ROUT-05**: Override button for manual driver selection
 
 ### Predictive Alerts
 
@@ -360,9 +360,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | MARI-10 | Phase 5 | Pending |
 | ROUT-01 | Phase 5 | Complete |
 | ROUT-02 | Phase 5 | Complete |
-| ROUT-03 | Phase 5 | Pending |
-| ROUT-04 | Phase 5 | Pending |
-| ROUT-05 | Phase 5 | Pending |
+| ROUT-03 | Phase 5 | Complete |
+| ROUT-04 | Phase 5 | Complete |
+| ROUT-05 | Phase 5 | Complete |
 | ALRT-01 | Phase 6 | Pending |
 | ALRT-02 | Phase 6 | Pending |
 | ALRT-03 | Phase 6 | Pending |
