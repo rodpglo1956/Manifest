@@ -153,7 +153,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **COMP-10**: IFTA export to CSV for filing
 - [x] **COMP-11**: compliance-scanner edge function runs daily, generates alerts, auto-creates next recurrence
 - [x] **COMP-12**: Compliance adapts based on DOT vs non-DOT carrier type
-- [ ] **COMP-13**: Upcoming deadlines calendar view (next 90 days)
+- [x] **COMP-13**: Upcoming deadlines calendar view (next 90 days)
 
 ### Fleet Management
 
@@ -397,7 +397,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | COMP-10 | Phase 7 | Complete |
 | COMP-11 | Phase 7 | Complete |
 | COMP-12 | Phase 7 | Complete |
-| COMP-13 | Phase 7 | Pending |
+| COMP-13 | Phase 7 | Complete |
 | FLET-01 | Phase 8 | Pending |
 | FLET-02 | Phase 8 | Pending |
 | FLET-03 | Phase 8 | Pending |
