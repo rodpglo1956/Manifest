@@ -27,10 +27,11 @@ export function calculateHealthScore(metrics: HealthScoreMetrics): number {
   }
 
   // Due-soon items (15 pts max, penalized 2x ratio)
+  // Also penalized by overdue ratio -- overdue items are worse than due-soon
   if (metrics.totalItems === 0) {
     score += 15
   } else {
-    const dueSoonRatio = metrics.dueSoonItems / metrics.totalItems
+    const dueSoonRatio = (metrics.dueSoonItems + metrics.overdueItems) / metrics.totalItems
     score += Math.max(0, 15 - dueSoonRatio * 2 * 15)
   }
 
