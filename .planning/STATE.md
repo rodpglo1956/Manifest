@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 08-01-PLAN.md
-last_updated: "2026-03-25T21:29:32.916Z"
-last_activity: 2026-03-25 -- Plan 08-01 complete (Fleet Schema & Helpers)
+stopped_at: Completed 08-03-PLAN.md
+last_updated: "2026-03-25T21:37:45.000Z"
+last_activity: 2026-03-25 -- Plan 08-03 complete (Vehicle UI Expansion)
 progress:
   total_phases: 12
   completed_phases: 7
   total_plans: 34
-  completed_plans: 30
-  percent: 88
+  completed_plans: 32
+  percent: 94
 ---
 
 # Project State
@@ -26,11 +26,11 @@ See: .planning/PROJECT.md (updated 2026-03-24)
 ## Current Position
 
 Phase: 8 of 12 (Fleet Management) -- IN PROGRESS
-Plan: 1 of 5 in current phase (1 complete)
+Plan: 3 of 5 in current phase (3 complete)
 Status: Executing Phase 08
-Last activity: 2026-03-25 -- Plan 08-01 complete (Fleet Schema & Helpers)
+Last activity: 2026-03-25 -- Plan 08-03 complete (Vehicle UI Expansion)
 
-Progress: [█████████░] 88%
+Progress: [█████████░] 94%
 
 ## Performance Metrics
 
@@ -78,6 +78,8 @@ Progress: [█████████░] 88%
 | Phase 07 P03 | 2min | 2 tasks | 8 files |
 | Phase 07 P05 | 3min | 2 tasks | 6 files |
 | Phase 08 P01 | 6min | 2 tasks | 10 files |
+| Phase 08 P02 | 7min | 2 tasks | 5 files |
+| Phase 08 P03 | 7min | 2 tasks | 7 files |
 
 ## Accumulated Context
 
@@ -170,6 +172,13 @@ Recent decisions affecting current work:
 - [Phase 08]: downtime_days as GENERATED STORED column computed from date_out - date_in
 - [Phase 08]: maintenanceScheduleSchema uses Zod refine for at-least-one-interval validation
 - [Phase 08]: getMaintenanceStatus uses 30-day and 3000-mile thresholds for due_soon detection
+- [08-02]: getAuthContext() helper centralizes auth+org check for all fleet server actions
+- [08-02]: cost_total auto-calculated from cost_parts + cost_labor when both provided
+- [08-02]: Fuel MPG recalculated from last 10 transactions using consecutive odometer deltas
+- [08-02]: Maintenance monitor inserts compliance_items with category scheduled_service
+- [08-03]: Collapsible Purchase & Value section using useState toggle for reduced visual noise
+- [08-03]: URL searchParams-based tab navigation on vehicle detail page for shareable tab state
+- [08-03]: Timeline visualization for assignment history using relative positioning and CSS dots
 
 ### Pending Todos
 
@@ -181,6 +190,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-25T21:29:32.913Z
-Stopped at: Completed 08-01-PLAN.md
+Last session: 2026-03-25T21:37:45.000Z
+Stopped at: Completed 08-03-PLAN.md
 Resume file: None
