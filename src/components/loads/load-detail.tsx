@@ -9,7 +9,7 @@ import { LoadTimeline } from '@/components/loads/load-timeline'
 import { VALID_TRANSITIONS, getStatusLabel } from '@/lib/load-status'
 import { updateLoadStatus } from '@/app/(app)/loads/status-actions'
 import type { Load, LoadStatus, LoadStatusHistory, Driver, Vehicle } from '@/types/database'
-import { Pencil, ArrowRight } from 'lucide-react'
+import { Pencil, ArrowRight, FileText } from 'lucide-react'
 
 interface LoadDetailProps {
   load: Load & {
@@ -115,13 +115,24 @@ export function LoadDetail({ load, statusHistory, orgId }: LoadDetailProps) {
           {error && <p className="text-sm text-red-600">{error}</p>}
         </div>
 
-        <Link
-          href={`/loads/${load.id}/edit`}
-          className="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-gray-700 border border-gray-200 rounded-md hover:bg-gray-50 transition-colors"
-        >
-          <Pencil className="w-4 h-4" />
-          Edit
-        </Link>
+        <div className="flex items-center gap-2">
+          {load.status === 'delivered' && (
+            <Link
+              href={`/invoices/new?loadId=${load.id}`}
+              className="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-white bg-primary rounded-md hover:bg-primary-hover transition-colors"
+            >
+              <FileText className="w-4 h-4" />
+              Create Invoice
+            </Link>
+          )}
+          <Link
+            href={`/loads/${load.id}/edit`}
+            className="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-gray-700 border border-gray-200 rounded-md hover:bg-gray-50 transition-colors"
+          >
+            <Pencil className="w-4 h-4" />
+            Edit
+          </Link>
+        </div>
       </div>
 
       <div className="grid gap-6 lg:grid-cols-2">

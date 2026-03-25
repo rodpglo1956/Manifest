@@ -18,7 +18,7 @@ const navItems = [
   { href: '/drivers', label: 'Drivers', icon: Users, active: true },
   { href: '/fleet', label: 'Fleet', icon: Truck, active: true },
   { href: '/dispatch', label: 'Dispatch', icon: Navigation, active: true },
-  { href: '#', label: 'Invoices', icon: FileText, active: false, comingSoon: true },
+  { href: '/invoices', label: 'Invoices', icon: FileText, active: true },
   { href: '/settings/team', label: 'Settings', icon: Settings, active: true },
 ]
 

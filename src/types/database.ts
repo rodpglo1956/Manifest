@@ -369,9 +369,16 @@ export type Database = {
       }
       invoices: {
         Row: Invoice
-        Insert: Omit<Invoice, 'id' | 'invoice_number' | 'created_at' | 'updated_at'> & {
+        Insert: Omit<Invoice, 'id' | 'invoice_number' | 'created_at' | 'updated_at' | 'bill_to_email' | 'bill_to_address' | 'paid_date' | 'paid_amount' | 'payment_method' | 'notes' | 'pdf_url'> & {
           id?: string
           invoice_number?: string
+          bill_to_email?: string | null
+          bill_to_address?: string | null
+          paid_date?: string | null
+          paid_amount?: number | null
+          payment_method?: string | null
+          notes?: string | null
+          pdf_url?: string | null
           created_at?: string
           updated_at?: string
         }
