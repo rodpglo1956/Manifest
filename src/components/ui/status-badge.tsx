@@ -1,4 +1,4 @@
-type StatusVariant = 'driver' | 'vehicle' | 'load' | 'dispatch'
+type StatusVariant = 'driver' | 'vehicle' | 'load' | 'dispatch' | 'invoice'
 
 interface StatusBadgeProps {
   status: string
@@ -36,6 +36,13 @@ const colorMap: Record<StatusVariant, Record<string, { dot: string; bg: string; 
     at_delivery: { dot: 'bg-amber-500', bg: 'bg-amber-50', text: 'text-amber-700' },
     completed: { dot: 'bg-green-500', bg: 'bg-green-50', text: 'text-green-700' },
     rejected: { dot: 'bg-red-500', bg: 'bg-red-50', text: 'text-red-700' },
+  },
+  invoice: {
+    draft: { dot: 'bg-gray-500', bg: 'bg-gray-50', text: 'text-gray-700' },
+    sent: { dot: 'bg-blue-500', bg: 'bg-blue-50', text: 'text-blue-700' },
+    paid: { dot: 'bg-green-500', bg: 'bg-green-50', text: 'text-green-700' },
+    overdue: { dot: 'bg-red-500', bg: 'bg-red-50', text: 'text-red-700' },
+    void: { dot: 'bg-gray-400', bg: 'bg-gray-100', text: 'text-gray-500' },
   },
 }
 
