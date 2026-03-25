@@ -199,8 +199,8 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **BILL-06**: Usage tracking: vehicles, drivers, loads, AI queries, voice minutes per period
 - [x] **BILL-07**: Usage enforcement at API level (402 on limit exceeded)
 - [x] **BILL-08**: Trial management (14-day Professional, auto-downgrade to free)
-- [ ] **BILL-09**: Billing UI: current plan, usage meters, upgrade/downgrade, invoice history
-- [ ] **BILL-10**: Plan comparison page with annual/monthly toggle
+- [x] **BILL-09**: Billing UI: current plan, usage meters, upgrade/downgrade, invoice history
+- [x] **BILL-10**: Plan comparison page with annual/monthly toggle
 
 ### Analytics & Reporting
 
@@ -431,8 +431,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | BILL-06 | Phase 10 | Complete |
 | BILL-07 | Phase 10 | Complete |
 | BILL-08 | Phase 10 | Complete |
-| BILL-09 | Phase 10 | Pending |
-| BILL-10 | Phase 10 | Pending |
+| BILL-09 | Phase 10 | Complete |
+| BILL-10 | Phase 10 | Complete |
 | REPT-01 | Phase 11 | Pending |
 | REPT-02 | Phase 11 | Pending |
 | REPT-03 | Phase 11 | Pending |
