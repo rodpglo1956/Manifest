@@ -243,7 +243,7 @@ Note: Phases 7, 8, and 10 can execute in parallel after Phase 4. Phase 9 require
 | 2. Loads, Drivers & Vehicles | 6/6 | Complete    | 2026-03-25 |
 | 3. Dispatch | 3/3 | Complete    | 2026-03-25 |
 | 4. Invoicing & Dashboard | 3/4 | Complete    | 2026-03-25 |
-| 5. Marie AI & Smart Routing | 3/3 | Complete   | 2026-03-25 |
+| 5. Marie AI & Smart Routing | 3/3 | Complete    | 2026-03-25 |
 | 6. Alerts, Analytics & Enhanced Dispatch | 0/3 | Not started | - |
 | 7. Compliance | 0/2 | Not started | - |
 | 8. Fleet Management | 0/2 | Not started | - |
