@@ -86,16 +86,16 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Marie AI
 
-- [ ] **MARI-01**: Marie chat panel opens as slide-out from any page in Command and Owner-Operator modes
+- [x] **MARI-01**: Marie chat panel opens as slide-out from any page in Command and Owner-Operator modes
 - [x] **MARI-02**: Marie answers natural language questions about loads, drivers, invoices, and dispatch
 - [x] **MARI-03**: Marie can execute actions: create load, dispatch driver, generate invoice
 - [x] **MARI-04**: Marie queries are stateless — context rebuilt from database per request
 - [x] **MARI-05**: Marie is scoped to requesting user's org via RLS
 - [x] **MARI-06**: Marie respects user roles (driver cannot execute admin actions)
 - [x] **MARI-07**: Marie queries logged to marie_queries table with tokens, latency, model
-- [ ] **MARI-08**: Driver PWA has simplified Marie chat for driver-scoped questions
-- [ ] **MARI-09**: Marie summarizes unacknowledged proactive alerts when chat opens
-- [ ] **MARI-10**: Marie responses include inline action buttons (dispatch, view load, generate invoice)
+- [x] **MARI-08**: Driver PWA has simplified Marie chat for driver-scoped questions
+- [x] **MARI-09**: Marie summarizes unacknowledged proactive alerts when chat opens
+- [x] **MARI-10**: Marie responses include inline action buttons (dispatch, view load, generate invoice)
 
 ### Smart Routing
 
@@ -348,16 +348,16 @@ Which phases cover which requirements. Updated during roadmap creation.
 | DASH-03 | Phase 4 | Complete |
 | DASH-04 | Phase 4 | Complete |
 | DASH-05 | Phase 4 | Complete |
-| MARI-01 | Phase 5 | Pending |
+| MARI-01 | Phase 5 | Complete |
 | MARI-02 | Phase 5 | Complete |
 | MARI-03 | Phase 5 | Complete |
 | MARI-04 | Phase 5 | Complete |
 | MARI-05 | Phase 5 | Complete |
 | MARI-06 | Phase 5 | Complete |
 | MARI-07 | Phase 5 | Complete |
-| MARI-08 | Phase 5 | Pending |
-| MARI-09 | Phase 5 | Pending |
-| MARI-10 | Phase 5 | Pending |
+| MARI-08 | Phase 5 | Complete |
+| MARI-09 | Phase 5 | Complete |
+| MARI-10 | Phase 5 | Complete |
 | ROUT-01 | Phase 5 | Complete |
 | ROUT-02 | Phase 5 | Complete |
 | ROUT-03 | Phase 5 | Complete |
