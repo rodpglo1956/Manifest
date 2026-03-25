@@ -1,0 +1,106 @@
+# Manifest — Cursor Rules
+# Product: Manifest (by Glo Matrix)
+# All-in-one logistics operations platform
+# manifest.glomatrix.app
+
+## Product Identity
+- Product name: Manifest. Always capitalize. Never "manifest" lowercase in UI or copy.
+- Company: Glo Matrix LLC. Never reference Abrey Enterprise LLC.
+- This is NOT part of the GloMatrix agency platform (cmd.glomatrix.app). Manifest is a separate product.
+
+## Stack
+- Next.js 15 (App Router) on Vercel
+- Supabase (PostgreSQL + RLS + Realtime + Edge Functions + pg_cron + Storage)
+- Stripe Connect for billing
+- Claude API on Railway (Marie AI operations assistant)
+- Vapi for voice
+- Tailwind CSS + Framer Motion
+- Recharts for data visualization
+- Lucide React for icons
+- No n8n. All automation via Supabase Edge Functions and pg_cron.
+- No external TMS, CRM, or compliance tools. Everything is built in.
+
+## Three Modes
+- Command mode: full operations dashboard for dispatchers, ops managers, fleet owners. Desktop primary.
+- Driver PWA: progressive web app for drivers. Mobile primary. Offline capable.
+- Owner-Operator mode: streamlined Command mode for solo operators. Desktop + mobile.
+- All three modes served from one Next.js app. Route groups: (app), (driver), (auth), (marketing).
+
+## Design System
+- Read DESIGN-SYSTEM.md before building any UI component.
+- White default theme. Manual dark mode toggle only. No system preference auto-detect.
+- Primary color: #EC008C (brand pink from GloMatrix identity).
+- Body text: 15px Inter. Monospace (JetBrains Mono) for VINs, DOT numbers, MC numbers, license plates.
+- 8px spacing grid. All spacing values multiples of 4.
+- No gradients in the app UI. Gradients only on marketing pages.
+- No shadows heavier than 0 2px 8px rgba(0,0,0,0.06).
+- No rounded corners larger than 12px. Cards: 10px. Buttons: 6px.
+- Tables scroll horizontally on mobile. Never hide columns.
+
+## Database Rules
+- RLS on every table. No exceptions.
+- Every table has org_id. Every RLS policy checks org_id against the authenticated user's org.
+- snake_case for all column names.
+- uuid primary keys with gen_random_uuid().
+- timestamptz for all timestamps, never timestamp.
+- All status columns use text type with documented enum values in comments.
+
+## Auth and Roles
+- Supabase Auth. Email/password + magic link.
+- Four roles: admin, dispatcher, driver, viewer.
+- Role stored in profiles table, enforced via RLS and API middleware.
+- Drivers access only Driver PWA routes. Viewers are read-only.
+
+## Marie AI
+- Marie is the operations assistant. She runs on Railway via Claude API.
+- Marie reads from the same Supabase database with the same RLS policies.
+- Marie queries are stateless. No conversation history table. Context rebuilt from database per request.
+- Marie is scoped to the requesting user's org. She never surfaces cross-org data.
+- All Marie queries logged to marie_queries table.
+- Marie can answer questions, execute actions (create load, dispatch, generate invoice), and deliver proactive alerts.
+
+## Carriers Supported
+- Manifest supports all commercial vehicle operations: semi tractors, trailers, box trucks, sprinter vans, cargo vans, medical transport vans, straight trucks, flatbeds, reefers.
+- Compliance module adapts based on DOT vs non-DOT carrier type.
+- DOT carriers: FMCSA, ELD/HOS, IFTA, CDL tracking, drug testing, UCR.
+- Non-DOT carriers: state licenses, insurance, certifications, vehicle maintenance.
+
+## Copy Rules
+- Never use em dashes as stylistic separators in copy or UI text.
+- No SaaS jargon: "seamless", "leverage", "unlock", "powerful", "cutting-edge".
+- Operator voice. Write like you are talking to someone who runs trucks, not someone who reads TechCrunch.
+- Rod has 10+ years in logistics and 8+ years as a trucking business owner. Use these numbers in brand copy.
+
+## PRD Documents
+- Full specs are in /docs/PRD-00 through PRD-04 plus DESIGN-SYSTEM.md.
+- Read the relevant PRD before building any feature.
+- Build phases in order. Each phase depends on the one before it.
+
+## Phase Summary
+- Phase 1 (PRD-01): Auth, orgs, loads, dispatch, drivers, invoicing, dashboard skeleton
+- Phase 2 (PRD-02): Marie AI, smart routing, predictive alerts, analytics, push notifications
+- Phase 3 (PRD-03): Compliance (DOT + non-DOT), fleet management, logistics CRM
+- Phase 4 (PRD-04): Multi-tenant billing (Stripe), onboarding wizard, mobile polish, reports, accessibility, launch readiness
+
+## File Structure
+```
+app/
+  (auth)/login, signup, onboarding
+  (app)/dashboard, loads, dispatch, fleet/*, compliance/*, crm/*, reports, settings/*
+  (driver)/dashboard, loads, dispatch, inspections, fuel, compliance, fleet, settings
+  (marketing)/page, pricing, about, contact, privacy, terms
+src/
+  components/ui, layout, loads, dispatch, fleet, compliance, crm, reports, marie, onboarding
+  lib/supabase, marie, stripe, utils
+  hooks/
+docs/
+  PRD-00-MASTER.md
+  PRD-01-FOUNDATION.md
+  PRD-02-INTELLIGENCE.md
+  PRD-03-COMPLIANCE-FLEET-CRM.md
+  PRD-04-SCALE-POLISH.md
+  DESIGN-SYSTEM.md
+supabase/
+  migrations/
+  functions/
+```
