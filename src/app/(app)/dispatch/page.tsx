@@ -47,12 +47,12 @@ export default async function DispatchPage() {
 
   // Fetch load details for active dispatches
   const dispatchLoadIds = [...new Set(dispatches.map((d) => d.load_id))]
-  let loadMap: Record<string, Pick<Load, 'load_number' | 'pickup_city' | 'pickup_state' | 'delivery_city' | 'delivery_state' | 'pickup_date' | 'equipment_type'>> = {}
+  let loadMap: Record<string, Pick<Load, 'load_number' | 'pickup_city' | 'pickup_state' | 'delivery_city' | 'delivery_state' | 'pickup_date' | 'delivery_date' | 'equipment_type'>> = {}
   if (dispatchLoadIds.length > 0) {
     const { data: loadData } = await supabase
       .from('loads')
-      .select('id, load_number, pickup_city, pickup_state, delivery_city, delivery_state, pickup_date, equipment_type')
-      .in('id', dispatchLoadIds) as { data: (Pick<Load, 'load_number' | 'pickup_city' | 'pickup_state' | 'delivery_city' | 'delivery_state' | 'pickup_date' | 'equipment_type'> & { id: string })[] | null }
+      .select('id, load_number, pickup_city, pickup_state, delivery_city, delivery_state, pickup_date, delivery_date, equipment_type')
+      .in('id', dispatchLoadIds) as { data: (Pick<Load, 'load_number' | 'pickup_city' | 'pickup_state' | 'delivery_city' | 'delivery_state' | 'pickup_date' | 'delivery_date' | 'equipment_type'> & { id: string })[] | null }
     if (loadData) {
       loadMap = Object.fromEntries(loadData.map((l) => [l.id, l]))
     }
@@ -86,6 +86,7 @@ export default async function DispatchPage() {
       delivery_city: load?.delivery_city ?? null,
       delivery_state: load?.delivery_state ?? null,
       pickup_date: load?.pickup_date ?? null,
+      delivery_date: load?.delivery_date ?? null,
       equipment_type: load?.equipment_type ?? null,
       driver_first_name: driver?.first_name ?? 'Unknown',
       driver_last_name: driver?.last_name ?? '',

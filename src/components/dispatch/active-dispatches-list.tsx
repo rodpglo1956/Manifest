@@ -13,6 +13,7 @@ export type ActiveDispatch = {
   delivery_city: string | null
   delivery_state: string | null
   pickup_date: string | null
+  delivery_date: string | null
   equipment_type: string | null
   driver_first_name: string
   driver_last_name: string

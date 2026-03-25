@@ -7,6 +7,7 @@ import { X, MapPin, Sparkles } from 'lucide-react'
 import { createDispatchSchema, type CreateDispatchInput } from '@/schemas/dispatch'
 import { createDispatch } from '@/app/(app)/dispatch/actions'
 import { DriverSuggestions } from '@/components/dispatch/driver-suggestions'
+import { ConflictWarning } from '@/app/(app)/dispatch/conflict-warning'
 import type { Load, Driver, Vehicle } from '@/types/database'
 
 type AssignTab = 'suggested' | 'manual'
@@ -187,6 +188,11 @@ export function DispatchAssignmentForm({ load, drivers, vehicles, onClose }: Dis
                 placeholder="Instructions for the driver..."
               />
             </div>
+
+            {/* Conflict warning */}
+            {selectedDriverId && (
+              <ConflictWarning driverId={selectedDriverId} loadId={load.id} />
+            )}
 
             {/* Error message */}
             {errors.root && (

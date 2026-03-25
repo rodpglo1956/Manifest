@@ -103,6 +103,7 @@ function makeActiveDispatch(overrides: Partial<ActiveDispatch> = {}): ActiveDisp
     delivery_city: 'Detroit',
     delivery_state: 'MI',
     pickup_date: '2026-04-01',
+    delivery_date: '2026-04-02',
     equipment_type: 'dry_van',
     driver_first_name: 'John',
     driver_last_name: 'Doe',
