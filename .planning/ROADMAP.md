@@ -15,7 +15,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 1: Auth & Organization** - User accounts, org setup, roles, RLS foundation, and invitation flow (completed 2026-03-25)
 - [x] **Phase 2: Loads, Drivers & Vehicles** - Driver roster, vehicle registry, and complete load lifecycle management (completed 2026-03-25)
 - [x] **Phase 3: Dispatch** - Driver-to-load assignment, dispatch board, and driver PWA dispatch features (completed 2026-03-25)
-- [ ] **Phase 4: Invoicing & Dashboard** - Invoice generation from delivered loads and operational dashboards for all modes
+- [x] **Phase 4: Invoicing & Dashboard** - Invoice generation from delivered loads and operational dashboards for all modes (completed 2026-03-25)
 - [ ] **Phase 5: Marie AI & Smart Routing** - AI operations assistant and ranked driver suggestions for dispatch
 - [ ] **Phase 6: Alerts, Analytics & Enhanced Dispatch** - Predictive alerts, push notifications, analytics charts, and map/timeline dispatch views
 - [ ] **Phase 7: Compliance** - DOT and non-DOT compliance tracking, DQ files, inspections, IFTA, and automated scanning
@@ -241,7 +241,7 @@ Note: Phases 7, 8, and 10 can execute in parallel after Phase 4. Phase 9 require
 | 1. Auth & Organization | 3/3 | Complete    | 2026-03-25 |
 | 2. Loads, Drivers & Vehicles | 6/6 | Complete    | 2026-03-25 |
 | 3. Dispatch | 3/3 | Complete    | 2026-03-25 |
-| 4. Invoicing & Dashboard | 3/4 | In Progress|  |
+| 4. Invoicing & Dashboard | 3/4 | Complete    | 2026-03-25 |
 | 5. Marie AI & Smart Routing | 0/2 | Not started | - |
 | 6. Alerts, Analytics & Enhanced Dispatch | 0/3 | Not started | - |
 | 7. Compliance | 0/2 | Not started | - |
