@@ -5,7 +5,12 @@ import { StatCards } from './stat-cards'
 import { AlertFeed } from './alert-feed'
 import { ActivityFeed, type ActivityItem } from './activity-feed'
 import { QuickActions } from './quick-actions'
-import type { ProactiveAlert } from '@/types/database'
+import { calculateCurrentMonthOnTime } from '@/lib/analytics/snapshot-helpers'
+import { RevenueTrendChart } from './charts/revenue-trend-chart'
+import { LoadVolumeChart } from './charts/load-volume-chart'
+import { OnTimeGauge } from './charts/on-time-gauge'
+import { RpmTrendChart } from './charts/rpm-trend-chart'
+import type { DailySnapshot, ProactiveAlert } from '@/types/database'
 
 interface DashboardViewProps {
   orgId: string
@@ -14,6 +19,7 @@ interface DashboardViewProps {
   driversOnDuty: number
   revenueMtd: number
   alerts: ProactiveAlert[]
+  snapshots: DailySnapshot[]
   activityItems: ActivityItem[]
   isOwnerOperator?: boolean
   userName?: string
@@ -26,12 +32,15 @@ export function DashboardView({
   driversOnDuty,
   revenueMtd,
   alerts,
+  snapshots,
   activityItems,
   isOwnerOperator,
   userName,
 }: DashboardViewProps) {
   // Subscribe to realtime updates for dashboard refresh
   useRealtimeDashboard(orgId)
+
+  const onTimePercentage = calculateCurrentMonthOnTime(snapshots)
 
   return (
     <div className="space-y-6">
@@ -52,6 +61,14 @@ export function DashboardView({
         driversOnDuty={driversOnDuty}
         revenueMtd={revenueMtd}
       />
+
+      {/* Analytics Charts -- 2x2 grid below stat cards */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <RevenueTrendChart data={snapshots} />
+        <LoadVolumeChart data={snapshots} />
+        <OnTimeGauge percentage={onTimePercentage} />
+        <RpmTrendChart data={snapshots} />
+      </div>
 
       {/* Alert Feed -- above activity feed */}
       <AlertFeed alerts={alerts} />

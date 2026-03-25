@@ -85,6 +85,18 @@ export default async function DashboardPage() {
     .gte('delivery_date', monthStartStr)
   if (ownerDriverId) revenueMtdQuery.eq('driver_id', ownerDriverId)
 
+  // Analytics snapshots query (last 30 days)
+  const thirtyDaysAgo = new Date()
+  thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30)
+  const snapshotStartDate = thirtyDaysAgo.toISOString().split('T')[0]
+
+  const snapshotsQuery = supabase
+    .from('daily_snapshots')
+    .select('*')
+    .eq('org_id', orgId)
+    .gte('snapshot_date', snapshotStartDate)
+    .order('snapshot_date', { ascending: true })
+
   // Fetch unacknowledged alerts
   const alertsQuery = supabase
     .from('proactive_alerts')
@@ -120,6 +132,7 @@ export default async function DashboardPage() {
     driversOnDuty,
     revenueMtdResult,
     alertsResult,
+    snapshotsResult,
     statusChanges,
     recentDispatches,
     recentInvoices,
@@ -129,6 +142,7 @@ export default async function DashboardPage() {
     driversOnDutyQuery,
     revenueMtdQuery,
     alertsQuery,
+    snapshotsQuery,
     statusHistoryQuery,
     dispatchesQuery,
     invoicesQuery,
@@ -214,6 +228,7 @@ export default async function DashboardPage() {
       driversOnDuty={driversOnDuty.count ?? 0}
       revenueMtd={totalRevenue}
       alerts={(alertsResult.data ?? []) as ProactiveAlert[]}
+      snapshots={(snapshotsResult.data ?? []) as DailySnapshot[]}
       activityItems={activityItems}
       isOwnerOperator={isOwnerOperator}
       userName={profile?.full_name ?? undefined}
