@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { LOAD_STATUSES, getStatusLabel } from '@/lib/load-status'
+import { LOAD_STATUSES } from '@/lib/load-status'
 import { StatusBadge } from '@/components/ui/status-badge'
 import type { Load } from '@/types/database'
 

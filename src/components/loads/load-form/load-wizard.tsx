@@ -5,6 +5,7 @@ import { useForm, FormProvider } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { loadSchema, STEP_FIELDS, type LoadInput } from '@/schemas/load'
 import { createLoad } from '@/app/(app)/loads/actions'
+import { updateLoad } from '@/app/(app)/loads/status-actions'
 import { StepPickup } from './step-pickup'
 import { StepDelivery } from './step-delivery'
 import { StepFreight } from './step-freight'
@@ -23,15 +24,18 @@ const STEPS = [
 interface LoadWizardProps {
   drivers: Pick<Driver, 'id' | 'first_name' | 'last_name' | 'status'>[]
   vehicles: Pick<Vehicle, 'id' | 'unit_number' | 'make' | 'model' | 'status'>[]
+  editMode?: boolean
+  loadId?: string
+  defaultValues?: Partial<LoadInput>
 }
 
-export function LoadWizard({ drivers, vehicles }: LoadWizardProps) {
+export function LoadWizard({ drivers, vehicles, editMode, loadId, defaultValues: editDefaults }: LoadWizardProps) {
   const [currentStep, setCurrentStep] = useState(0)
   const [serverError, setServerError] = useState<string | null>(null)
 
   const methods = useForm<LoadInput>({
     resolver: zodResolver(loadSchema),
-    defaultValues: {
+    defaultValues: editDefaults ?? {
       pickup_address: '',
       pickup_city: '',
       pickup_state: '',
@@ -106,6 +110,17 @@ export function LoadWizard({ drivers, vehicles }: LoadWizardProps) {
       }
     }
 
+    if (editMode && loadId) {
+      const result = await updateLoad(loadId, formData)
+      if (result?.error) {
+        setServerError(result.error)
+      } else {
+        // Redirect handled by the action revalidation; manually navigate
+        window.location.href = `/loads/${loadId}`
+      }
+      return
+    }
+
     const result = await createLoad(formData)
     if (result?.error?.form) {
       setServerError(result.error.form[0])
@@ -176,7 +191,9 @@ export function LoadWizard({ drivers, vehicles }: LoadWizardProps) {
                 disabled={isSubmitting}
                 className="py-2 px-6 bg-primary text-white font-medium rounded-md hover:bg-primary-hover disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
               >
-                {isSubmitting ? 'Creating Load...' : 'Create Load'}
+                {isSubmitting
+                  ? (editMode ? 'Saving...' : 'Creating Load...')
+                  : (editMode ? 'Save Changes' : 'Create Load')}
               </button>
             ) : (
               <button
