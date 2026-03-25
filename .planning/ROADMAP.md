@@ -236,7 +236,7 @@ Note: Phases 7, 8, and 10 can execute in parallel after Phase 4. Phase 9 require
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Auth & Organization | 3/3 | Complete    | 2026-03-25 |
-| 2. Loads, Drivers & Vehicles | 3/6 | In Progress|  |
+| 2. Loads, Drivers & Vehicles | 4/6 | In Progress|  |
 | 3. Dispatch | 0/2 | Not started | - |
 | 4. Invoicing & Dashboard | 0/2 | Not started | - |
 | 5. Marie AI & Smart Routing | 0/2 | Not started | - |
