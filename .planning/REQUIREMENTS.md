@@ -161,7 +161,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **FLET-02**: Vehicle status tracking: active, in_shop, out_of_service, parked, sold
 - [x] **FLET-03**: Maintenance records with type, vendor, cost (parts/labor/total), date in/out, downtime
 - [x] **FLET-04**: Maintenance schedules (templates) by vehicle or vehicle class with mile/day intervals
-- [ ] **FLET-05**: maintenance-monitor edge function identifies upcoming service and creates alerts
+- [x] **FLET-05**: maintenance-monitor edge function identifies upcoming service and creates alerts
 - [x] **FLET-06**: Fuel transaction logging (manual or fuel card sync)
 - [x] **FLET-07**: Cost per mile calculation per vehicle and fleet-wide
 - [x] **FLET-08**: Vehicle assignment history tracking
@@ -402,7 +402,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | FLET-02 | Phase 8 | Complete |
 | FLET-03 | Phase 8 | Complete |
 | FLET-04 | Phase 8 | Complete |
-| FLET-05 | Phase 8 | Pending |
+| FLET-05 | Phase 8 | Complete |
 | FLET-06 | Phase 8 | Complete |
 | FLET-07 | Phase 8 | Complete |
 | FLET-08 | Phase 8 | Complete |
