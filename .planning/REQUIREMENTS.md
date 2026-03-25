@@ -175,11 +175,11 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **CRM-03**: Lane tracking: origin-destination pairs with distance, rates, run count, preferred equipment
 - [ ] **CRM-04**: Lane map visualization showing active lanes as origin-destination arcs
 - [x] **CRM-05**: Rate agreements per company/lane with effective dates, rate type, volume minimums
-- [ ] **CRM-06**: Activity logging (calls, emails, notes, meetings, follow-ups) per company/contact/lane
-- [ ] **CRM-07**: Follow-up reminder edge function sends push notification on follow-up date
+- [x] **CRM-06**: Activity logging (calls, emails, notes, meetings, follow-ups) per company/contact/lane
+- [x] **CRM-07**: Follow-up reminder edge function sends push notification on follow-up date
 - [ ] **CRM-08**: CRM dashboard: revenue by company, expiring rate agreements, pending follow-ups, broker pay performance
-- [ ] **CRM-09**: crm-stats-updater edge function recalculates company/lane aggregates nightly
-- [ ] **CRM-10**: Auto-update CRM stats when load completes (company revenue, lane stats, system activity)
+- [x] **CRM-09**: crm-stats-updater edge function recalculates company/lane aggregates nightly
+- [x] **CRM-10**: Auto-update CRM stats when load completes (company revenue, lane stats, system activity)
 
 ### Cross-Module Integration
 
@@ -413,11 +413,11 @@ Which phases cover which requirements. Updated during roadmap creation.
 | CRM-03 | Phase 9 | Complete |
 | CRM-04 | Phase 9 | Pending |
 | CRM-05 | Phase 9 | Complete |
-| CRM-06 | Phase 9 | Pending |
-| CRM-07 | Phase 9 | Pending |
+| CRM-06 | Phase 9 | Complete |
+| CRM-07 | Phase 9 | Complete |
 | CRM-08 | Phase 9 | Pending |
-| CRM-09 | Phase 9 | Pending |
-| CRM-10 | Phase 9 | Pending |
+| CRM-09 | Phase 9 | Complete |
+| CRM-10 | Phase 9 | Complete |
 | XMOD-01 | Phase 9 | Pending |
 | XMOD-02 | Phase 9 | Pending |
 | XMOD-03 | Phase 9 | Pending |
