@@ -9,9 +9,27 @@ export type UserRole = 'admin' | 'dispatcher' | 'driver' | 'viewer'
 // Phase 2: Driver, Vehicle, Load types
 export type DriverStatus = 'active' | 'inactive' | 'terminated'
 
-export type VehicleType = 'dry_van' | 'reefer' | 'flatbed' | 'sprinter' | 'box_truck' | 'other'
+export type VehicleType =
+  | 'dry_van' | 'reefer' | 'flatbed' | 'sprinter' | 'box_truck'
+  | 'medical_van' | 'hotshot' | 'straight_truck' | 'day_cab' | 'sleeper'
+  | 'tanker' | 'dry_van_trailer' | 'flatbed_trailer' | 'reefer_trailer'
+  | 'step_deck_trailer' | 'other'
 
-export type VehicleStatus = 'active' | 'inactive'
+export type VehicleStatus = 'active' | 'in_shop' | 'out_of_service' | 'parked' | 'sold' | 'totaled'
+
+export type VehicleClass = 'class_1_2' | 'class_3_4' | 'class_5_6' | 'class_7' | 'class_8' | 'trailer' | 'other'
+
+export type FuelType = 'diesel' | 'gasoline' | 'cng' | 'electric' | 'hybrid'
+
+export type MaintenanceType =
+  | 'oil_change' | 'tire_rotation' | 'tire_replacement' | 'brake_service'
+  | 'transmission' | 'engine' | 'electrical' | 'hvac' | 'body_work'
+  | 'dot_inspection' | 'preventive' | 'recall' | 'roadside_repair'
+  | 'scheduled_service' | 'unscheduled_repair' | 'other'
+
+export type FuelSource = 'manual' | 'fuel_card' | 'eld' | 'receipt_scan'
+
+export type MaintenancePriority = 'low' | 'normal' | 'high' | 'critical'
 
 export type EquipmentType = VehicleType
 
@@ -117,7 +135,25 @@ export type Vehicle = {
   make: string | null
   model: string | null
   vehicle_type: VehicleType
+  vehicle_class: VehicleClass
+  fuel_type: FuelType | null
   status: VehicleStatus
+  license_plate: string | null
+  license_state: string | null
+  registration_expiry: string | null
+  current_odometer: number | null
+  odometer_updated_at: string | null
+  avg_mpg: number | null
+  purchase_date: string | null
+  purchase_price: number | null
+  current_value: number | null
+  insurance_policy: string | null
+  gps_device_id: string | null
+  eld_provider: string | null
+  eld_device_id: string | null
+  photo_urls: string[] | null
+  notes: string | null
+  current_driver_id: string | null
   created_at: string
   updated_at: string
 }
@@ -473,6 +509,75 @@ export type NotificationPreferences = {
   driver_response: boolean
 }
 
+// Phase 8: Fleet management types
+export type MaintenanceRecord = {
+  id: string
+  org_id: string
+  vehicle_id: string
+  maintenance_type: MaintenanceType
+  description: string
+  vendor_name: string | null
+  vendor_location: string | null
+  odometer_at_service: number | null
+  cost_parts: number
+  cost_labor: number
+  cost_total: number
+  warranty_covered: boolean
+  date_in: string
+  date_out: string | null
+  downtime_days: number | null
+  document_urls: string[] | null
+  next_service_odometer: number | null
+  next_service_date: string | null
+  created_at: string
+  updated_at: string
+}
+
+export type MaintenanceSchedule = {
+  id: string
+  org_id: string
+  vehicle_id: string | null
+  vehicle_class: VehicleClass | null
+  maintenance_type: MaintenanceType
+  interval_miles: number | null
+  interval_days: number | null
+  description: string | null
+  estimated_cost: number | null
+  priority: MaintenancePriority
+  active: boolean
+  created_at: string
+  updated_at: string
+}
+
+export type FuelTransaction = {
+  id: string
+  org_id: string
+  vehicle_id: string
+  driver_id: string | null
+  transaction_date: string
+  location: string | null
+  city: string | null
+  state: string | null
+  gallons: number
+  price_per_gallon: number | null
+  total_cost: number
+  odometer_reading: number | null
+  receipt_url: string | null
+  source: FuelSource
+  created_at: string
+}
+
+export type VehicleAssignment = {
+  id: string
+  org_id: string
+  vehicle_id: string
+  driver_id: string
+  assigned_at: string
+  unassigned_at: string | null
+  reason: string | null
+  created_at: string
+}
+
 // Supabase Database type for client typing
 export type Database = {
   public: {
@@ -525,10 +630,28 @@ export type Database = {
       }
       vehicles: {
         Row: Vehicle
-        Insert: Omit<Vehicle, 'id' | 'created_at' | 'updated_at'> & {
+        Insert: Omit<Vehicle, 'id' | 'created_at' | 'updated_at' | 'vehicle_class' | 'fuel_type' | 'license_plate' | 'license_state' | 'registration_expiry' | 'current_odometer' | 'odometer_updated_at' | 'avg_mpg' | 'purchase_date' | 'purchase_price' | 'current_value' | 'insurance_policy' | 'gps_device_id' | 'eld_provider' | 'eld_device_id' | 'photo_urls' | 'notes' | 'current_driver_id'> & {
           id?: string
           created_at?: string
           updated_at?: string
+          vehicle_class?: VehicleClass
+          fuel_type?: FuelType | null
+          license_plate?: string | null
+          license_state?: string | null
+          registration_expiry?: string | null
+          current_odometer?: number | null
+          odometer_updated_at?: string | null
+          avg_mpg?: number | null
+          purchase_date?: string | null
+          purchase_price?: number | null
+          current_value?: number | null
+          insurance_policy?: string | null
+          gps_device_id?: string | null
+          eld_provider?: string | null
+          eld_device_id?: string | null
+          photo_urls?: string[] | null
+          notes?: string | null
+          current_driver_id?: string | null
         }
         Update: Partial<Omit<Vehicle, 'id' | 'created_at'>> & {
           updated_at?: string
@@ -756,6 +879,78 @@ export type Database = {
           net_tax?: number | null
         }
         Update: Partial<Omit<IFTARecord, 'id' | 'created_at'>>
+        Relationships: []
+      }
+      maintenance_records: {
+        Row: MaintenanceRecord
+        Insert: Omit<MaintenanceRecord, 'id' | 'created_at' | 'updated_at' | 'downtime_days' | 'vendor_name' | 'vendor_location' | 'odometer_at_service' | 'cost_parts' | 'cost_labor' | 'cost_total' | 'warranty_covered' | 'date_out' | 'document_urls' | 'next_service_odometer' | 'next_service_date'> & {
+          id?: string
+          created_at?: string
+          updated_at?: string
+          vendor_name?: string | null
+          vendor_location?: string | null
+          odometer_at_service?: number | null
+          cost_parts?: number
+          cost_labor?: number
+          cost_total?: number
+          warranty_covered?: boolean
+          date_out?: string | null
+          document_urls?: string[] | null
+          next_service_odometer?: number | null
+          next_service_date?: string | null
+        }
+        Update: Partial<Omit<MaintenanceRecord, 'id' | 'created_at' | 'downtime_days'>> & {
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      maintenance_schedules: {
+        Row: MaintenanceSchedule
+        Insert: Omit<MaintenanceSchedule, 'id' | 'created_at' | 'updated_at' | 'vehicle_id' | 'vehicle_class' | 'interval_miles' | 'interval_days' | 'description' | 'estimated_cost' | 'priority' | 'active'> & {
+          id?: string
+          created_at?: string
+          updated_at?: string
+          vehicle_id?: string | null
+          vehicle_class?: VehicleClass | null
+          interval_miles?: number | null
+          interval_days?: number | null
+          description?: string | null
+          estimated_cost?: number | null
+          priority?: MaintenancePriority
+          active?: boolean
+        }
+        Update: Partial<Omit<MaintenanceSchedule, 'id' | 'created_at'>> & {
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      fuel_transactions: {
+        Row: FuelTransaction
+        Insert: Omit<FuelTransaction, 'id' | 'created_at' | 'driver_id' | 'location' | 'city' | 'state' | 'price_per_gallon' | 'odometer_reading' | 'receipt_url' | 'source'> & {
+          id?: string
+          created_at?: string
+          driver_id?: string | null
+          location?: string | null
+          city?: string | null
+          state?: string | null
+          price_per_gallon?: number | null
+          odometer_reading?: number | null
+          receipt_url?: string | null
+          source?: FuelSource
+        }
+        Update: Partial<Omit<FuelTransaction, 'id' | 'created_at'>>
+        Relationships: []
+      }
+      vehicle_assignments: {
+        Row: VehicleAssignment
+        Insert: Omit<VehicleAssignment, 'id' | 'created_at' | 'assigned_at' | 'unassigned_at' | 'reason'> & {
+          id?: string
+          created_at?: string
+          assigned_at?: string
+          unassigned_at?: string | null
+          reason?: string | null
+        }
+        Update: Partial<Omit<VehicleAssignment, 'id' | 'created_at'>>
         Relationships: []
       }
     }

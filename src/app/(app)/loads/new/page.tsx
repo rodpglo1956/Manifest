@@ -55,7 +55,7 @@ export default async function NewLoadPage() {
       <div className="bg-white rounded-lg shadow-md border border-gray-100 p-6">
         <LoadWizard
           drivers={(driversResult.data ?? []) as { id: string; first_name: string; last_name: string; status: 'active' | 'inactive' | 'terminated' }[]}
-          vehicles={(vehiclesResult.data ?? []) as { id: string; unit_number: string; make: string | null; model: string | null; status: 'active' | 'inactive' }[]}
+          vehicles={(vehiclesResult.data ?? []) as Pick<import('@/types/database').Vehicle, 'id' | 'unit_number' | 'make' | 'model' | 'status'>[]}
         />
       </div>
     </div>

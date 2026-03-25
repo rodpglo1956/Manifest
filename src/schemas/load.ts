@@ -36,7 +36,12 @@ export const freightSchema = z.object({
   weight: z.coerce.number().positive('Weight must be positive').optional(),
   weight_unit: z.enum(['lbs', 'kg']).default('lbs'),
   pieces: z.coerce.number().int().positive('Pieces must be positive').optional(),
-  equipment_type: z.enum(['dry_van', 'reefer', 'flatbed', 'sprinter', 'box_truck', 'other']),
+  equipment_type: z.enum([
+    'dry_van', 'reefer', 'flatbed', 'sprinter', 'box_truck',
+    'medical_van', 'hotshot', 'straight_truck', 'day_cab', 'sleeper',
+    'tanker', 'dry_van_trailer', 'flatbed_trailer', 'reefer_trailer',
+    'step_deck_trailer', 'other',
+  ]),
   temperature_min: z.coerce.number().optional(),
   temperature_max: z.coerce.number().optional(),
   hazmat: z.boolean().default(false),
