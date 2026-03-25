@@ -9,11 +9,11 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Authentication & Organization
 
-- [ ] **AUTH-01**: User can sign up with email and password
-- [ ] **AUTH-02**: User can log in and stay logged in across sessions
-- [ ] **AUTH-03**: User can log in via magic link as alternative to password
+- [x] **AUTH-01**: User can sign up with email and password
+- [x] **AUTH-02**: User can log in and stay logged in across sessions
+- [x] **AUTH-03**: User can log in via magic link as alternative to password
 - [x] **AUTH-04**: Database trigger creates profile record on signup
-- [ ] **AUTH-05**: User can create a new organization with company details (name, address, DOT/MC numbers, company type)
+- [x] **AUTH-05**: User can create a new organization with company details (name, address, DOT/MC numbers, company type)
 - [ ] **AUTH-06**: Admin can invite users to join their organization with role assignment
 - [ ] **AUTH-07**: Invited users can join an existing organization via invitation link
 - [ ] **AUTH-08**: Role-based access enforced: admin, dispatcher, driver, viewer
@@ -292,11 +292,11 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| AUTH-01 | Phase 1 | Pending |
-| AUTH-02 | Phase 1 | Pending |
-| AUTH-03 | Phase 1 | Pending |
+| AUTH-01 | Phase 1 | Complete |
+| AUTH-02 | Phase 1 | Complete |
+| AUTH-03 | Phase 1 | Complete |
 | AUTH-04 | Phase 1 | Complete |
-| AUTH-05 | Phase 1 | Pending |
+| AUTH-05 | Phase 1 | Complete |
 | AUTH-06 | Phase 1 | Pending |
 | AUTH-07 | Phase 1 | Pending |
 | AUTH-08 | Phase 1 | Pending |
