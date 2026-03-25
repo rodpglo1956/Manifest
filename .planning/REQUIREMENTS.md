@@ -206,8 +206,8 @@ Requirements for initial release. Each maps to roadmap phases.
 
 - [x] **REPT-01**: Precomputed analytics snapshots (daily, weekly, monthly) with revenue, ops, fleet, compliance, CRM metrics
 - [x] **REPT-02**: Driver performance tracking: loads, miles, revenue, on-time %, fuel efficiency, safety, compliance score
-- [ ] **REPT-03**: Analytics dashboard with revenue/expenses/profit chart, KPI cards, period comparison
-- [ ] **REPT-04**: Operations analytics: load volume, miles, on-time trending, top lanes
+- [x] **REPT-03**: Analytics dashboard with revenue/expenses/profit chart, KPI cards, period comparison
+- [x] **REPT-04**: Operations analytics: load volume, miles, on-time trending, top lanes
 - [ ] **REPT-05**: Fleet analytics: utilization, MPG trending, maintenance cost, vehicle TCO ranking
 - [ ] **REPT-06**: Customer/broker profitability ranking with pay speed
 - [ ] **REPT-07**: PDF report generation (P&L, fleet, compliance, driver) with download
@@ -435,8 +435,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | BILL-10 | Phase 10 | Complete |
 | REPT-01 | Phase 11 | Complete |
 | REPT-02 | Phase 11 | Complete |
-| REPT-03 | Phase 11 | Pending |
-| REPT-04 | Phase 11 | Pending |
+| REPT-03 | Phase 11 | Complete |
+| REPT-04 | Phase 11 | Complete |
 | REPT-05 | Phase 11 | Pending |
 | REPT-06 | Phase 11 | Pending |
 | REPT-07 | Phase 11 | Pending |
