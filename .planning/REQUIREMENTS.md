@@ -43,12 +43,12 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **LOAD-09**: Load status changes broadcast via Supabase Realtime
 - [x] **LOAD-10**: User can upload documents (BOL, rate confirmation, POD) to a load
 - [x] **LOAD-11**: Driver can upload BOL/POD via mobile camera in Driver PWA
-- [ ] **LOAD-12**: User can filter loads by status, driver, date range, broker
-- [ ] **LOAD-13**: Load board view shows loads in kanban layout by status
-- [ ] **LOAD-14**: Load detail page shows full info, status timeline, documents, notes, rate breakdown
+- [x] **LOAD-12**: User can filter loads by status, driver, date range, broker
+- [x] **LOAD-13**: Load board view shows loads in kanban layout by status
+- [x] **LOAD-14**: Load detail page shows full info, status timeline, documents, notes, rate breakdown
 - [x] **LOAD-15**: Driver PWA shows current active load prominently with status update buttons
 - [x] **LOAD-16**: Driver PWA shows load history (past 30 days)
-- [ ] **LOAD-17**: Bulk actions: dispatch multiple loads, export CSV
+- [x] **LOAD-17**: Bulk actions: dispatch multiple loads, export CSV
 
 ### Dispatch
 
@@ -322,12 +322,12 @@ Which phases cover which requirements. Updated during roadmap creation.
 | LOAD-09 | Phase 2 | Complete |
 | LOAD-10 | Phase 2 | Complete |
 | LOAD-11 | Phase 2 | Complete |
-| LOAD-12 | Phase 2 | Pending |
-| LOAD-13 | Phase 2 | Pending |
-| LOAD-14 | Phase 2 | Pending |
+| LOAD-12 | Phase 2 | Complete |
+| LOAD-13 | Phase 2 | Complete |
+| LOAD-14 | Phase 2 | Complete |
 | LOAD-15 | Phase 2 | Complete |
 | LOAD-16 | Phase 2 | Complete |
-| LOAD-17 | Phase 2 | Pending |
+| LOAD-17 | Phase 2 | Complete |
 | DISP-01 | Phase 3 | Pending |
 | DISP-02 | Phase 3 | Pending |
 | DISP-03 | Phase 3 | Pending |
