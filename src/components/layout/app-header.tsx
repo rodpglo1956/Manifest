@@ -4,6 +4,7 @@ import { createClient } from '@/lib/supabase/client'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { LogOut, Menu } from 'lucide-react'
+import { NotificationBell } from '@/components/layout/notification-bell'
 
 interface AppHeaderProps {
   userDisplayName: string
@@ -36,6 +37,7 @@ export function AppHeader({ userDisplayName, onMenuToggle }: AppHeaderProps) {
         <span className="text-xl font-bold text-primary">Manifest</span>
       </div>
       <div className="flex items-center gap-3">
+        <NotificationBell />
         <span className="text-sm text-gray-600 hidden sm:inline">
           {userDisplayName}
         </span>
