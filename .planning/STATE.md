@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: completed
-stopped_at: Completed 04-01-PLAN.md
-last_updated: "2026-03-25T06:15:34.999Z"
-last_activity: 2026-03-25 -- Plan 04-01 complete (Invoice foundation)
+stopped_at: Completed 04-03-PLAN.md
+last_updated: "2026-03-25T06:20:11.951Z"
+last_activity: 2026-03-25 -- Plan 04-03 complete (Invoice PDF generation)
 progress:
   total_phases: 12
   completed_phases: 3
   total_plans: 16
-  completed_plans: 13
-  percent: 81
+  completed_plans: 14
+  percent: 88
 ---
 
 # Project State
@@ -26,11 +26,11 @@ See: .planning/PROJECT.md (updated 2026-03-24)
 ## Current Position
 
 Phase: 4 of 12 (Invoicing & Dashboard)
-Plan: 1 of 4 in current phase
-Status: Plan 04-01 Complete
-Last activity: 2026-03-25 -- Plan 04-01 complete (Invoice foundation)
+Plan: 3 of 4 in current phase
+Status: Plan 04-03 Complete
+Last activity: 2026-03-25 -- Plan 04-03 complete (Invoice PDF generation)
 
-Progress: [████████░░] 81%
+Progress: [█████████░] 88%
 
 ## Performance Metrics
 
@@ -61,6 +61,7 @@ Progress: [████████░░] 81%
 | Phase 03 P02 | 4min | 2 tasks | 8 files |
 | Phase 03 P03 | 2min | 2 tasks | 5 files |
 | Phase 04 P01 | 3min | 2 tasks | 9 files |
+| Phase 04 P03 | 2min | 2 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -104,6 +105,8 @@ Recent decisions affecting current work:
 - [Phase 04]: Invoice number format INV-YYYYMM-NNNN with per-org per-month sequence table
 - [Phase 04]: pg_cron overdue scanner runs daily at 8am UTC, transitions sent->overdue when past due_date
 - [Phase 04]: Used z.input for InvoiceInput type maintaining zodResolver compatibility (per project convention)
+- [Phase 04]: Used React.createElement in route.ts for PDF rendering to avoid JSX transform issues
+- [Phase 04]: PDF stored unconditionally in Supabase Storage on every generation with upsert
 
 ### Pending Todos
 
@@ -115,6 +118,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-25T06:15:34.997Z
-Stopped at: Completed 04-01-PLAN.md
+Last session: 2026-03-25T06:20:11.949Z
+Stopped at: Completed 04-03-PLAN.md
 Resume file: None
