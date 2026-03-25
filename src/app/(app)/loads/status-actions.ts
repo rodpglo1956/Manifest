@@ -12,7 +12,7 @@ import type { LoadStatus } from '@/types/database'
 export async function updateLoadStatus(
   loadId: string,
   newStatus: LoadStatus,
-  notes?: string
+  _notes?: string
 ): Promise<{ error?: string }> {
   const supabase = await createClient()
 
