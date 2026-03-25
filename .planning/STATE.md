@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: completed
-stopped_at: Completed 04-04-PLAN.md
-last_updated: "2026-03-25T06:21:13.000Z"
+stopped_at: Completed 04-02-PLAN.md
+last_updated: "2026-03-25T06:24:24.916Z"
 last_activity: 2026-03-25 -- Plan 04-04 complete (Dashboards)
 progress:
   total_phases: 12
   completed_phases: 4
   total_plans: 16
-  completed_plans: 15
+  completed_plans: 16
   percent: 94
 ---
 
@@ -63,6 +63,7 @@ Progress: [█████████░] 94%
 | Phase 04 P01 | 3min | 2 tasks | 9 files |
 | Phase 04 P04 | 4min | 2 tasks | 9 files |
 | Phase 04 P03 | 2min | 2 tasks | 4 files |
+| Phase 04 P02 | 5min | 2 tasks | 15 files |
 
 ## Accumulated Context
 
@@ -111,6 +112,9 @@ Recent decisions affecting current work:
 - [Phase 04]: Activity feed uses separate queries + Map lookups instead of !inner joins for type safety
 - [Phase 04]: Used React.createElement in route.ts for PDF rendering to avoid JSX transform issues
 - [Phase 04]: PDF stored unconditionally in Supabase Storage on every generation with upsert
+- [Phase 04]: Invoice Insert type updated to make nullable fields optional for ergonomic server action inserts
+- [Phase 04]: Invoice creation uses two-step flow: select delivered load, then one-click create with auto-populated data
+- [Phase 04]: Mark Paid uses inline payment form instead of modal for lightweight interaction
 
 ### Pending Todos
 
@@ -122,6 +126,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-25T06:21:13.000Z
-Stopped at: Completed 04-04-PLAN.md
+Last session: 2026-03-25T06:24:24.914Z
+Stopped at: Completed 04-02-PLAN.md
 Resume file: None

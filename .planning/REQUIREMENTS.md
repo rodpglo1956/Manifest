@@ -69,7 +69,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **INV-04**: User can mark invoice as sent, paid, or void
 - [x] **INV-05**: Overdue invoices auto-detected daily (due_date < today, status = sent)
 - [x] **INV-06**: Invoice PDF generation and download
-- [ ] **INV-07**: Invoice list with filters (status, date range, broker/customer)
+- [x] **INV-07**: Invoice list with filters (status, date range, broker/customer)
 
 ### Dashboard
 
@@ -342,7 +342,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | INV-04 | Phase 4 | Complete |
 | INV-05 | Phase 4 | Complete |
 | INV-06 | Phase 4 | Complete |
-| INV-07 | Phase 4 | Pending |
+| INV-07 | Phase 4 | Complete |
 | DASH-01 | Phase 4 | Complete |
 | DASH-02 | Phase 4 | Complete |
 | DASH-03 | Phase 4 | Complete |
