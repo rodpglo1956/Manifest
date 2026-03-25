@@ -191,14 +191,14 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Billing
 
-- [ ] **BILL-01**: Stripe Connect integration in platform mode (Glo Matrix = platform, each org = Connected Account)
-- [ ] **BILL-02**: Plan tiers: free, starter, professional, enterprise with feature limits
+- [x] **BILL-01**: Stripe Connect integration in platform mode (Glo Matrix = platform, each org = Connected Account)
+- [x] **BILL-02**: Plan tiers: free, starter, professional, enterprise with feature limits
 - [ ] **BILL-03**: Checkout flow via Stripe hosted page
 - [ ] **BILL-04**: Stripe Customer Portal for payment method management
 - [ ] **BILL-05**: Webhook handler for subscription lifecycle events
-- [ ] **BILL-06**: Usage tracking: vehicles, drivers, loads, AI queries, voice minutes per period
+- [x] **BILL-06**: Usage tracking: vehicles, drivers, loads, AI queries, voice minutes per period
 - [ ] **BILL-07**: Usage enforcement at API level (402 on limit exceeded)
-- [ ] **BILL-08**: Trial management (14-day Professional, auto-downgrade to free)
+- [x] **BILL-08**: Trial management (14-day Professional, auto-downgrade to free)
 - [ ] **BILL-09**: Billing UI: current plan, usage meters, upgrade/downgrade, invoice history
 - [ ] **BILL-10**: Plan comparison page with annual/monthly toggle
 
@@ -423,14 +423,14 @@ Which phases cover which requirements. Updated during roadmap creation.
 | XMOD-03 | Phase 9 | Complete |
 | XMOD-04 | Phase 9 | Complete |
 | XMOD-05 | Phase 9 | Complete |
-| BILL-01 | Phase 10 | Pending |
-| BILL-02 | Phase 10 | Pending |
+| BILL-01 | Phase 10 | Complete |
+| BILL-02 | Phase 10 | Complete |
 | BILL-03 | Phase 10 | Pending |
 | BILL-04 | Phase 10 | Pending |
 | BILL-05 | Phase 10 | Pending |
-| BILL-06 | Phase 10 | Pending |
+| BILL-06 | Phase 10 | Complete |
 | BILL-07 | Phase 10 | Pending |
-| BILL-08 | Phase 10 | Pending |
+| BILL-08 | Phase 10 | Complete |
 | BILL-09 | Phase 10 | Pending |
 | BILL-10 | Phase 10 | Pending |
 | REPT-01 | Phase 11 | Pending |
