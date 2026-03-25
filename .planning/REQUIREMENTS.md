@@ -215,12 +215,12 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Notification System
 
-- [ ] **NOTF-01**: Centralized notifications table with category, priority, action URL
-- [ ] **NOTF-02**: Multi-channel dispatch: in-app, push, email, SMS
+- [x] **NOTF-01**: Centralized notifications table with category, priority, action URL
+- [x] **NOTF-02**: Multi-channel dispatch: in-app, push, email, SMS
 - [ ] **NOTF-03**: Per-user notification preferences (category x channel toggle matrix)
 - [ ] **NOTF-04**: Quiet hours support per user
-- [ ] **NOTF-05**: Notification bell icon with unread count badge in header
-- [ ] **NOTF-06**: notification-dispatcher edge function routes to enabled channels
+- [x] **NOTF-05**: Notification bell icon with unread count badge in header
+- [x] **NOTF-06**: notification-dispatcher edge function routes to enabled channels
 
 ### Onboarding
 
@@ -441,12 +441,12 @@ Which phases cover which requirements. Updated during roadmap creation.
 | REPT-06 | Phase 11 | Pending |
 | REPT-07 | Phase 11 | Pending |
 | REPT-08 | Phase 11 | Pending |
-| NOTF-01 | Phase 11 | Pending |
-| NOTF-02 | Phase 11 | Pending |
+| NOTF-01 | Phase 11 | Complete |
+| NOTF-02 | Phase 11 | Complete |
 | NOTF-03 | Phase 11 | Pending |
 | NOTF-04 | Phase 11 | Pending |
-| NOTF-05 | Phase 11 | Pending |
-| NOTF-06 | Phase 11 | Pending |
+| NOTF-05 | Phase 11 | Complete |
+| NOTF-06 | Phase 11 | Complete |
 | ONBD-01 | Phase 12 | Pending |
 | ONBD-02 | Phase 12 | Pending |
 | ONBD-03 | Phase 12 | Pending |
