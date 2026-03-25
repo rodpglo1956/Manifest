@@ -109,11 +109,12 @@ Plans:
   3. Marie is stateless per request, org-scoped via RLS, and logs all queries with tokens and latency
   4. Driver PWA has simplified Marie chat for driver-scoped questions and Marie summarizes unacknowledged alerts on open
   5. Smart routing returns ranked driver suggestions (proximity, availability, equipment, performance, lane familiarity) with one-click assign in dispatch UI
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 05-01: TBD
-- [ ] 05-02: TBD
+- [ ] 05-01-PLAN.md -- Database migration (marie_queries, proactive_alerts), types, Marie backend (system prompt, tools, API route), smart routing scoring algorithm and API endpoint
+- [ ] 05-02-PLAN.md -- Marie chat UI: floating button, slide-out panel, message rendering with action buttons, driver PWA simplified chat, layout integration
+- [ ] 05-03-PLAN.md -- Smart routing UI: driver suggestions component with score breakdown, Suggested/Manual tabs in dispatch assignment form, one-click assign
 
 ### Phase 6: Alerts, Analytics & Enhanced Dispatch
 **Goal**: Operations team receives proactive alerts for at-risk situations, push notifications keep everyone informed in real-time, analytics charts show operational trends, and dispatch gains map and timeline views
@@ -242,7 +243,7 @@ Note: Phases 7, 8, and 10 can execute in parallel after Phase 4. Phase 9 require
 | 2. Loads, Drivers & Vehicles | 6/6 | Complete    | 2026-03-25 |
 | 3. Dispatch | 3/3 | Complete    | 2026-03-25 |
 | 4. Invoicing & Dashboard | 3/4 | Complete    | 2026-03-25 |
-| 5. Marie AI & Smart Routing | 0/2 | Not started | - |
+| 5. Marie AI & Smart Routing | 0/3 | Not started | - |
 | 6. Alerts, Analytics & Enhanced Dispatch | 0/3 | Not started | - |
 | 7. Compliance | 0/2 | Not started | - |
 | 8. Fleet Management | 0/2 | Not started | - |
