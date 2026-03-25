@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import {
@@ -11,13 +12,38 @@ import {
   FileText,
   Shield,
   Settings,
+  Wrench,
+  Fuel,
+  BarChart3,
+  ChevronDown,
+  ChevronRight,
 } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
 
-const navItems = [
+type NavItem = {
+  href: string
+  label: string
+  icon: LucideIcon
+  active: boolean
+  subItems?: { href: string; label: string; icon: LucideIcon }[]
+}
+
+const navItems: NavItem[] = [
   { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard, active: true },
   { href: '/loads', label: 'Loads', icon: Package, active: true },
   { href: '/drivers', label: 'Drivers', icon: Users, active: true },
-  { href: '/fleet', label: 'Fleet', icon: Truck, active: true },
+  {
+    href: '/fleet',
+    label: 'Fleet',
+    icon: Truck,
+    active: true,
+    subItems: [
+      { href: '/fleet', label: 'Vehicles', icon: Truck },
+      { href: '/fleet/dashboard', label: 'Dashboard', icon: BarChart3 },
+      { href: '/fleet/maintenance', label: 'Maintenance', icon: Wrench },
+      { href: '/fleet/fuel', label: 'Fuel', icon: Fuel },
+    ],
+  },
   { href: '/dispatch', label: 'Dispatch', icon: Navigation, active: true },
   { href: '/invoices', label: 'Invoices', icon: FileText, active: true },
   { href: '/compliance', label: 'Compliance', icon: Shield, active: true },
@@ -31,6 +57,34 @@ interface AppSidebarProps {
 
 export function AppSidebar({ isOpen = true, onClose }: AppSidebarProps) {
   const pathname = usePathname()
+  const [expandedGroups, setExpandedGroups] = useState<Set<string>>(() => {
+    // Auto-expand fleet group if on a fleet page
+    const initial = new Set<string>()
+    if (pathname.startsWith('/fleet')) {
+      initial.add('Fleet')
+    }
+    return initial
+  })
+
+  function toggleGroup(label: string) {
+    setExpandedGroups((prev) => {
+      const next = new Set(prev)
+      if (next.has(label)) {
+        next.delete(label)
+      } else {
+        next.add(label)
+      }
+      return next
+    })
+  }
+
+  function isSubItemActive(href: string): boolean {
+    // Exact match for /fleet (Vehicles), prefix match for others
+    if (href === '/fleet') {
+      return pathname === '/fleet' || pathname.startsWith('/fleet/') && pathname.match(/^\/fleet\/[a-f0-9-]+/) !== null
+    }
+    return pathname.startsWith(href)
+  }
 
   return (
     <>
@@ -55,6 +109,8 @@ export function AppSidebar({ isOpen = true, onClose }: AppSidebarProps) {
             const Icon = item.icon
             const isActive = item.active && pathname.startsWith(item.href)
             const isDisabled = !item.active
+            const hasSubItems = item.subItems && item.subItems.length > 0
+            const isExpanded = expandedGroups.has(item.label)
 
             if (isDisabled) {
               return (
@@ -66,6 +122,54 @@ export function AppSidebar({ isOpen = true, onClose }: AppSidebarProps) {
                   <Icon className="w-5 h-5" />
                   <span>{item.label}</span>
                   <span className="ml-auto text-xs text-gray-300">Soon</span>
+                </div>
+              )
+            }
+
+            if (hasSubItems) {
+              return (
+                <div key={item.label}>
+                  <button
+                    onClick={() => toggleGroup(item.label)}
+                    className={`w-full flex items-center gap-3 px-3 py-2 rounded-md text-sm transition-colors ${
+                      isActive
+                        ? 'bg-primary-light text-primary font-medium'
+                        : 'text-gray-700 hover:bg-gray-50'
+                    }`}
+                  >
+                    <Icon className={`w-5 h-5 ${isActive ? 'text-primary' : ''}`} />
+                    <span>{item.label}</span>
+                    {isExpanded ? (
+                      <ChevronDown className="w-4 h-4 ml-auto" />
+                    ) : (
+                      <ChevronRight className="w-4 h-4 ml-auto" />
+                    )}
+                  </button>
+                  {isExpanded && (
+                    <div className="ml-4 mt-1 space-y-0.5">
+                      {item.subItems!.map((sub) => {
+                        const SubIcon = sub.icon
+                        const subActive = isSubItemActive(sub.href)
+                        return (
+                          <Link
+                            key={sub.href}
+                            href={sub.href}
+                            onClick={onClose}
+                            className={`flex items-center gap-2.5 px-3 py-1.5 rounded-md text-xs transition-colors ${
+                              subActive
+                                ? 'bg-primary-light text-primary font-medium'
+                                : 'text-gray-600 hover:bg-gray-50'
+                            }`}
+                          >
+                            <SubIcon
+                              className={`w-4 h-4 ${subActive ? 'text-primary' : 'text-gray-400'}`}
+                            />
+                            <span>{sub.label}</span>
+                          </Link>
+                        )
+                      })}
+                    </div>
+                  )}
                 </div>
               )
             }
