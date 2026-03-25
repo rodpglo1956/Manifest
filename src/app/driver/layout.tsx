@@ -3,10 +3,11 @@
 import { DriverHeader } from '@/components/layout/driver-header'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
-import { LayoutDashboard, Package, Settings } from 'lucide-react'
+import { LayoutDashboard, Navigation, Package, Settings } from 'lucide-react'
 
 const bottomNavItems = [
   { href: '/driver/dashboard', label: 'Dashboard', icon: LayoutDashboard },
+  { href: '/driver/dispatch', label: 'Dispatch', icon: Navigation },
   { href: '/driver/loads', label: 'Loads', icon: Package },
   { href: '/driver/settings', label: 'Settings', icon: Settings },
 ]
