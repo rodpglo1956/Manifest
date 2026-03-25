@@ -509,6 +509,126 @@ export type NotificationPreferences = {
   driver_response: boolean
 }
 
+// Phase 9: CRM types
+export type CrmCompanyType = 'customer' | 'broker' | 'vendor' | 'partner' | 'prospect'
+export type CrmCompanyStatus = 'active' | 'inactive' | 'blacklisted' | 'prospect'
+export type CrmLaneStatus = 'active' | 'inactive' | 'seasonal'
+export type CrmActivityType = 'call' | 'email' | 'note' | 'meeting' | 'rate_negotiation' | 'load_booked' | 'issue' | 'follow_up' | 'system'
+export type CrmRateType = 'per_mile' | 'flat_rate' | 'percentage' | 'hourly'
+export type CrmAgreementStatus = 'active' | 'expired' | 'pending' | 'rejected'
+export type CrmLaneRelationship = 'shipper' | 'broker' | 'receiver'
+
+export type CrmCompany = {
+  id: string
+  org_id: string
+  name: string
+  company_type: CrmCompanyType
+  mc_number: string | null
+  dot_number: string | null
+  credit_score: number | null
+  days_to_pay: number | null
+  payment_terms: string | null
+  factoring_company: string | null
+  primary_contact_name: string | null
+  primary_contact_email: string | null
+  primary_contact_phone: string | null
+  address_line1: string | null
+  address_line2: string | null
+  city: string | null
+  state: string | null
+  zip: string | null
+  website: string | null
+  notes: string | null
+  status: CrmCompanyStatus
+  tags: string[]
+  total_revenue: number
+  total_loads: number
+  avg_rate_per_mile: number | null
+  last_load_date: string | null
+  created_at: string
+  updated_at: string
+}
+
+export type CrmContact = {
+  id: string
+  org_id: string
+  company_id: string
+  first_name: string
+  last_name: string
+  title: string | null
+  email: string | null
+  phone: string | null
+  is_primary: boolean
+  notes: string | null
+  created_at: string
+  updated_at: string
+}
+
+export type CrmLane = {
+  id: string
+  org_id: string
+  origin_city: string
+  origin_state: string
+  origin_zip: string | null
+  destination_city: string
+  destination_state: string
+  destination_zip: string | null
+  distance_miles: number | null
+  avg_rate_per_mile: number | null
+  last_rate: number | null
+  last_run_date: string | null
+  total_runs: number
+  preferred_equipment: string[] | null
+  notes: string | null
+  status: CrmLaneStatus
+  created_at: string
+  updated_at: string
+}
+
+export type CrmLaneCompany = {
+  id: string
+  lane_id: string
+  company_id: string
+  relationship: CrmLaneRelationship
+  contracted_rate: number | null
+  contract_start: string | null
+  contract_end: string | null
+  created_at: string
+}
+
+export type CrmRateAgreement = {
+  id: string
+  org_id: string
+  company_id: string
+  lane_id: string | null
+  rate_type: CrmRateType
+  rate_amount: number
+  effective_date: string
+  expiry_date: string | null
+  min_volume: number | null
+  equipment_type: string | null
+  document_url: string | null
+  status: CrmAgreementStatus
+  created_at: string
+}
+
+export type CrmActivity = {
+  id: string
+  org_id: string
+  activity_type: CrmActivityType
+  company_id: string | null
+  contact_id: string | null
+  lane_id: string | null
+  user_id: string
+  subject: string | null
+  body: string | null
+  scheduled_at: string | null
+  completed_at: string | null
+  outcome: string | null
+  follow_up_date: string | null
+  created_at: string
+}
+
 // Phase 8: Fleet management types
 export type MaintenanceRecord = {
   id: string
@@ -951,6 +1071,121 @@ export type Database = {
           reason?: string | null
         }
         Update: Partial<Omit<VehicleAssignment, 'id' | 'created_at'>>
+        Relationships: []
+      }
+      crm_companies: {
+        Row: CrmCompany
+        Insert: Omit<CrmCompany, 'id' | 'created_at' | 'updated_at' | 'total_revenue' | 'total_loads' | 'avg_rate_per_mile' | 'last_load_date' | 'tags'> & {
+          id?: string
+          created_at?: string
+          updated_at?: string
+          total_revenue?: number
+          total_loads?: number
+          avg_rate_per_mile?: number | null
+          last_load_date?: string | null
+          tags?: string[]
+          mc_number?: string | null
+          dot_number?: string | null
+          credit_score?: number | null
+          days_to_pay?: number | null
+          payment_terms?: string | null
+          factoring_company?: string | null
+          primary_contact_name?: string | null
+          primary_contact_email?: string | null
+          primary_contact_phone?: string | null
+          address_line1?: string | null
+          address_line2?: string | null
+          city?: string | null
+          state?: string | null
+          zip?: string | null
+          website?: string | null
+          notes?: string | null
+        }
+        Update: Partial<Omit<CrmCompany, 'id' | 'created_at'>> & {
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      crm_contacts: {
+        Row: CrmContact
+        Insert: Omit<CrmContact, 'id' | 'created_at' | 'updated_at'> & {
+          id?: string
+          created_at?: string
+          updated_at?: string
+          title?: string | null
+          email?: string | null
+          phone?: string | null
+          is_primary?: boolean
+          notes?: string | null
+        }
+        Update: Partial<Omit<CrmContact, 'id' | 'created_at'>> & {
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      crm_lanes: {
+        Row: CrmLane
+        Insert: Omit<CrmLane, 'id' | 'created_at' | 'updated_at' | 'total_runs'> & {
+          id?: string
+          created_at?: string
+          updated_at?: string
+          total_runs?: number
+          origin_zip?: string | null
+          destination_zip?: string | null
+          distance_miles?: number | null
+          avg_rate_per_mile?: number | null
+          last_rate?: number | null
+          last_run_date?: string | null
+          preferred_equipment?: string[] | null
+          notes?: string | null
+        }
+        Update: Partial<Omit<CrmLane, 'id' | 'created_at'>> & {
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      crm_lane_companies: {
+        Row: CrmLaneCompany
+        Insert: Omit<CrmLaneCompany, 'id' | 'created_at'> & {
+          id?: string
+          created_at?: string
+          contracted_rate?: number | null
+          contract_start?: string | null
+          contract_end?: string | null
+        }
+        Update: Partial<Omit<CrmLaneCompany, 'id' | 'created_at'>>
+        Relationships: []
+      }
+      crm_rate_agreements: {
+        Row: CrmRateAgreement
+        Insert: Omit<CrmRateAgreement, 'id' | 'created_at'> & {
+          id?: string
+          created_at?: string
+          lane_id?: string | null
+          expiry_date?: string | null
+          min_volume?: number | null
+          equipment_type?: string | null
+          document_url?: string | null
+        }
+        Update: Partial<Omit<CrmRateAgreement, 'id' | 'created_at'>>
+        Relationships: []
+      }
+      crm_activities: {
+        Row: CrmActivity
+        Insert: Omit<CrmActivity, 'id' | 'created_at'> & {
+          id?: string
+          created_at?: string
+          company_id?: string | null
+          contact_id?: string | null
+          lane_id?: string | null
+          subject?: string | null
+          body?: string | null
+          scheduled_at?: string | null
+          completed_at?: string | null
+          outcome?: string | null
+          follow_up_date?: string | null
+        }
+        Update: Partial<Omit<CrmActivity, 'id' | 'created_at'>>
         Relationships: []
       }
     }
