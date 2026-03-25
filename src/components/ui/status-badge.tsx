@@ -1,4 +1,4 @@
-type StatusVariant = 'driver' | 'vehicle' | 'load'
+type StatusVariant = 'driver' | 'vehicle' | 'load' | 'dispatch'
 
 interface StatusBadgeProps {
   status: string
@@ -26,6 +26,16 @@ const colorMap: Record<StatusVariant, Record<string, { dot: string; bg: string; 
     invoiced: { dot: 'bg-orange-500', bg: 'bg-orange-50', text: 'text-orange-700' },
     paid: { dot: 'bg-emerald-500', bg: 'bg-emerald-50', text: 'text-emerald-700' },
     canceled: { dot: 'bg-red-500', bg: 'bg-red-50', text: 'text-red-700' },
+  },
+  dispatch: {
+    assigned: { dot: 'bg-yellow-500', bg: 'bg-yellow-50', text: 'text-yellow-700' },
+    accepted: { dot: 'bg-blue-500', bg: 'bg-blue-50', text: 'text-blue-700' },
+    en_route_pickup: { dot: 'bg-indigo-500', bg: 'bg-indigo-50', text: 'text-indigo-700' },
+    at_pickup: { dot: 'bg-cyan-500', bg: 'bg-cyan-50', text: 'text-cyan-700' },
+    en_route_delivery: { dot: 'bg-purple-500', bg: 'bg-purple-50', text: 'text-purple-700' },
+    at_delivery: { dot: 'bg-amber-500', bg: 'bg-amber-50', text: 'text-amber-700' },
+    completed: { dot: 'bg-green-500', bg: 'bg-green-50', text: 'text-green-700' },
+    rejected: { dot: 'bg-red-500', bg: 'bg-red-50', text: 'text-red-700' },
   },
 }
 

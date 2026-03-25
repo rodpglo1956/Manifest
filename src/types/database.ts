@@ -15,6 +15,17 @@ export type VehicleStatus = 'active' | 'inactive'
 
 export type EquipmentType = VehicleType
 
+// Phase 3: Dispatch types
+export type DispatchStatus =
+  | 'assigned'
+  | 'accepted'
+  | 'en_route_pickup'
+  | 'at_pickup'
+  | 'en_route_delivery'
+  | 'at_delivery'
+  | 'completed'
+  | 'rejected'
+
 export type LoadStatus =
   | 'booked'
   | 'dispatched'
@@ -196,6 +207,25 @@ export type LoadNumberSequence = {
   last_number: number
 }
 
+export type Dispatch = {
+  id: string
+  org_id: string
+  load_id: string
+  driver_id: string
+  vehicle_id: string | null
+  status: DispatchStatus
+  assigned_at: string
+  accepted_at: string | null
+  completed_at: string | null
+  estimated_pickup_arrival: string | null
+  estimated_delivery_arrival: string | null
+  driver_notes: string | null
+  dispatcher_notes: string | null
+  assigned_by: string | null
+  created_at: string
+  updated_at: string
+}
+
 // Supabase Database type for client typing
 export type Database = {
   public: {
@@ -278,6 +308,19 @@ export type Database = {
           created_at?: string
         }
         Update: Partial<Omit<LoadStatusHistory, 'id' | 'created_at'>>
+        Relationships: []
+      }
+      dispatches: {
+        Row: Dispatch
+        Insert: Omit<Dispatch, 'id' | 'assigned_at' | 'created_at' | 'updated_at'> & {
+          id?: string
+          assigned_at?: string
+          created_at?: string
+          updated_at?: string
+        }
+        Update: Partial<Omit<Dispatch, 'id' | 'created_at'>> & {
+          updated_at?: string
+        }
         Relationships: []
       }
       load_number_sequences: {
