@@ -17,6 +17,9 @@ import {
   BarChart3,
   ChevronDown,
   ChevronRight,
+  Building2,
+  Route,
+  MessageSquare,
 } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 
@@ -47,6 +50,18 @@ const navItems: NavItem[] = [
   { href: '/dispatch', label: 'Dispatch', icon: Navigation, active: true },
   { href: '/invoices', label: 'Invoices', icon: FileText, active: true },
   { href: '/compliance', label: 'Compliance', icon: Shield, active: true },
+  {
+    href: '/crm',
+    label: 'CRM',
+    icon: Building2,
+    active: true,
+    subItems: [
+      { href: '/crm', label: 'Dashboard', icon: BarChart3 },
+      { href: '/crm/companies', label: 'Companies', icon: Building2 },
+      { href: '/crm/lanes', label: 'Lanes', icon: Route },
+      { href: '/crm/activities', label: 'Activities', icon: MessageSquare },
+    ],
+  },
   { href: '/settings/team', label: 'Settings', icon: Settings, active: true },
 ]
 
@@ -62,6 +77,9 @@ export function AppSidebar({ isOpen = true, onClose }: AppSidebarProps) {
     const initial = new Set<string>()
     if (pathname.startsWith('/fleet')) {
       initial.add('Fleet')
+    }
+    if (pathname.startsWith('/crm')) {
+      initial.add('CRM')
     }
     return initial
   })
@@ -79,9 +97,12 @@ export function AppSidebar({ isOpen = true, onClose }: AppSidebarProps) {
   }
 
   function isSubItemActive(href: string): boolean {
-    // Exact match for /fleet (Vehicles), prefix match for others
+    // Exact match for /fleet (Vehicles) and /crm (Dashboard), prefix match for others
     if (href === '/fleet') {
       return pathname === '/fleet' || pathname.startsWith('/fleet/') && pathname.match(/^\/fleet\/[a-f0-9-]+/) !== null
+    }
+    if (href === '/crm') {
+      return pathname === '/crm'
     }
     return pathname.startsWith(href)
   }

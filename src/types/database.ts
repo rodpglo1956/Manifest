@@ -1125,7 +1125,7 @@ export type Database = {
       }
       crm_lanes: {
         Row: CrmLane
-        Insert: Omit<CrmLane, 'id' | 'created_at' | 'updated_at' | 'total_runs'> & {
+        Insert: Omit<CrmLane, 'id' | 'created_at' | 'updated_at' | 'total_runs' | 'avg_rate_per_mile' | 'last_rate' | 'last_run_date'> & {
           id?: string
           created_at?: string
           updated_at?: string
@@ -1172,7 +1172,7 @@ export type Database = {
       }
       crm_activities: {
         Row: CrmActivity
-        Insert: Omit<CrmActivity, 'id' | 'created_at'> & {
+        Insert: Omit<CrmActivity, 'id' | 'created_at' | 'completed_at'> & {
           id?: string
           created_at?: string
           company_id?: string | null
