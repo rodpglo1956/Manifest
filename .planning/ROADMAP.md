@@ -40,7 +40,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans**: 3 plans
 
 Plans:
-- [ ] 01-01-PLAN.md -- Project scaffolding, Supabase clients, database schema, RLS policies, auth trigger, test infrastructure
+- [x] 01-01-PLAN.md -- Project scaffolding, Supabase clients, database schema, RLS policies, auth trigger, test infrastructure
 - [ ] 01-02-PLAN.md -- Auth UI (signup, login, magic link), session management, organization creation flow
 - [ ] 01-03-PLAN.md -- Team invitation flow, role-based middleware routing, route group layouts, end-to-end verification
 
@@ -232,7 +232,7 @@ Note: Phases 7, 8, and 10 can execute in parallel after Phase 4. Phase 9 require
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Auth & Organization | 0/3 | Planning complete | - |
+| 1. Auth & Organization | 1/3 | Executing | - |
 | 2. Loads, Drivers & Vehicles | 0/3 | Not started | - |
 | 3. Dispatch | 0/2 | Not started | - |
 | 4. Invoicing & Dashboard | 0/2 | Not started | - |
