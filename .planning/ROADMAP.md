@@ -145,11 +145,14 @@ Plans:
   3. Compliance dashboard shows health score (0-100) and upcoming deadlines calendar (next 90 days)
   4. Driver qualification files (CDL, medical card, endorsements, MVR, drug tests) tracked per driver with completeness percentage and missing document highlights
   5. Inspections (annual, pre-trip, post-trip, roadside) are recorded, DVIR digital form works in Driver PWA with camera upload, and IFTA tracks per vehicle per jurisdiction with CSV export
-**Plans**: TBD
+**Plans**: 5 plans
 
 Plans:
-- [ ] 07-01: TBD
-- [ ] 07-02: TBD
+- [ ] 07-01-PLAN.md -- Database migrations (6 compliance tables with RLS), TypeScript types, Zod schemas, DVIR schema, compliance helpers (health score, DQ completeness, recurrence, IFTA), StatusBadge extension, tests
+- [ ] 07-02-PLAN.md -- Compliance scanner pg_cron function (daily alerts, status updates, recurrence auto-generation) and all compliance server actions (CRUD for profiles, items, DQ, inspections, DVIR, IFTA, dashboard)
+- [ ] 07-03-PLAN.md -- Compliance dashboard (health score gauge, alerts, upcoming deadlines) and compliance items list page with filters and actions, sidebar nav update
+- [ ] 07-04-PLAN.md -- Driver qualification file tracker with completeness checklist, inspection log with form, IFTA quarterly tracking with CSV export
+- [ ] 07-05-PLAN.md -- DVIR digital form in Driver PWA (11 FMCSA items), driver compliance view, Owner-Operator simplified compliance dashboard
 
 ### Phase 8: Fleet Management
 **Goal**: Carrier can manage their entire fleet lifecycle -- vehicles of any class with maintenance schedules, fuel tracking, cost analysis, and driver-facing mobile tools
@@ -247,7 +250,7 @@ Note: Phases 7, 8, and 10 can execute in parallel after Phase 4. Phase 9 require
 | 6. Alerts, Analytics & Enhanced Dispatch | 5/5 | Complete    | 2026-03-25 |
 | 5. Marie AI & Smart Routing | 3/3 | Complete    | 2026-03-25 |
 | 6. Alerts, Analytics & Enhanced Dispatch | 0/3 | Not started | - |
-| 7. Compliance | 0/2 | Not started | - |
+| 7. Compliance | 0/5 | Not started | - |
 | 8. Fleet Management | 0/2 | Not started | - |
 | 9. CRM & Cross-Module Integration | 0/2 | Not started | - |
 | 10. Billing & Subscriptions | 0/2 | Not started | - |
