@@ -629,6 +629,45 @@ export type CrmActivity = {
   created_at: string
 }
 
+// Phase 11: Notification types
+export type NotificationCategory = 'compliance' | 'maintenance' | 'load' | 'billing' | 'crm' | 'driver' | 'system' | 'marie'
+
+export type NotificationPriority = 'low' | 'normal' | 'high' | 'critical'
+
+export type Notification = {
+  id: string
+  org_id: string
+  user_id: string
+  category: NotificationCategory
+  priority: NotificationPriority
+  title: string
+  body: string
+  action_url: string | null
+  action_label: string | null
+  read: boolean
+  read_at: string | null
+  channels_sent: string[]
+  created_at: string
+}
+
+export type NotificationPreferencesV2 = {
+  id: string
+  user_id: string
+  compliance_channels: string[]
+  maintenance_channels: string[]
+  load_channels: string[]
+  billing_channels: string[]
+  crm_channels: string[]
+  driver_channels: string[]
+  system_channels: string[]
+  marie_channels: string[]
+  quiet_hours_start: string | null
+  quiet_hours_end: string | null
+  timezone: string
+  created_at: string
+  updated_at: string
+}
+
 // Phase 10: Billing types
 export type BillingPlan = 'free' | 'starter' | 'professional' | 'enterprise'
 export type BillingCycle = 'monthly' | 'annual'
@@ -1311,6 +1350,43 @@ export type Database = {
           voice_minutes_used?: number
         }
         Update: Partial<Omit<UsageRecord, 'id' | 'created_at'>> & {
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      notifications: {
+        Row: Notification
+        Insert: Omit<Notification, 'id' | 'created_at' | 'read' | 'read_at' | 'channels_sent' | 'action_url' | 'action_label'> & {
+          id?: string
+          created_at?: string
+          read?: boolean
+          read_at?: string | null
+          channels_sent?: string[]
+          action_url?: string | null
+          action_label?: string | null
+        }
+        Update: Partial<Omit<Notification, 'id' | 'created_at'>>
+        Relationships: []
+      }
+      notification_preferences: {
+        Row: NotificationPreferencesV2
+        Insert: Omit<NotificationPreferencesV2, 'id' | 'created_at' | 'updated_at' | 'compliance_channels' | 'maintenance_channels' | 'load_channels' | 'billing_channels' | 'crm_channels' | 'driver_channels' | 'system_channels' | 'marie_channels' | 'quiet_hours_start' | 'quiet_hours_end' | 'timezone'> & {
+          id?: string
+          created_at?: string
+          updated_at?: string
+          compliance_channels?: string[]
+          maintenance_channels?: string[]
+          load_channels?: string[]
+          billing_channels?: string[]
+          crm_channels?: string[]
+          driver_channels?: string[]
+          system_channels?: string[]
+          marie_channels?: string[]
+          quiet_hours_start?: string | null
+          quiet_hours_end?: string | null
+          timezone?: string
+        }
+        Update: Partial<Omit<NotificationPreferencesV2, 'id' | 'created_at'>> & {
           updated_at?: string
         }
         Relationships: []
