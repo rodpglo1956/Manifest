@@ -13,7 +13,11 @@ const colorMap: Record<StatusVariant, Record<string, { dot: string; bg: string; 
   },
   vehicle: {
     active: { dot: 'bg-green-500', bg: 'bg-green-50', text: 'text-green-700' },
-    inactive: { dot: 'bg-gray-400', bg: 'bg-gray-100', text: 'text-gray-600' },
+    in_shop: { dot: 'bg-yellow-500', bg: 'bg-yellow-50', text: 'text-yellow-700' },
+    out_of_service: { dot: 'bg-red-500', bg: 'bg-red-50', text: 'text-red-700' },
+    parked: { dot: 'bg-gray-400', bg: 'bg-gray-100', text: 'text-gray-600' },
+    sold: { dot: 'bg-gray-400', bg: 'bg-gray-100', text: 'text-gray-600' },
+    totaled: { dot: 'bg-red-500', bg: 'bg-red-50', text: 'text-red-700' },
   },
   load: {
     booked: { dot: 'bg-blue-500', bg: 'bg-blue-50', text: 'text-blue-700' },
