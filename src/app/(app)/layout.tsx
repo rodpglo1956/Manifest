@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { AppHeader } from '@/components/layout/app-header'
 import { AppSidebar } from '@/components/layout/app-sidebar'
+import { MarieButton } from '@/components/marie/marie-button'
 
 // Note: Auth check is handled by middleware -- if user reaches this layout,
 // they are authenticated with an org. We pass display info from a client-side hook.
@@ -27,6 +28,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           {children}
         </main>
       </div>
+      <MarieButton />
     </div>
   )
 }
