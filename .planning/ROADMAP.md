@@ -55,12 +55,15 @@ Plans:
   4. User can create a load with full details (pickup, delivery, freight, rate, broker) and load numbers auto-generate
   5. Load status moves through the complete lifecycle (booked through delivered) with every transition logged and broadcast in real-time
   6. Users can upload documents (BOL, POD) to loads including via mobile camera, and filter/view loads in list and kanban views
-**Plans**: TBD
+**Plans**: 6 plans
 
 Plans:
-- [ ] 02-01: TBD
-- [ ] 02-02: TBD
-- [ ] 02-03: TBD
+- [ ] 02-01-PLAN.md -- Database migrations (vehicles, drivers, loads, triggers, storage), TypeScript types, Zod schemas, load status logic
+- [ ] 02-02-PLAN.md -- Driver management CRUD (list, detail, add/edit, deactivate, search/filter)
+- [ ] 02-03-PLAN.md -- Vehicle CRUD and load creation multi-step wizard (5 steps)
+- [ ] 02-04-PLAN.md -- Load status lifecycle, transition validation, Realtime hook, document upload system
+- [ ] 02-05-PLAN.md -- Load list with filters, kanban board, load detail page, CSV export, sidebar navigation update
+- [ ] 02-06-PLAN.md -- Driver PWA loads (active load, status buttons, camera upload, history), driver profile, driver-user linking
 
 ### Phase 3: Dispatch
 **Goal**: Dispatchers can assign drivers and vehicles to loads, track assignments in real-time, and drivers can interact with dispatch from their mobile devices
@@ -233,7 +236,7 @@ Note: Phases 7, 8, and 10 can execute in parallel after Phase 4. Phase 9 require
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Auth & Organization | 3/3 | Complete    | 2026-03-25 |
-| 2. Loads, Drivers & Vehicles | 0/3 | Not started | - |
+| 2. Loads, Drivers & Vehicles | 0/6 | Not started | - |
 | 3. Dispatch | 0/2 | Not started | - |
 | 4. Invoicing & Dashboard | 0/2 | Not started | - |
 | 5. Marie AI & Smart Routing | 0/2 | Not started | - |
