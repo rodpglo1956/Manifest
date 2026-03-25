@@ -56,7 +56,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [ ] **DISP-02**: Dispatch board shows unassigned loads and available drivers
 - [ ] **DISP-03**: Active dispatches list shows ETA and current status
 - [ ] **DISP-04**: Driver availability view shows who is free, on a load, or off
-- [ ] **DISP-05**: Driver PWA shows current dispatch card with load summary
+- [x] **DISP-05**: Driver PWA shows current dispatch card with load summary
 - [x] **DISP-06**: Driver can accept or reject dispatch assignments in PWA
 - [x] **DISP-07**: Driver can send notes to dispatcher from PWA
 - [x] **DISP-08**: Dispatch status changes broadcast via Supabase Realtime
@@ -332,7 +332,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | DISP-02 | Phase 3 | Pending |
 | DISP-03 | Phase 3 | Pending |
 | DISP-04 | Phase 3 | Pending |
-| DISP-05 | Phase 3 | Pending |
+| DISP-05 | Phase 3 | Complete |
 | DISP-06 | Phase 3 | Complete |
 | DISP-07 | Phase 3 | Complete |
 | DISP-08 | Phase 3 | Complete |
