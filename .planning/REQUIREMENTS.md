@@ -210,8 +210,8 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **REPT-04**: Operations analytics: load volume, miles, on-time trending, top lanes
 - [x] **REPT-05**: Fleet analytics: utilization, MPG trending, maintenance cost, vehicle TCO ranking
 - [x] **REPT-06**: Customer/broker profitability ranking with pay speed
-- [ ] **REPT-07**: PDF report generation (P&L, fleet, compliance, driver) with download
-- [ ] **REPT-08**: Owner-Operator simplified P&L view with per-mile profitability and tax estimate
+- [x] **REPT-07**: PDF report generation (P&L, fleet, compliance, driver) with download
+- [x] **REPT-08**: Owner-Operator simplified P&L view with per-mile profitability and tax estimate
 
 ### Notification System
 
@@ -439,8 +439,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | REPT-04 | Phase 11 | Complete |
 | REPT-05 | Phase 11 | Complete |
 | REPT-06 | Phase 11 | Complete |
-| REPT-07 | Phase 11 | Pending |
-| REPT-08 | Phase 11 | Pending |
+| REPT-07 | Phase 11 | Complete |
+| REPT-08 | Phase 11 | Complete |
 | NOTF-01 | Phase 11 | Complete |
 | NOTF-02 | Phase 11 | Complete |
 | NOTF-03 | Phase 11 | Complete |
