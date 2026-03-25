@@ -241,12 +241,14 @@ Plans:
   4. Performance targets met: < 2s FMP on 3G, < 4s TTI, Lighthouse PWA > 90, < 300KB initial bundle with virtualized lists and code splitting
   5. Security hardening complete: RLS verified on every table, CSRF protection, rate limiting, input sanitization, CSP headers, and Stripe webhook signature verification
   6. White-label infrastructure works for enterprise tier: configurable brand name, logo, colors, and custom domain via CSS custom properties
-**Plans**: TBD
+**Plans**: 5 plans
 
 Plans:
-- [ ] 12-01: TBD
-- [ ] 12-02: TBD
-- [ ] 12-03: TBD
+- [ ] 12-01-PLAN.md -- Onboarding wizard: database migration, Zod schemas, server actions, 5-step wizard UI (business profile, vehicle, driver, integrations, plan)
+- [ ] 12-02-PLAN.md -- Security hardening: CSRF protection, rate limiting, input sanitization, CSP headers, RLS audit, Stripe webhook verification
+- [ ] 12-03-PLAN.md -- White-label infrastructure: config table, CSS custom properties, brand provider, enterprise settings page
+- [ ] 12-04-PLAN.md -- Getting Started checklist widget on dashboard, driver onboarding flow with PWA install and DVIR tutorial, routing updates
+- [ ] 12-05-PLAN.md -- PWA offline: enhanced service worker, IndexedDB offline queue, background sync, offline DVIR/fuel forms, performance optimization
 
 ## Progress
 
@@ -267,4 +269,4 @@ Note: Phases 7, 8, and 10 can execute in parallel after Phase 4. Phase 9 require
 | 9. CRM & Cross-Module Integration | 5/5 | Complete    | 2026-03-25 |
 | 10. Billing & Subscriptions | 4/4 | Complete    | 2026-03-25 |
 | 11. Reporting & Notifications | 6/6 | Complete    | 2026-03-25 |
-| 12. Onboarding, PWA, Security & Polish | 0/3 | Not started | - |
+| 12. Onboarding, PWA, Security & Polish | 0/5 | Not started | - |
