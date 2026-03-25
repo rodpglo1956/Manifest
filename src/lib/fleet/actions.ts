@@ -8,7 +8,10 @@ import {
   fuelTransactionSchema,
 } from '@/schemas/fleet'
 import { calculateCostPerMile, calculateFleetCostPerMile } from '@/lib/fleet/fleet-helpers'
-import type { MaintenanceType, FuelSource, VehicleClass, MaintenancePriority } from '@/types/database'
+import type {
+  MaintenanceType, FuelSource, VehicleClass, MaintenancePriority,
+  MaintenanceRecord, FuelTransaction, VehicleAssignment,
+} from '@/types/database'
 
 // ============================================================
 // Auth + Org helper
@@ -56,7 +59,7 @@ export async function getMaintenanceRecords(vehicleId?: string) {
   const { data, error: dbError } = await query
 
   if (dbError) return { error: { form: [dbError.message] }, data: null }
-  return { error: null, data }
+  return { error: null, data: data as MaintenanceRecord[] }
 }
 
 export async function createMaintenanceRecord(formData: FormData) {
@@ -345,7 +348,7 @@ export async function getFuelTransactions(vehicleId?: string, limit?: number) {
   const { data, error: dbError } = await query
 
   if (dbError) return { error: { form: [dbError.message] }, data: null }
-  return { error: null, data }
+  return { error: null, data: data as FuelTransaction[] }
 }
 
 export async function createFuelTransaction(formData: FormData) {
@@ -522,7 +525,11 @@ export async function getVehicleAssignmentHistory(vehicleId: string) {
     .order('assigned_at', { ascending: false })
 
   if (dbError) return { error: { form: [dbError.message] }, data: null }
-  return { error: null, data }
+
+  type AssignmentWithDriver = VehicleAssignment & {
+    drivers: { first_name: string; last_name: string } | null
+  }
+  return { error: null, data: data as AssignmentWithDriver[] }
 }
 
 // ============================================================

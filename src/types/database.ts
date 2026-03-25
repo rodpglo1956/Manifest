@@ -309,7 +309,7 @@ export type ComplianceCategory =
   | 'drug_testing' | 'driver_qualification' | 'vehicle_registration'
   | 'operating_authority' | 'hazmat' | 'medical_card'
   | 'cdl_renewal' | 'annual_inspection' | 'state_permit'
-  | 'bod_filing' | 'insurance_filing' | 'custom'
+  | 'bod_filing' | 'insurance_filing' | 'scheduled_service' | 'custom'
 
 export type ComplianceItemStatus = 'upcoming' | 'due_soon' | 'overdue' | 'completed' | 'waived' | 'not_applicable'
 

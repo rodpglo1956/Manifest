@@ -2,7 +2,7 @@ import { createClient } from '@/lib/supabase/server'
 import { redirect, notFound } from 'next/navigation'
 import Link from 'next/link'
 import type { Metadata } from 'next'
-import type { Vehicle } from '@/types/database'
+import type { Vehicle, MaintenanceRecord, FuelTransaction, VehicleAssignment } from '@/types/database'
 import { StatusBadge } from '@/components/ui/status-badge'
 import { VEHICLE_CLASS_LABELS, MAINTENANCE_TYPE_LABELS, formatCurrency } from '@/lib/fleet/fleet-helpers'
 import {
@@ -64,12 +64,17 @@ export default async function VehicleDetailPage({ params, searchParams }: Vehicl
   }
 
   // Fetch tab data
-  const [maintenanceRecords, fuelTransactions, costData, assignmentHistory] = await Promise.all([
-    getMaintenanceRecords(id, 20),
+  const [maintenanceResult, fuelResult, costResult, historyResult] = await Promise.all([
+    getMaintenanceRecords(id),
     getFuelTransactions(id, 20),
     getVehicleCostPerMile(id),
     getVehicleAssignmentHistory(id),
   ])
+
+  const maintenanceRecords = (maintenanceResult.data ?? []) as MaintenanceRecord[]
+  const fuelTransactions = (fuelResult.data ?? []) as FuelTransaction[]
+  const costData = costResult.data
+  const assignmentHistory = (historyResult.data ?? []) as (VehicleAssignment & { drivers?: { first_name: string; last_name: string } | null })[]
 
   const tabs: { key: TabKey; label: string; count?: number }[] = [
     { key: 'maintenance', label: 'Maintenance', count: maintenanceRecords.length },
@@ -188,9 +193,9 @@ export default async function VehicleDetailPage({ params, searchParams }: Vehicl
             <MaintenanceTab records={maintenanceRecords} vehicleId={id} />
           )}
           {tab === 'fuel' && (
-            <FuelTab transactions={fuelTransactions} avgMpg={costData.avgMpg} vehicleId={id} />
+            <FuelTab transactions={fuelTransactions} avgMpg={vehicle.avg_mpg ?? 0} vehicleId={id} />
           )}
-          {tab === 'costs' && (
+          {tab === 'costs' && costData && (
             <CostsTab data={costData} />
           )}
           {tab === 'history' && (
@@ -210,7 +215,7 @@ function MaintenanceTab({
   records,
   vehicleId,
 }: {
-  records: Awaited<ReturnType<typeof getMaintenanceRecords>>
+  records: MaintenanceRecord[]
   vehicleId: string
 }) {
   if (records.length === 0) {
@@ -270,7 +275,7 @@ function FuelTab({
   avgMpg,
   vehicleId,
 }: {
-  transactions: Awaited<ReturnType<typeof getFuelTransactions>>
+  transactions: FuelTransaction[]
   avgMpg: number
   vehicleId: string
 }) {
@@ -333,13 +338,14 @@ function FuelTab({
 // Costs Tab
 // ============================================================
 
-function CostsTab({ data }: { data: Awaited<ReturnType<typeof getVehicleCostPerMile>> }) {
+function CostsTab({ data }: { data: { costPerMile: number; breakdown: { maintenance: number; fuel: number; depreciation: number; insurance: number; total: number }; totalMiles: number } }) {
   const items = [
-    { label: 'Maintenance', value: data.maintenanceCost },
-    { label: 'Fuel', value: data.fuelCost },
+    { label: 'Maintenance', value: data.breakdown.maintenance },
+    { label: 'Fuel', value: data.breakdown.fuel },
+    { label: 'Depreciation', value: data.breakdown.depreciation },
   ]
 
-  const totalCost = data.maintenanceCost + data.fuelCost
+  const totalCost = data.breakdown.total
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -394,7 +400,7 @@ function CostsTab({ data }: { data: Awaited<ReturnType<typeof getVehicleCostPerM
 function HistoryTab({
   assignments,
 }: {
-  assignments: Awaited<ReturnType<typeof getVehicleAssignmentHistory>>
+  assignments: (VehicleAssignment & { drivers?: { first_name: string; last_name: string } | null })[]
 }) {
   if (assignments.length === 0) {
     return (
@@ -424,7 +430,9 @@ function HistoryTab({
 
               <div>
                 <p className="text-sm font-medium text-gray-900">
-                  {a.driver_name ?? 'Unknown Driver'}
+                  {a.drivers
+                    ? `${a.drivers.first_name} ${a.drivers.last_name}`
+                    : 'Unknown Driver'}
                 </p>
                 <p className="text-xs text-gray-500 mt-0.5">
                   Assigned: {new Date(a.assigned_at).toLocaleDateString()}
