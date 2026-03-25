@@ -119,6 +119,7 @@ export async function POST(request: NextRequest) {
       latency_ms: latencyMs,
       model: MODEL,
       success: true,
+      error_message: null,
     })
 
     return NextResponse.json({
@@ -131,22 +132,24 @@ export async function POST(request: NextRequest) {
     const errorMessage =
       err instanceof Error ? err.message : 'Unknown error'
 
-    await supabase
-      .from('marie_queries')
-      .insert({
-        org_id: profile.org_id,
-        user_id: user.id,
-        query_text: queryText,
-        response_text: null,
-        query_type: 'question',
-        tokens_used: 0,
-        latency_ms: latencyMs,
-        model: MODEL,
-        success: false,
-        error_message: errorMessage,
-      })
-      .then(() => {})
-      .catch(() => {})
+    try {
+      await supabase
+        .from('marie_queries')
+        .insert({
+          org_id: profile.org_id,
+          user_id: user.id,
+          query_text: queryText,
+          response_text: null,
+          query_type: 'question',
+          tokens_used: 0,
+          latency_ms: latencyMs,
+          model: MODEL,
+          success: false,
+          error_message: errorMessage,
+        })
+    } catch {
+      // Best-effort logging -- don't throw if logging fails
+    }
 
     return NextResponse.json(
       { error: 'Marie encountered an error. Please try again.' },

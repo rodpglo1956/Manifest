@@ -425,7 +425,7 @@ export type Database = {
       }
       marie_queries: {
         Row: MarieQuery
-        Insert: Omit<MarieQuery, 'id' | 'created_at'> & {
+        Insert: Omit<MarieQuery, 'id' | 'created_at' | 'response_text' | 'query_type' | 'tokens_used' | 'latency_ms' | 'model' | 'success' | 'error_message'> & {
           id?: string
           created_at?: string
           response_text?: string | null
