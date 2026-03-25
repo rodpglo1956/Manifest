@@ -4,6 +4,7 @@ import { DriverHeader } from '@/components/layout/driver-header'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import { LayoutDashboard, Navigation, Package, Settings } from 'lucide-react'
+import { MarieDriverChat } from '@/components/marie/marie-driver-chat'
 
 const bottomNavItems = [
   { href: '/driver/dashboard', label: 'Dashboard', icon: LayoutDashboard },
@@ -21,6 +22,8 @@ export default function DriverLayout({ children }: { children: React.ReactNode }
       <main className="flex-1 p-4 pb-20">
         {children}
       </main>
+
+      <MarieDriverChat />
 
       {/* Bottom navigation */}
       <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 flex justify-around py-2 px-4 z-50">

@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation'
 import type { MarieMessage, ActionButton } from '@/types/marie'
 
-const ACTION_REGEX = /\[ACTION:(\w+):([a-f0-9-]+):([^\]]+)\]/g
+const ACTION_REGEX = /\[ACTION:(\w+):([^:]+):([^\]]+)\]/g
 
 export function parseActions(text: string): { cleanText: string; actions: ActionButton[] } {
   const actions: ActionButton[] = []
