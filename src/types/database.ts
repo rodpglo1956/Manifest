@@ -440,11 +440,14 @@ export type IFTARecord = {
 
 export type AlertSeverity = 'info' | 'warning' | 'critical'
 
-// Phase 6: Daily snapshot type
-export type DailySnapshot = {
+// Phase 6: Daily snapshot type (base fields)
+// Phase 11: Extended with financial, fleet, compliance, CRM metrics
+export type AnalyticsSnapshot = {
   id: string
   org_id: string
   snapshot_date: string
+  period: 'daily' | 'weekly' | 'monthly'
+  // Core load metrics
   loads_booked: number
   loads_delivered: number
   loads_canceled: number
@@ -457,6 +460,49 @@ export type DailySnapshot = {
   active_drivers: number
   invoices_generated: number
   invoices_paid: number
+  // Financial metrics
+  total_expenses: number
+  net_profit: number
+  cost_per_mile: number | null
+  profit_per_mile: number | null
+  // Deadhead / efficiency
+  deadhead_miles: number
+  deadhead_percentage: number | null
+  // Fleet utilization
+  fleet_utilization_pct: number | null
+  avg_mpg: number | null
+  total_fuel_cost: number | null
+  total_maintenance_cost: number | null
+  vehicles_in_shop: number
+  // Compliance
+  compliance_score: number | null
+  overdue_compliance_items: number
+  // CRM / customer metrics
+  active_customers: number
+  new_customers: number
+  avg_days_to_pay: number | null
+  // Metadata
+  created_at: string
+}
+
+/** @deprecated Use AnalyticsSnapshot instead */
+export type DailySnapshot = AnalyticsSnapshot
+
+// Phase 11: Driver performance scorecard
+export type DriverPerformance = {
+  id: string
+  org_id: string
+  driver_id: string
+  period_start: string
+  period_end: string
+  loads_completed: number
+  miles_driven: number
+  revenue_generated: number
+  on_time_pct: number | null
+  fuel_efficiency: number | null
+  safety_incidents: number
+  compliance_score: number | null
+  customer_complaints: number
   created_at: string
 }
 
@@ -981,12 +1027,46 @@ export type Database = {
         Relationships: []
       }
       daily_snapshots: {
-        Row: DailySnapshot
-        Insert: Omit<DailySnapshot, 'id' | 'created_at'> & {
+        Row: AnalyticsSnapshot
+        Insert: Omit<AnalyticsSnapshot, 'id' | 'created_at' | 'period' | 'total_expenses' | 'net_profit' | 'cost_per_mile' | 'profit_per_mile' | 'deadhead_miles' | 'deadhead_percentage' | 'fleet_utilization_pct' | 'avg_mpg' | 'total_fuel_cost' | 'total_maintenance_cost' | 'vehicles_in_shop' | 'compliance_score' | 'overdue_compliance_items' | 'active_customers' | 'new_customers' | 'avg_days_to_pay'> & {
           id?: string
           created_at?: string
+          period?: 'daily' | 'weekly' | 'monthly'
+          total_expenses?: number
+          net_profit?: number
+          cost_per_mile?: number | null
+          profit_per_mile?: number | null
+          deadhead_miles?: number
+          deadhead_percentage?: number | null
+          fleet_utilization_pct?: number | null
+          avg_mpg?: number | null
+          total_fuel_cost?: number | null
+          total_maintenance_cost?: number | null
+          vehicles_in_shop?: number
+          compliance_score?: number | null
+          overdue_compliance_items?: number
+          active_customers?: number
+          new_customers?: number
+          avg_days_to_pay?: number | null
         }
-        Update: Partial<Omit<DailySnapshot, 'id' | 'created_at'>>
+        Update: Partial<Omit<AnalyticsSnapshot, 'id' | 'created_at'>>
+        Relationships: []
+      }
+      driver_performance: {
+        Row: DriverPerformance
+        Insert: Omit<DriverPerformance, 'id' | 'created_at' | 'loads_completed' | 'miles_driven' | 'revenue_generated' | 'on_time_pct' | 'fuel_efficiency' | 'safety_incidents' | 'compliance_score' | 'customer_complaints'> & {
+          id?: string
+          created_at?: string
+          loads_completed?: number
+          miles_driven?: number
+          revenue_generated?: number
+          on_time_pct?: number | null
+          fuel_efficiency?: number | null
+          safety_incidents?: number
+          compliance_score?: number | null
+          customer_complaints?: number
+        }
+        Update: Partial<Omit<DriverPerformance, 'id' | 'created_at'>>
         Relationships: []
       }
       push_subscriptions: {
