@@ -141,18 +141,18 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Compliance
 
-- [ ] **COMP-01**: Compliance profile per org with DOT/MC numbers, carrier type, insurance, IFTA, UCR
-- [ ] **COMP-02**: Compliance items track individual obligations with due dates, status, recurrence
-- [ ] **COMP-03**: Compliance alerts generated at configurable thresholds (90, 60, 30, 14, 7, 1 days)
-- [ ] **COMP-04**: Compliance dashboard shows health score (0-100) based on overdue items, DQ completeness, inspection currency
-- [ ] **COMP-05**: Driver qualification files: CDL, medical card, endorsements, MVR, drug tests, annual review
-- [ ] **COMP-06**: DQ file tracker shows completeness percentage per driver with missing document highlights
+- [x] **COMP-01**: Compliance profile per org with DOT/MC numbers, carrier type, insurance, IFTA, UCR
+- [x] **COMP-02**: Compliance items track individual obligations with due dates, status, recurrence
+- [x] **COMP-03**: Compliance alerts generated at configurable thresholds (90, 60, 30, 14, 7, 1 days)
+- [x] **COMP-04**: Compliance dashboard shows health score (0-100) based on overdue items, DQ completeness, inspection currency
+- [x] **COMP-05**: Driver qualification files: CDL, medical card, endorsements, MVR, drug tests, annual review
+- [x] **COMP-06**: DQ file tracker shows completeness percentage per driver with missing document highlights
 - [ ] **COMP-07**: Inspection records (annual DOT, pre-trip, post-trip, roadside) with pass/fail/conditional
 - [ ] **COMP-08**: DVIR (pre-trip/post-trip) digital form in Driver PWA with camera upload
-- [ ] **COMP-09**: IFTA quarterly tracking per vehicle per jurisdiction
-- [ ] **COMP-10**: IFTA export to CSV for filing
+- [x] **COMP-09**: IFTA quarterly tracking per vehicle per jurisdiction
+- [x] **COMP-10**: IFTA export to CSV for filing
 - [ ] **COMP-11**: compliance-scanner edge function runs daily, generates alerts, auto-creates next recurrence
-- [ ] **COMP-12**: Compliance adapts based on DOT vs non-DOT carrier type
+- [x] **COMP-12**: Compliance adapts based on DOT vs non-DOT carrier type
 - [ ] **COMP-13**: Upcoming deadlines calendar view (next 90 days)
 
 ### Fleet Management
@@ -385,18 +385,18 @@ Which phases cover which requirements. Updated during roadmap creation.
 | EDSP-02 | Phase 6 | Complete |
 | EDSP-03 | Phase 6 | Complete |
 | EDSP-04 | Phase 6 | Complete |
-| COMP-01 | Phase 7 | Pending |
-| COMP-02 | Phase 7 | Pending |
-| COMP-03 | Phase 7 | Pending |
-| COMP-04 | Phase 7 | Pending |
-| COMP-05 | Phase 7 | Pending |
-| COMP-06 | Phase 7 | Pending |
+| COMP-01 | Phase 7 | Complete |
+| COMP-02 | Phase 7 | Complete |
+| COMP-03 | Phase 7 | Complete |
+| COMP-04 | Phase 7 | Complete |
+| COMP-05 | Phase 7 | Complete |
+| COMP-06 | Phase 7 | Complete |
 | COMP-07 | Phase 7 | Pending |
 | COMP-08 | Phase 7 | Pending |
-| COMP-09 | Phase 7 | Pending |
-| COMP-10 | Phase 7 | Pending |
+| COMP-09 | Phase 7 | Complete |
+| COMP-10 | Phase 7 | Complete |
 | COMP-11 | Phase 7 | Pending |
-| COMP-12 | Phase 7 | Pending |
+| COMP-12 | Phase 7 | Complete |
 | COMP-13 | Phase 7 | Pending |
 | FLET-01 | Phase 8 | Pending |
 | FLET-02 | Phase 8 | Pending |
