@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: completed
-stopped_at: Phase 5 context gathered
-last_updated: "2026-03-25T06:30:21.536Z"
-last_activity: 2026-03-25 -- Plan 04-04 complete (Dashboards)
+status: in-progress
+stopped_at: Completed 05-01-PLAN.md
+last_updated: "2026-03-25T06:55:34Z"
+last_activity: 2026-03-25 -- Plan 05-01 complete (Marie AI Backend & Smart Routing)
 progress:
   total_phases: 12
   completed_phases: 4
-  total_plans: 16
-  completed_plans: 16
+  total_plans: 17
+  completed_plans: 17
   percent: 94
 ---
 
@@ -21,14 +21,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-24)
 
 **Core value:** A carrier can manage their entire operation -- loads, drivers, fleet, compliance, billing -- from one platform without needing separate tools.
-**Current focus:** Phase 4: Invoicing & Dashboard
+**Current focus:** Phase 5: Marie AI & Smart Routing
 
 ## Current Position
 
-Phase: 4 of 12 (Invoicing & Dashboard)
-Plan: 4 of 4 in current phase
-Status: Phase 04 Complete
-Last activity: 2026-03-25 -- Plan 04-04 complete (Dashboards)
+Phase: 5 of 12 (Marie AI & Smart Routing)
+Plan: 1 of 3 in current phase
+Status: Plan 05-01 Complete
+Last activity: 2026-03-25 -- Plan 05-01 complete (Marie AI Backend & Smart Routing)
 
 Progress: [█████████░] 94%
 
@@ -64,6 +64,7 @@ Progress: [█████████░] 94%
 | Phase 04 P04 | 4min | 2 tasks | 9 files |
 | Phase 04 P03 | 2min | 2 tasks | 4 files |
 | Phase 04 P02 | 5min | 2 tasks | 15 files |
+| Phase 05 P01 | 8min | 2 tasks | 17 files |
 
 ## Accumulated Context
 
@@ -115,6 +116,10 @@ Recent decisions affecting current work:
 - [Phase 04]: Invoice Insert type updated to make nullable fields optional for ergonomic server action inserts
 - [Phase 04]: Invoice creation uses two-step flow: select delivered load, then one-click create with auto-populated data
 - [Phase 04]: Mark Paid uses inline payment form instead of modal for lightweight interaction
+- [05-01]: Used @anthropic-ai/sdk directly instead of Vercel AI SDK (no existing AI SDK dependency)
+- [05-01]: Marie utility actions are plain async functions, not server actions (avoid FormData/redirect in API routes)
+- [05-01]: Proximity scoring uses city/state text matching with static adjacency map (no geocoding API)
+- [05-01]: Model configurable via MARIE_MODEL env var, defaults to claude-sonnet-4-20250514
 
 ### Pending Todos
 
@@ -126,6 +131,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-25T06:30:21.534Z
-Stopped at: Phase 5 context gathered
-Resume file: .planning/phases/05-marie-ai-smart-routing/05-CONTEXT.md
+Last session: 2026-03-25T06:55:34Z
+Stopped at: Completed 05-01-PLAN.md
+Resume file: .planning/phases/05-marie-ai-smart-routing/05-01-SUMMARY.md

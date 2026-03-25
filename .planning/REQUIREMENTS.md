@@ -87,20 +87,20 @@ Requirements for initial release. Each maps to roadmap phases.
 ### Marie AI
 
 - [ ] **MARI-01**: Marie chat panel opens as slide-out from any page in Command and Owner-Operator modes
-- [ ] **MARI-02**: Marie answers natural language questions about loads, drivers, invoices, and dispatch
-- [ ] **MARI-03**: Marie can execute actions: create load, dispatch driver, generate invoice
-- [ ] **MARI-04**: Marie queries are stateless — context rebuilt from database per request
-- [ ] **MARI-05**: Marie is scoped to requesting user's org via RLS
-- [ ] **MARI-06**: Marie respects user roles (driver cannot execute admin actions)
-- [ ] **MARI-07**: Marie queries logged to marie_queries table with tokens, latency, model
+- [x] **MARI-02**: Marie answers natural language questions about loads, drivers, invoices, and dispatch
+- [x] **MARI-03**: Marie can execute actions: create load, dispatch driver, generate invoice
+- [x] **MARI-04**: Marie queries are stateless — context rebuilt from database per request
+- [x] **MARI-05**: Marie is scoped to requesting user's org via RLS
+- [x] **MARI-06**: Marie respects user roles (driver cannot execute admin actions)
+- [x] **MARI-07**: Marie queries logged to marie_queries table with tokens, latency, model
 - [ ] **MARI-08**: Driver PWA has simplified Marie chat for driver-scoped questions
 - [ ] **MARI-09**: Marie summarizes unacknowledged proactive alerts when chat opens
 - [ ] **MARI-10**: Marie responses include inline action buttons (dispatch, view load, generate invoice)
 
 ### Smart Routing
 
-- [ ] **ROUT-01**: API endpoint returns ranked driver suggestions for a load
-- [ ] **ROUT-02**: Ranking considers proximity (30%), availability (25%), equipment match (20%), on-time performance (15%), lane familiarity (10%)
+- [x] **ROUT-01**: API endpoint returns ranked driver suggestions for a load
+- [x] **ROUT-02**: Ranking considers proximity (30%), availability (25%), equipment match (20%), on-time performance (15%), lane familiarity (10%)
 - [ ] **ROUT-03**: Dispatch UI shows "Suggested" tab with ranked recommendations and score breakdown
 - [ ] **ROUT-04**: One-click assign from suggestion list
 - [ ] **ROUT-05**: Override button for manual driver selection
@@ -349,17 +349,17 @@ Which phases cover which requirements. Updated during roadmap creation.
 | DASH-04 | Phase 4 | Complete |
 | DASH-05 | Phase 4 | Complete |
 | MARI-01 | Phase 5 | Pending |
-| MARI-02 | Phase 5 | Pending |
-| MARI-03 | Phase 5 | Pending |
-| MARI-04 | Phase 5 | Pending |
-| MARI-05 | Phase 5 | Pending |
-| MARI-06 | Phase 5 | Pending |
-| MARI-07 | Phase 5 | Pending |
+| MARI-02 | Phase 5 | Complete |
+| MARI-03 | Phase 5 | Complete |
+| MARI-04 | Phase 5 | Complete |
+| MARI-05 | Phase 5 | Complete |
+| MARI-06 | Phase 5 | Complete |
+| MARI-07 | Phase 5 | Complete |
 | MARI-08 | Phase 5 | Pending |
 | MARI-09 | Phase 5 | Pending |
 | MARI-10 | Phase 5 | Pending |
-| ROUT-01 | Phase 5 | Pending |
-| ROUT-02 | Phase 5 | Pending |
+| ROUT-01 | Phase 5 | Complete |
+| ROUT-02 | Phase 5 | Complete |
 | ROUT-03 | Phase 5 | Pending |
 | ROUT-04 | Phase 5 | Pending |
 | ROUT-05 | Phase 5 | Pending |
