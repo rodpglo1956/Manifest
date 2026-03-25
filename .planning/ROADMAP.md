@@ -202,11 +202,13 @@ Plans:
   3. Users can check out via Stripe hosted page and manage payment methods via Stripe Customer Portal
   4. Webhook handler processes subscription lifecycle events and usage tracking counts vehicles, drivers, loads, AI queries, and voice minutes with API-level enforcement (402 on limit exceeded)
   5. Billing UI shows current plan, usage meters, upgrade/downgrade options, invoice history, and plan comparison page with annual/monthly toggle
-**Plans**: TBD
+**Plans**: 4 plans
 
 Plans:
-- [ ] 10-01: TBD
-- [ ] 10-02: TBD
+- [ ] 10-01-PLAN.md -- Database migration (billing_accounts, plan_limits, usage_records, billing_invoices with RLS), TypeScript types, billing plan config
+- [ ] 10-02-PLAN.md -- Stripe API routes (checkout, portal, webhook handler, billing status endpoint)
+- [ ] 10-03-PLAN.md -- Usage enforcement middleware, pg_cron (usage-tracker, trial-expiry), wire into existing CRUD actions
+- [ ] 10-04-PLAN.md -- Billing settings UI (plan card, usage meters, invoice history), plan comparison page, OO billing page
 
 ### Phase 11: Reporting & Notifications
 **Goal**: Carrier has comprehensive analytics dashboards across all modules, downloadable PDF reports, and a unified multi-channel notification system
@@ -259,6 +261,6 @@ Note: Phases 7, 8, and 10 can execute in parallel after Phase 4. Phase 9 require
 | 7. Compliance | 5/5 | Complete    | 2026-03-25 |
 | 8. Fleet Management | 5/5 | Complete    | 2026-03-25 |
 | 9. CRM & Cross-Module Integration | 5/5 | Complete    | 2026-03-25 |
-| 10. Billing & Subscriptions | 0/2 | Not started | - |
+| 10. Billing & Subscriptions | 0/4 | Not started | - |
 | 11. Reporting & Notifications | 0/2 | Not started | - |
 | 12. Onboarding, PWA, Security & Polish | 0/3 | Not started | - |
