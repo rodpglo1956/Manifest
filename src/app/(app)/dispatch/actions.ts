@@ -3,6 +3,8 @@
 import { createClient } from '@/lib/supabase/server'
 import { canDispatchTransition } from '@/lib/dispatch-status'
 import { createDispatchSchema } from '@/schemas/dispatch'
+import { checkDispatchConflict } from '@/lib/dispatch/conflict-check'
+import { sendPushToUser, sendPushToOrgAdminsAndDispatchers } from '@/lib/push/send-notification'
 import { revalidatePath } from 'next/cache'
 import type { DispatchStatus } from '@/types/database'
 
@@ -34,7 +36,7 @@ export async function createDispatch(formData: FormData): Promise<{ error?: stri
   // Validate load is in 'booked' status
   const { data: load, error: loadFetchError } = await supabase
     .from('loads')
-    .select('id, status, org_id')
+    .select('id, status, org_id, load_number')
     .eq('id', data.load_id)
     .single()
 
@@ -108,6 +110,64 @@ export async function createDispatch(formData: FormData): Promise<{ error?: stri
     return { error: loadError.message }
   }
 
+  // --- Post-dispatch: conflict detection (warn, don't block per ALRT-04) ---
+  try {
+    const conflictResult = await checkDispatchConflict(supabase as any, data.driver_id, data.load_id)
+    if (conflictResult.hasConflict) {
+      // Insert proactive_alert for dispatch conflict
+      await supabase.from('proactive_alerts').insert({
+        org_id: load.org_id,
+        alert_type: 'dispatch_conflict',
+        severity: 'critical',
+        title: 'Dispatch Conflict Detected',
+        message: `Driver assigned to load ${load.load_number ?? load.id.slice(0, 8)} has overlapping dispatches`,
+        related_entity_type: 'dispatch',
+        related_entity_id: data.load_id,
+      })
+
+      // Push to admins/dispatchers about the conflict
+      await sendPushToOrgAdminsAndDispatchers(supabase as any, load.org_id, {
+        title: 'Dispatch Conflict',
+        body: `Driver has overlapping dispatches for load ${load.load_number ?? load.id.slice(0, 8)}`,
+        url: '/dispatch',
+        tag: `conflict-${data.load_id}`,
+      })
+    }
+  } catch {
+    // Conflict check is best-effort -- never fail the dispatch
+  }
+
+  // --- Post-dispatch: push notification to driver ---
+  try {
+    // Look up driver's user_id and notification preferences
+    const { data: driver } = await supabase
+      .from('drivers')
+      .select('user_id')
+      .eq('id', data.driver_id)
+      .single()
+
+    if (driver?.user_id) {
+      // Check notification preferences
+      const { data: profile } = await supabase
+        .from('profiles')
+        .select('notification_preferences')
+        .eq('id', driver.user_id)
+        .single()
+
+      const prefs = profile?.notification_preferences as any
+      if (!prefs || prefs.new_dispatch !== false) {
+        await sendPushToUser(supabase as any, driver.user_id, {
+          title: 'New Dispatch',
+          body: `Load ${load.load_number ?? load.id.slice(0, 8)} assigned to you`,
+          url: '/driver/dispatch',
+          tag: `dispatch-${data.load_id}`,
+        })
+      }
+    }
+  } catch {
+    // Push failure should NOT fail the dispatch creation (fire-and-forget)
+  }
+
   revalidatePath('/dispatch')
   revalidatePath('/loads')
   return {}
@@ -165,4 +225,16 @@ export async function updateDispatchStatus(
 
   revalidatePath('/dispatch')
   return {}
+}
+
+/**
+ * Server action wrapper for checkDispatchConflict.
+ * Called by ConflictWarning component to check for scheduling conflicts.
+ */
+export async function checkConflictAction(
+  driverId: string,
+  loadId: string
+): Promise<{ hasConflict: boolean; conflictingLoads: string[] }> {
+  const supabase = await createClient()
+  return checkDispatchConflict(supabase, driverId, loadId)
 }

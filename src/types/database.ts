@@ -504,7 +504,7 @@ export type Database = {
       }
       proactive_alerts: {
         Row: ProactiveAlert
-        Insert: Omit<ProactiveAlert, 'id' | 'created_at'> & {
+        Insert: Omit<ProactiveAlert, 'id' | 'created_at' | 'acknowledged' | 'acknowledged_by' | 'related_entity_type' | 'related_entity_id'> & {
           id?: string
           created_at?: string
           related_entity_type?: string | null

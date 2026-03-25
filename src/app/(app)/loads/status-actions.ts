@@ -2,6 +2,7 @@
 
 import { createClient } from '@/lib/supabase/server'
 import { canTransition } from '@/lib/load-status'
+import { sendPushToUser } from '@/lib/push/send-notification'
 import { revalidatePath } from 'next/cache'
 import type { LoadStatus } from '@/types/database'
 
@@ -16,10 +17,10 @@ export async function updateLoadStatus(
 ): Promise<{ error?: string }> {
   const supabase = await createClient()
 
-  // Fetch current load status
+  // Fetch current load status and load number
   const { data: load, error: fetchError } = await supabase
     .from('loads')
-    .select('id, status')
+    .select('id, status, load_number')
     .eq('id', loadId)
     .single()
 
@@ -40,6 +41,39 @@ export async function updateLoadStatus(
 
   if (updateError) {
     return { error: updateError.message }
+  }
+
+  // --- Post-update: push notification to dispatcher who created the dispatch ---
+  try {
+    // Find the dispatch for this load to get the dispatcher (assigned_by)
+    const { data: dispatch } = await supabase
+      .from('dispatches')
+      .select('assigned_by')
+      .eq('load_id', loadId)
+      .order('created_at', { ascending: false })
+      .limit(1)
+      .maybeSingle()
+
+    if (dispatch?.assigned_by) {
+      // Check dispatcher's notification preferences
+      const { data: profile } = await supabase
+        .from('profiles')
+        .select('notification_preferences')
+        .eq('id', dispatch.assigned_by)
+        .single()
+
+      const prefs = profile?.notification_preferences as any
+      if (!prefs || prefs.load_status_change !== false) {
+        await sendPushToUser(supabase as any, dispatch.assigned_by, {
+          title: 'Load Status Update',
+          body: `Load ${load.load_number ?? loadId.slice(0, 8)} is now ${newStatus}`,
+          url: `/loads/${loadId}`,
+          tag: `status-${loadId}`,
+        })
+      }
+    }
+  } catch {
+    // Push failure should NOT fail the status update (fire-and-forget)
   }
 
   revalidatePath('/loads')

@@ -1,6 +1,7 @@
 'use server'
 
 import { createClient } from '@/lib/supabase/server'
+import { sendPushToOrgAdminsAndDispatchers } from '@/lib/push/send-notification'
 import { revalidatePath } from 'next/cache'
 import type { ProactiveAlert } from '@/types/database'
 
@@ -81,4 +82,25 @@ export async function getAlertCount(): Promise<number> {
 
   if (error) return 0
   return count ?? 0
+}
+
+/**
+ * Send push notification for a critical alert to org admins and dispatchers.
+ * Called when new critical alerts are detected (e.g., via Realtime subscription).
+ * Best-effort: errors are logged but never thrown.
+ */
+export async function triggerAlertPush(alert: ProactiveAlert): Promise<void> {
+  if (alert.severity !== 'critical') return
+
+  try {
+    const supabase = await createClient()
+    await sendPushToOrgAdminsAndDispatchers(supabase as any, alert.org_id, {
+      title: `Critical Alert: ${alert.title}`,
+      body: alert.message,
+      url: '/dashboard',
+      tag: `alert-${alert.id}`,
+    })
+  } catch {
+    // Push is best-effort -- never break on failure
+  }
 }
