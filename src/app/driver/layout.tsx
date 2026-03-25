@@ -3,15 +3,15 @@
 import { DriverHeader } from '@/components/layout/driver-header'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
-import { LayoutDashboard, Navigation, Package, ClipboardCheck, Settings } from 'lucide-react'
+import { LayoutDashboard, Navigation, Package, ClipboardCheck, Truck, Settings } from 'lucide-react'
 import { MarieDriverChat } from '@/components/marie/marie-driver-chat'
 
 const bottomNavItems = [
   { href: '/driver/dashboard', label: 'Dashboard', icon: LayoutDashboard },
   { href: '/driver/dispatch', label: 'Dispatch', icon: Navigation },
   { href: '/driver/loads', label: 'Loads', icon: Package },
+  { href: '/driver/vehicle', label: 'Vehicle', icon: Truck },
   { href: '/driver/compliance', label: 'Compliance', icon: ClipboardCheck },
-  { href: '/driver/settings', label: 'Settings', icon: Settings },
 ]
 
 export default function DriverLayout({ children }: { children: React.ReactNode }) {
