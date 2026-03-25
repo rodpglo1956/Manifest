@@ -211,7 +211,7 @@ Plans:
 - [ ] 10-04-PLAN.md -- Billing settings UI (plan card, usage meters, invoice history), plan comparison page, OO billing page
 
 ### Phase 11: Reporting & Notifications
-**Goal**: Carrier has comprehensive analytics dashboards across all modules, downloadable PDF reports, and a unified multi-channel notification system
+**Goal**: Operators get advanced analytics dashboards with actionable metrics, can generate and schedule PDF reports, and receive notifications across in-app, push, email, and SMS channels with user-configurable preferences
 **Depends on**: Phases 7, 8, 9
 **Requirements**: REPT-01, REPT-02, REPT-03, REPT-04, REPT-05, REPT-06, REPT-07, REPT-08, NOTF-01, NOTF-02, NOTF-03, NOTF-04, NOTF-05, NOTF-06
 **Success Criteria** (what must be TRUE):
@@ -220,11 +220,15 @@ Plans:
   3. Driver performance tracks loads, miles, revenue, on-time %, fuel efficiency, safety, and compliance score
   4. PDF reports (P&L, fleet, compliance, driver) can be generated and downloaded, and Owner-Operator gets simplified P&L with per-mile profitability
   5. Notification system delivers in-app, push, email, and SMS with per-user category/channel preferences, quiet hours, and unread count badge in header
-**Plans**: TBD
+**Plans**: 6 plans
 
 Plans:
-- [ ] 11-01: TBD
-- [ ] 11-02: TBD
+- [ ] 11-01-PLAN.md -- Analytics DB expansion (snapshots, driver_performance), types, analytics-builder cron, server actions
+- [ ] 11-02-PLAN.md -- Notifications DB (notifications, preferences tables), dispatcher function, notification bell in header
+- [ ] 11-03-PLAN.md -- Notification preferences matrix UI (category x channel toggles, quiet hours)
+- [ ] 11-04-PLAN.md -- Analytics main dashboard (KPI cards, revenue/profit chart) and operations analytics page
+- [ ] 11-05-PLAN.md -- Fleet analytics, driver scorecards, customer/broker profitability pages
+- [ ] 11-06-PLAN.md -- PDF report generation (P&L, fleet, compliance, driver), reports page, OO analytics P&L
 
 ### Phase 12: Onboarding, PWA, Security & Polish
 **Goal**: New users have a guided setup experience, the Driver PWA works fully offline, the application meets security standards, and enterprise customers can white-label the product
@@ -262,5 +266,5 @@ Note: Phases 7, 8, and 10 can execute in parallel after Phase 4. Phase 9 require
 | 8. Fleet Management | 5/5 | Complete    | 2026-03-25 |
 | 9. CRM & Cross-Module Integration | 5/5 | Complete    | 2026-03-25 |
 | 10. Billing & Subscriptions | 4/4 | Complete    | 2026-03-25 |
-| 11. Reporting & Notifications | 0/2 | Not started | - |
+| 11. Reporting & Notifications | 0/6 | Not started | - |
 | 12. Onboarding, PWA, Security & Polish | 0/3 | Not started | - |
