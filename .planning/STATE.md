@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: completed
-stopped_at: Completed 07-05-PLAN.md
-last_updated: "2026-03-25T21:12:20.563Z"
-last_activity: 2026-03-25 -- Plan 07-05 complete (Driver & OO Compliance Views)
+status: executing
+stopped_at: Completed 08-01-PLAN.md
+last_updated: "2026-03-25T21:29:32.916Z"
+last_activity: 2026-03-25 -- Plan 08-01 complete (Fleet Schema & Helpers)
 progress:
   total_phases: 12
   completed_phases: 7
-  total_plans: 29
-  completed_plans: 29
-  percent: 97
+  total_plans: 34
+  completed_plans: 30
+  percent: 88
 ---
 
 # Project State
@@ -21,16 +21,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-24)
 
 **Core value:** A carrier can manage their entire operation -- loads, drivers, fleet, compliance, billing -- from one platform without needing separate tools.
-**Current focus:** Phase 7: Compliance
+**Current focus:** Phase 8: Fleet Management
 
 ## Current Position
 
-Phase: 7 of 12 (Compliance) -- IN PROGRESS
-Plan: 5 of 5 in current phase (5 complete)
-Status: Phase 07 COMPLETE
-Last activity: 2026-03-25 -- Plan 07-05 complete (Driver & OO Compliance Views)
+Phase: 8 of 12 (Fleet Management) -- IN PROGRESS
+Plan: 1 of 5 in current phase (1 complete)
+Status: Executing Phase 08
+Last activity: 2026-03-25 -- Plan 08-01 complete (Fleet Schema & Helpers)
 
-Progress: [██████████] 97%
+Progress: [█████████░] 88%
 
 ## Performance Metrics
 
@@ -77,6 +77,7 @@ Progress: [██████████] 97%
 | Phase 07 P04 | 3min | 2 tasks | 10 files |
 | Phase 07 P03 | 2min | 2 tasks | 8 files |
 | Phase 07 P05 | 3min | 2 tasks | 6 files |
+| Phase 08 P01 | 6min | 2 tasks | 10 files |
 
 ## Accumulated Context
 
@@ -165,6 +166,10 @@ Recent decisions affecting current work:
 - [07-03]: SVG ring gauge for health score instead of Recharts RadialBarChart for lightweight visualization
 - [07-03]: Add-item form uses URL param toggle (?addItem=true) for collapsible inline form instead of modal
 - [Phase 07]: OO compliance page redirects non-OO users to /compliance; IFTA log shown only when IFTA license configured
+- [Phase 08]: Expanded VehicleType to 16 variants and VehicleStatus to 6 states for full fleet lifecycle
+- [Phase 08]: downtime_days as GENERATED STORED column computed from date_out - date_in
+- [Phase 08]: maintenanceScheduleSchema uses Zod refine for at-least-one-interval validation
+- [Phase 08]: getMaintenanceStatus uses 30-day and 3000-mile thresholds for due_soon detection
 
 ### Pending Todos
 
@@ -176,6 +181,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-25T21:11:47.554Z
-Stopped at: Completed 07-05-PLAN.md
+Last session: 2026-03-25T21:29:32.913Z
+Stopped at: Completed 08-01-PLAN.md
 Resume file: None

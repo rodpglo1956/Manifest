@@ -157,14 +157,14 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Fleet Management
 
-- [ ] **FLET-01**: Full vehicle CRUD with class, type, registration, odometer, fuel type, photos
-- [ ] **FLET-02**: Vehicle status tracking: active, in_shop, out_of_service, parked, sold
-- [ ] **FLET-03**: Maintenance records with type, vendor, cost (parts/labor/total), date in/out, downtime
-- [ ] **FLET-04**: Maintenance schedules (templates) by vehicle or vehicle class with mile/day intervals
+- [x] **FLET-01**: Full vehicle CRUD with class, type, registration, odometer, fuel type, photos
+- [x] **FLET-02**: Vehicle status tracking: active, in_shop, out_of_service, parked, sold
+- [x] **FLET-03**: Maintenance records with type, vendor, cost (parts/labor/total), date in/out, downtime
+- [x] **FLET-04**: Maintenance schedules (templates) by vehicle or vehicle class with mile/day intervals
 - [ ] **FLET-05**: maintenance-monitor edge function identifies upcoming service and creates alerts
-- [ ] **FLET-06**: Fuel transaction logging (manual or fuel card sync)
-- [ ] **FLET-07**: Cost per mile calculation per vehicle and fleet-wide
-- [ ] **FLET-08**: Vehicle assignment history tracking
+- [x] **FLET-06**: Fuel transaction logging (manual or fuel card sync)
+- [x] **FLET-07**: Cost per mile calculation per vehicle and fleet-wide
+- [x] **FLET-08**: Vehicle assignment history tracking
 - [ ] **FLET-09**: Fleet dashboard: vehicles by status, maintenance due, cost per mile, top expensive vehicles
 - [ ] **FLET-10**: Driver PWA: assigned vehicle info, pre-trip inspection form, report issue, fuel log entry
 
@@ -398,14 +398,14 @@ Which phases cover which requirements. Updated during roadmap creation.
 | COMP-11 | Phase 7 | Complete |
 | COMP-12 | Phase 7 | Complete |
 | COMP-13 | Phase 7 | Complete |
-| FLET-01 | Phase 8 | Pending |
-| FLET-02 | Phase 8 | Pending |
-| FLET-03 | Phase 8 | Pending |
-| FLET-04 | Phase 8 | Pending |
+| FLET-01 | Phase 8 | Complete |
+| FLET-02 | Phase 8 | Complete |
+| FLET-03 | Phase 8 | Complete |
+| FLET-04 | Phase 8 | Complete |
 | FLET-05 | Phase 8 | Pending |
-| FLET-06 | Phase 8 | Pending |
-| FLET-07 | Phase 8 | Pending |
-| FLET-08 | Phase 8 | Pending |
+| FLET-06 | Phase 8 | Complete |
+| FLET-07 | Phase 8 | Complete |
+| FLET-08 | Phase 8 | Complete |
 | FLET-09 | Phase 8 | Pending |
 | FLET-10 | Phase 8 | Pending |
 | CRM-01 | Phase 9 | Pending |
