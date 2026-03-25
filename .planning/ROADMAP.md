@@ -74,11 +74,12 @@ Plans:
   2. Active dispatches display with ETA and current status, and driver availability view shows who is free, on a load, or off
   3. Driver receives dispatch in PWA with load summary card and can accept, reject, or send notes to dispatcher
   4. Dispatch status changes broadcast via Supabase Realtime so all users see updates immediately
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 03-01: TBD
-- [ ] 03-02: TBD
+- [ ] 03-01-PLAN.md -- Database migration, types, dispatch-status utility, Zod schemas, Realtime hook, server actions, tests
+- [ ] 03-02-PLAN.md -- Dispatch board UI (Command mode): two-column layout, assignment form, active dispatches, navigation
+- [ ] 03-03-PLAN.md -- Driver PWA dispatch: dispatch card, accept/reject, status updates, notes, navigation
 
 ### Phase 4: Invoicing & Dashboard
 **Goal**: Carrier can generate invoices from delivered loads, track payment status, and view operational health across all three modes (Command, Driver PWA, Owner-Operator)
@@ -237,7 +238,7 @@ Note: Phases 7, 8, and 10 can execute in parallel after Phase 4. Phase 9 require
 |-------|----------------|--------|-----------|
 | 1. Auth & Organization | 3/3 | Complete    | 2026-03-25 |
 | 2. Loads, Drivers & Vehicles | 6/6 | Complete    | 2026-03-25 |
-| 3. Dispatch | 0/2 | Not started | - |
+| 3. Dispatch | 0/3 | Not started | - |
 | 4. Invoicing & Dashboard | 0/2 | Not started | - |
 | 5. Marie AI & Smart Routing | 0/2 | Not started | - |
 | 6. Alerts, Analytics & Enhanced Dispatch | 0/3 | Not started | - |
