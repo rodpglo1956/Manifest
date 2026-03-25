@@ -41,7 +41,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **LOAD-07**: Load status lifecycle works end-to-end: booked → dispatched → in_transit → at_pickup → loaded → at_delivery → delivered → invoiced → paid
 - [x] **LOAD-08**: Every status change writes to load_status_history with timestamp, user, location, notes
 - [x] **LOAD-09**: Load status changes broadcast via Supabase Realtime
-- [ ] **LOAD-10**: User can upload documents (BOL, rate confirmation, POD) to a load
+- [x] **LOAD-10**: User can upload documents (BOL, rate confirmation, POD) to a load
 - [ ] **LOAD-11**: Driver can upload BOL/POD via mobile camera in Driver PWA
 - [ ] **LOAD-12**: User can filter loads by status, driver, date range, broker
 - [ ] **LOAD-13**: Load board view shows loads in kanban layout by status
@@ -320,7 +320,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | LOAD-07 | Phase 2 | Complete |
 | LOAD-08 | Phase 2 | Complete |
 | LOAD-09 | Phase 2 | Complete |
-| LOAD-10 | Phase 2 | Pending |
+| LOAD-10 | Phase 2 | Complete |
 | LOAD-11 | Phase 2 | Pending |
 | LOAD-12 | Phase 2 | Pending |
 | LOAD-13 | Phase 2 | Pending |
