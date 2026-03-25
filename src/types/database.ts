@@ -312,9 +312,12 @@ export type Database = {
       }
       dispatches: {
         Row: Dispatch
-        Insert: Omit<Dispatch, 'id' | 'assigned_at' | 'created_at' | 'updated_at'> & {
+        Insert: Omit<Dispatch, 'id' | 'assigned_at' | 'accepted_at' | 'completed_at' | 'driver_notes' | 'created_at' | 'updated_at'> & {
           id?: string
           assigned_at?: string
+          accepted_at?: string | null
+          completed_at?: string | null
+          driver_notes?: string | null
           created_at?: string
           updated_at?: string
         }
