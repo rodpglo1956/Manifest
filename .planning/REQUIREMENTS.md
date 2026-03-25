@@ -177,17 +177,17 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **CRM-05**: Rate agreements per company/lane with effective dates, rate type, volume minimums
 - [x] **CRM-06**: Activity logging (calls, emails, notes, meetings, follow-ups) per company/contact/lane
 - [x] **CRM-07**: Follow-up reminder edge function sends push notification on follow-up date
-- [ ] **CRM-08**: CRM dashboard: revenue by company, expiring rate agreements, pending follow-ups, broker pay performance
+- [x] **CRM-08**: CRM dashboard: revenue by company, expiring rate agreements, pending follow-ups, broker pay performance
 - [x] **CRM-09**: crm-stats-updater edge function recalculates company/lane aggregates nightly
 - [x] **CRM-10**: Auto-update CRM stats when load completes (company revenue, lane stats, system activity)
 
 ### Cross-Module Integration
 
-- [ ] **XMOD-01**: Load completion auto-updates CRM company revenue, lane stats, logs system activity
-- [ ] **XMOD-02**: DOT inspection auto-completes compliance item and schedules next annual inspection
-- [ ] **XMOD-03**: CDL expiry flags driver in compliance and fleet, alerts on active loads
-- [ ] **XMOD-04**: Fuel transactions feed into fleet cost-per-mile AND IFTA compliance calculations
-- [ ] **XMOD-05**: Marie checks CRM payment history and compliance eligibility before accepting load/dispatch actions
+- [x] **XMOD-01**: Load completion auto-updates CRM company revenue, lane stats, logs system activity
+- [x] **XMOD-02**: DOT inspection auto-completes compliance item and schedules next annual inspection
+- [x] **XMOD-03**: CDL expiry flags driver in compliance and fleet, alerts on active loads
+- [x] **XMOD-04**: Fuel transactions feed into fleet cost-per-mile AND IFTA compliance calculations
+- [x] **XMOD-05**: Marie checks CRM payment history and compliance eligibility before accepting load/dispatch actions
 
 ### Billing
 
@@ -415,14 +415,14 @@ Which phases cover which requirements. Updated during roadmap creation.
 | CRM-05 | Phase 9 | Complete |
 | CRM-06 | Phase 9 | Complete |
 | CRM-07 | Phase 9 | Complete |
-| CRM-08 | Phase 9 | Pending |
+| CRM-08 | Phase 9 | Complete |
 | CRM-09 | Phase 9 | Complete |
 | CRM-10 | Phase 9 | Complete |
-| XMOD-01 | Phase 9 | Pending |
-| XMOD-02 | Phase 9 | Pending |
-| XMOD-03 | Phase 9 | Pending |
-| XMOD-04 | Phase 9 | Pending |
-| XMOD-05 | Phase 9 | Pending |
+| XMOD-01 | Phase 9 | Complete |
+| XMOD-02 | Phase 9 | Complete |
+| XMOD-03 | Phase 9 | Complete |
+| XMOD-04 | Phase 9 | Complete |
+| XMOD-05 | Phase 9 | Complete |
 | BILL-01 | Phase 10 | Pending |
 | BILL-02 | Phase 10 | Pending |
 | BILL-03 | Phase 10 | Pending |
