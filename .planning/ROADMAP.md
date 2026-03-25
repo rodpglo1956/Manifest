@@ -126,12 +126,14 @@ Plans:
   3. Daily analytics snapshots generate nightly and power dashboard charts: revenue trend, load volume, on-time performance, and revenue per mile
   4. Enhanced dispatch board shows map view with load/driver pins, timeline/Gantt view of driver schedules, and conflict detection on assignment
   5. Smart routing suggestions are integrated directly into the enhanced dispatch UI
-**Plans**: TBD
+**Plans**: 5 plans
 
 Plans:
-- [ ] 06-01: TBD
-- [ ] 06-02: TBD
-- [ ] 06-03: TBD
+- [ ] 06-01-PLAN.md -- Database migrations (daily_snapshots, alert generators, push subscriptions), TypeScript types, alert helpers, city coords, conflict detection
+- [ ] 06-02-PLAN.md -- Push notification infrastructure (service worker, VAPID, subscription API, send utility, preferences settings)
+- [ ] 06-03-PLAN.md -- Alert UI (dashboard feed with severity badges, acknowledge action) and push notification triggers in dispatch/load actions
+- [ ] 06-04-PLAN.md -- Analytics dashboard charts (revenue trend, load volume, on-time gauge, RPM trend) with snapshot API
+- [ ] 06-05-PLAN.md -- Enhanced dispatch board (MapLibre map view, timeline/Gantt view, conflict detection warning, tab navigation)
 
 ### Phase 7: Compliance
 **Goal**: Carrier can track all regulatory compliance obligations (DOT and non-DOT), manage driver qualification files, record inspections, calculate IFTA, and receive automated alerts before deadlines
@@ -242,7 +244,7 @@ Note: Phases 7, 8, and 10 can execute in parallel after Phase 4. Phase 9 require
 | 1. Auth & Organization | 3/3 | Complete    | 2026-03-25 |
 | 2. Loads, Drivers & Vehicles | 6/6 | Complete    | 2026-03-25 |
 | 3. Dispatch | 3/3 | Complete    | 2026-03-25 |
-| 4. Invoicing & Dashboard | 3/4 | Complete    | 2026-03-25 |
+| 6. Alerts, Analytics & Enhanced Dispatch | 0/5 | Not started | - |
 | 5. Marie AI & Smart Routing | 3/3 | Complete    | 2026-03-25 |
 | 6. Alerts, Analytics & Enhanced Dispatch | 0/3 | Not started | - |
 | 7. Compliance | 0/2 | Not started | - |
