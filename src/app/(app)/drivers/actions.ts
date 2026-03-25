@@ -5,6 +5,7 @@ import { revalidatePath } from 'next/cache'
 import { createClient } from '@/lib/supabase/server'
 import { supabaseAdmin } from '@/lib/supabase/admin'
 import { driverSchema } from '@/schemas/driver'
+import { checkUsageLimit, UsageLimitError } from '@/lib/billing/enforce'
 import type { Driver, DriverStatus } from '@/types/database'
 
 export async function createDriver(formData: FormData) {
@@ -50,6 +51,16 @@ export async function createDriver(formData: FormData) {
 
   if (!profile?.org_id) {
     return { error: { form: ['No organization found'] } }
+  }
+
+  // Check plan limits before creating driver
+  try {
+    await checkUsageLimit(profile.org_id, 'drivers')
+  } catch (err) {
+    if (err instanceof UsageLimitError) {
+      return { error: { form: ['Driver limit reached. Upgrade your plan to add more drivers.'] } }
+    }
+    throw err
   }
 
   const { error } = await supabase.from('drivers').insert({

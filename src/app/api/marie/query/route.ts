@@ -7,6 +7,7 @@ import Anthropic from '@anthropic-ai/sdk'
 import { createClient } from '@/lib/supabase/server'
 import { buildSystemPrompt } from '@/lib/marie/system-prompt'
 import { getMarieTools, executeTool } from '@/lib/marie/tools'
+import { checkUsageLimit, UsageLimitError } from '@/lib/billing/enforce'
 import type { UserRole } from '@/types/database'
 
 const anthropic = new Anthropic()
@@ -46,6 +47,19 @@ export async function POST(request: NextRequest) {
 
   if (!queryText || typeof queryText !== 'string') {
     return NextResponse.json({ error: 'Query is required' }, { status: 400 })
+  }
+
+  // Check AI query limit before calling Claude
+  try {
+    await checkUsageLimit(profile.org_id, 'ai_queries')
+  } catch (err) {
+    if (err instanceof UsageLimitError) {
+      return NextResponse.json(
+        { error: 'AI query limit reached. Upgrade your plan for more queries.' },
+        { status: 402 }
+      )
+    }
+    throw err
   }
 
   try {

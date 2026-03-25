@@ -3,6 +3,7 @@
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
 import { loadSchema } from '@/schemas/load'
+import { checkUsageLimit, UsageLimitError } from '@/lib/billing/enforce'
 import type { LoadStatus, RateType, WeightUnit, EquipmentType } from '@/types/database'
 
 export async function createLoad(formData: FormData) {
@@ -71,6 +72,16 @@ export async function createLoad(formData: FormData) {
 
   if (!profile?.org_id) {
     return { error: { form: ['No organization found'] } }
+  }
+
+  // Check plan limits before creating load
+  try {
+    await checkUsageLimit(profile.org_id, 'loads')
+  } catch (err) {
+    if (err instanceof UsageLimitError) {
+      return { error: { form: ['Load limit reached. Upgrade your plan to create more loads.'] } }
+    }
+    throw err
   }
 
   // Compute total revenue

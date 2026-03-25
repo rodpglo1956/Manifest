@@ -4,6 +4,7 @@ import { redirect } from 'next/navigation'
 import { revalidatePath } from 'next/cache'
 import { createClient } from '@/lib/supabase/server'
 import { vehicleSchema } from '@/schemas/vehicle'
+import { checkUsageLimit, UsageLimitError } from '@/lib/billing/enforce'
 import type { VehicleStatus, VehicleType, VehicleClass, FuelType } from '@/types/database'
 
 function extractVehicleFields(formData: FormData) {
@@ -83,6 +84,16 @@ export async function createVehicle(formData: FormData) {
 
   if (!profile?.org_id) {
     return { error: { form: ['No organization found'] } }
+  }
+
+  // Check plan limits before creating vehicle
+  try {
+    await checkUsageLimit(profile.org_id, 'vehicles')
+  } catch (err) {
+    if (err instanceof UsageLimitError) {
+      return { error: { form: ['Vehicle limit reached. Upgrade your plan to add more vehicles.'] } }
+    }
+    throw err
   }
 
   const { error } = await supabase.from('vehicles').insert(
