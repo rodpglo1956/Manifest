@@ -193,9 +193,9 @@ Requirements for initial release. Each maps to roadmap phases.
 
 - [x] **BILL-01**: Stripe Connect integration in platform mode (Glo Matrix = platform, each org = Connected Account)
 - [x] **BILL-02**: Plan tiers: free, starter, professional, enterprise with feature limits
-- [ ] **BILL-03**: Checkout flow via Stripe hosted page
-- [ ] **BILL-04**: Stripe Customer Portal for payment method management
-- [ ] **BILL-05**: Webhook handler for subscription lifecycle events
+- [x] **BILL-03**: Checkout flow via Stripe hosted page
+- [x] **BILL-04**: Stripe Customer Portal for payment method management
+- [x] **BILL-05**: Webhook handler for subscription lifecycle events
 - [x] **BILL-06**: Usage tracking: vehicles, drivers, loads, AI queries, voice minutes per period
 - [x] **BILL-07**: Usage enforcement at API level (402 on limit exceeded)
 - [x] **BILL-08**: Trial management (14-day Professional, auto-downgrade to free)
@@ -425,9 +425,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | XMOD-05 | Phase 9 | Complete |
 | BILL-01 | Phase 10 | Complete |
 | BILL-02 | Phase 10 | Complete |
-| BILL-03 | Phase 10 | Pending |
-| BILL-04 | Phase 10 | Pending |
-| BILL-05 | Phase 10 | Pending |
+| BILL-03 | Phase 10 | Complete |
+| BILL-04 | Phase 10 | Complete |
+| BILL-05 | Phase 10 | Complete |
 | BILL-06 | Phase 10 | Complete |
 | BILL-07 | Phase 10 | Complete |
 | BILL-08 | Phase 10 | Complete |

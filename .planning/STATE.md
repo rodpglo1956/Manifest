@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 10-03-PLAN.md
-last_updated: "2026-03-25T22:44:51.354Z"
-last_activity: 2026-03-25 -- Plan 10-03 complete (Usage Enforcement & Trial Management)
+stopped_at: Completed 10-02-PLAN.md
+last_updated: "2026-03-25T22:46:40.209Z"
+last_activity: 2026-03-25 -- Plan 10-02 complete (Stripe API Routes)
 progress:
   total_phases: 12
   completed_phases: 9
   total_plans: 43
-  completed_plans: 41
+  completed_plans: 42
   percent: 95
 ---
 
@@ -26,9 +26,9 @@ See: .planning/PROJECT.md (updated 2026-03-24)
 ## Current Position
 
 Phase: 10 of 12 (Billing & Subscriptions)
-Plan: 3 of 4 in current phase (3 complete)
+Plan: 2 of 4 in current phase (2 complete)
 Status: In Progress
-Last activity: 2026-03-25 -- Plan 10-03 complete (Usage Enforcement & Trial Management)
+Last activity: 2026-03-25 -- Plan 10-02 complete (Stripe API Routes)
 
 Progress: [██████████] 95%
 
@@ -90,6 +90,7 @@ Progress: [██████████] 95%
 | Phase 09 P05 | 5min | 2 tasks | 7 files |
 | Phase 10 P01 | 3min | 2 tasks | 3 files |
 | Phase 10 P03 | 3min | 2 tasks | 6 files |
+| Phase 10 P02 | 4min | 2 tasks | 5 files |
 
 ## Accumulated Context
 
@@ -216,6 +217,9 @@ Recent decisions affecting current work:
 - [Phase 10]: [10-03]: No billing account means operation allowed (graceful fallback for unconfigured orgs)
 - [Phase 10]: [10-03]: Live count queries at enforcement time rather than reading cached usage_records
 - [Phase 10]: [10-03]: UsageLimitError caught specifically in each action; other errors rethrown
+- [Phase 10]: [10-02]: Stripe API version 2024-12-18.acacia uses items.data[0] for subscription period dates
+- [Phase 10]: [10-02]: Invoice subscription reference via parent.subscription_details in newer Stripe API
+- [Phase 10]: [10-02]: Checkout restricted to starter/professional plans; free has no Stripe, enterprise is contact-sales
 
 ### Pending Todos
 
@@ -227,6 +231,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-25T22:44:51.352Z
-Stopped at: Completed 10-03-PLAN.md
+Last session: 2026-03-25T22:46:40.207Z
+Stopped at: Completed 10-02-PLAN.md
 Resume file: None
