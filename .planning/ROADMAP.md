@@ -164,11 +164,14 @@ Plans:
   3. Fuel transactions can be logged (manual or fuel card), cost per mile is calculated per vehicle and fleet-wide, and vehicle assignment history is tracked
   4. Fleet dashboard shows vehicles by status, maintenance due, cost per mile, and top expensive vehicles
   5. Driver PWA shows assigned vehicle info, pre-trip inspection form, report issue button, and fuel log entry
-**Plans**: TBD
+**Plans**: 5 plans
 
 Plans:
-- [ ] 08-01: TBD
-- [ ] 08-02: TBD
+- [ ] 08-01-PLAN.md -- Database migration (expand vehicles, create maintenance_records, maintenance_schedules, fuel_transactions, vehicle_assignments with RLS), TypeScript types, Zod schemas, fleet helpers (cost-per-mile, MPG), StatusBadge extension, tests
+- [ ] 08-02-PLAN.md -- Maintenance monitor pg_cron function and all fleet server actions (expanded vehicle CRUD, maintenance CRUD, fuel logging, assignment tracking, cost-per-mile retrieval)
+- [ ] 08-03-PLAN.md -- Expanded vehicle form with all fields, updated vehicle list with status filters, vehicle detail page with maintenance/fuel/cost/assignment tabs
+- [ ] 08-04-PLAN.md -- Fleet dashboard (status snapshot, maintenance due, cost metrics), maintenance center page, fuel dashboard page, sidebar sub-navigation
+- [ ] 08-05-PLAN.md -- Driver PWA vehicle page (assigned vehicle info, report issue, fuel log) and Owner-Operator vehicle dashboard
 
 ### Phase 9: CRM & Cross-Module Integration
 **Goal**: Carrier can manage customer, broker, and vendor relationships with lane-based rate tracking, and operational events automatically cascade across modules
@@ -251,7 +254,7 @@ Note: Phases 7, 8, and 10 can execute in parallel after Phase 4. Phase 9 require
 | 5. Marie AI & Smart Routing | 3/3 | Complete    | 2026-03-25 |
 | 6. Alerts, Analytics & Enhanced Dispatch | 0/3 | Not started | - |
 | 7. Compliance | 5/5 | Complete    | 2026-03-25 |
-| 8. Fleet Management | 0/2 | Not started | - |
+| 8. Fleet Management | 0/5 | Not started | - |
 | 9. CRM & Cross-Module Integration | 0/2 | Not started | - |
 | 10. Billing & Subscriptions | 0/2 | Not started | - |
 | 11. Reporting & Notifications | 0/2 | Not started | - |
