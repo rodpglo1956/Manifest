@@ -261,6 +261,36 @@ export type InvoiceNumberSequence = {
   last_number: number
 }
 
+// Phase 5: Marie AI types
+export type MarieQuery = {
+  id: string
+  org_id: string
+  user_id: string
+  query_text: string
+  response_text: string | null
+  query_type: string | null
+  tokens_used: number | null
+  latency_ms: number | null
+  model: string | null
+  success: boolean
+  error_message: string | null
+  created_at: string
+}
+
+export type ProactiveAlert = {
+  id: string
+  org_id: string
+  alert_type: string
+  severity: string
+  title: string
+  message: string
+  related_entity_type: string | null
+  related_entity_id: string | null
+  acknowledged: boolean
+  acknowledged_by: string | null
+  created_at: string
+}
+
 // Supabase Database type for client typing
 export type Database = {
   public: {
@@ -391,6 +421,35 @@ export type Database = {
         Row: InvoiceNumberSequence
         Insert: InvoiceNumberSequence
         Update: Partial<InvoiceNumberSequence>
+        Relationships: []
+      }
+      marie_queries: {
+        Row: MarieQuery
+        Insert: Omit<MarieQuery, 'id' | 'created_at'> & {
+          id?: string
+          created_at?: string
+          response_text?: string | null
+          query_type?: string | null
+          tokens_used?: number | null
+          latency_ms?: number | null
+          model?: string | null
+          success?: boolean
+          error_message?: string | null
+        }
+        Update: Partial<Omit<MarieQuery, 'id' | 'created_at'>>
+        Relationships: []
+      }
+      proactive_alerts: {
+        Row: ProactiveAlert
+        Insert: Omit<ProactiveAlert, 'id' | 'created_at'> & {
+          id?: string
+          created_at?: string
+          related_entity_type?: string | null
+          related_entity_id?: string | null
+          acknowledged?: boolean
+          acknowledged_by?: string | null
+        }
+        Update: Partial<Omit<ProactiveAlert, 'id' | 'created_at'>>
         Relationships: []
       }
     }
