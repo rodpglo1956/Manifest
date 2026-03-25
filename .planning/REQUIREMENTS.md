@@ -23,12 +23,12 @@ Requirements for initial release. Each maps to roadmap phases.
 ### Driver Management
 
 - [x] **DRVR-01**: Admin/dispatcher can add a driver with name, contact info, license details, and hire date
-- [ ] **DRVR-02**: Admin/dispatcher can edit driver information
-- [ ] **DRVR-03**: Admin/dispatcher can deactivate/terminate a driver
-- [ ] **DRVR-04**: Admin/dispatcher can search and filter driver list by status
+- [x] **DRVR-02**: Admin/dispatcher can edit driver information
+- [x] **DRVR-03**: Admin/dispatcher can deactivate/terminate a driver
+- [x] **DRVR-04**: Admin/dispatcher can search and filter driver list by status
 - [ ] **DRVR-05**: Admin can link a driver record to a user account (generates invitation)
 - [ ] **DRVR-06**: Driver can view own profile in Driver PWA (read-only except phone and emergency contact)
-- [ ] **DRVR-07**: Driver detail page shows contact info, license info, assigned vehicle, load history
+- [x] **DRVR-07**: Driver detail page shows contact info, license info, assigned vehicle, load history
 
 ### Load Management
 
@@ -303,12 +303,12 @@ Which phases cover which requirements. Updated during roadmap creation.
 | AUTH-09 | Phase 1 | Complete |
 | AUTH-10 | Phase 1 | Complete |
 | DRVR-01 | Phase 2 | Complete |
-| DRVR-02 | Phase 2 | Pending |
-| DRVR-03 | Phase 2 | Pending |
-| DRVR-04 | Phase 2 | Pending |
+| DRVR-02 | Phase 2 | Complete |
+| DRVR-03 | Phase 2 | Complete |
+| DRVR-04 | Phase 2 | Complete |
 | DRVR-05 | Phase 2 | Pending |
 | DRVR-06 | Phase 2 | Pending |
-| DRVR-07 | Phase 2 | Pending |
+| DRVR-07 | Phase 2 | Complete |
 | VEHI-01 | Phase 2 | Complete |
 | VEHI-02 | Phase 2 | Complete |
 | LOAD-01 | Phase 2 | Complete |
