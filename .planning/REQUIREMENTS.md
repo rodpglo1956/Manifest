@@ -113,8 +113,8 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **ALRT-04**: Dispatch conflict alert when overlapping pickup windows for same driver
 - [x] **ALRT-05**: ETA risk alert when estimated delivery exceeds window
 - [x] **ALRT-06**: Unassigned load alert when booked load has pickup < 24h with no dispatch
-- [ ] **ALRT-07**: Alerts appear in dashboard and Marie chat with severity badges
-- [ ] **ALRT-08**: Users can acknowledge alerts
+- [x] **ALRT-07**: Alerts appear in dashboard and Marie chat with severity badges
+- [x] **ALRT-08**: Users can acknowledge alerts
 
 ### Analytics Foundation
 
@@ -127,9 +127,9 @@ Requirements for initial release. Each maps to roadmap phases.
 ### Push Notifications
 
 - [x] **PUSH-01**: Web Push API with service worker for desktop and Driver PWA
-- [ ] **PUSH-02**: Driver receives push notification when new dispatch assigned
-- [ ] **PUSH-03**: Dispatcher receives push when driver updates load status
-- [ ] **PUSH-04**: Admins/dispatchers receive push for critical proactive alerts
+- [x] **PUSH-02**: Driver receives push notification when new dispatch assigned
+- [x] **PUSH-03**: Dispatcher receives push when driver updates load status
+- [x] **PUSH-04**: Admins/dispatchers receive push for critical proactive alerts
 - [x] **PUSH-05**: User can toggle notification types on/off in settings
 
 ### Enhanced Dispatch
@@ -369,12 +369,12 @@ Which phases cover which requirements. Updated during roadmap creation.
 | ALRT-04 | Phase 6 | Complete |
 | ALRT-05 | Phase 6 | Complete |
 | ALRT-06 | Phase 6 | Complete |
-| ALRT-07 | Phase 6 | Pending |
-| ALRT-08 | Phase 6 | Pending |
+| ALRT-07 | Phase 6 | Complete |
+| ALRT-08 | Phase 6 | Complete |
 | PUSH-01 | Phase 6 | Complete |
-| PUSH-02 | Phase 6 | Pending |
-| PUSH-03 | Phase 6 | Pending |
-| PUSH-04 | Phase 6 | Pending |
+| PUSH-02 | Phase 6 | Complete |
+| PUSH-03 | Phase 6 | Complete |
+| PUSH-04 | Phase 6 | Complete |
 | PUSH-05 | Phase 6 | Complete |
 | ANLY-01 | Phase 6 | Complete |
 | ANLY-02 | Phase 6 | Pending |
