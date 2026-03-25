@@ -62,6 +62,18 @@ const navItems: NavItem[] = [
       { href: '/crm/activities', label: 'Activities', icon: MessageSquare },
     ],
   },
+  {
+    href: '/analytics',
+    label: 'Analytics',
+    icon: BarChart3,
+    active: true,
+    subItems: [
+      { href: '/analytics', label: 'Overview', icon: BarChart3 },
+      { href: '/analytics/operations', label: 'Operations', icon: Package },
+      { href: '/analytics/fleet', label: 'Fleet', icon: Truck },
+      { href: '/analytics/drivers', label: 'Drivers', icon: Users },
+    ],
+  },
   { href: '/settings/team', label: 'Settings', icon: Settings, active: true },
 ]
 
@@ -80,6 +92,9 @@ export function AppSidebar({ isOpen = true, onClose }: AppSidebarProps) {
     }
     if (pathname.startsWith('/crm')) {
       initial.add('CRM')
+    }
+    if (pathname.startsWith('/analytics')) {
+      initial.add('Analytics')
     }
     return initial
   })
@@ -103,6 +118,9 @@ export function AppSidebar({ isOpen = true, onClose }: AppSidebarProps) {
     }
     if (href === '/crm') {
       return pathname === '/crm'
+    }
+    if (href === '/analytics') {
+      return pathname === '/analytics'
     }
     return pathname.startsWith(href)
   }
