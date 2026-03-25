@@ -147,11 +147,11 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **COMP-04**: Compliance dashboard shows health score (0-100) based on overdue items, DQ completeness, inspection currency
 - [x] **COMP-05**: Driver qualification files: CDL, medical card, endorsements, MVR, drug tests, annual review
 - [x] **COMP-06**: DQ file tracker shows completeness percentage per driver with missing document highlights
-- [ ] **COMP-07**: Inspection records (annual DOT, pre-trip, post-trip, roadside) with pass/fail/conditional
-- [ ] **COMP-08**: DVIR (pre-trip/post-trip) digital form in Driver PWA with camera upload
+- [x] **COMP-07**: Inspection records (annual DOT, pre-trip, post-trip, roadside) with pass/fail/conditional
+- [x] **COMP-08**: DVIR (pre-trip/post-trip) digital form in Driver PWA with camera upload
 - [x] **COMP-09**: IFTA quarterly tracking per vehicle per jurisdiction
 - [x] **COMP-10**: IFTA export to CSV for filing
-- [ ] **COMP-11**: compliance-scanner edge function runs daily, generates alerts, auto-creates next recurrence
+- [x] **COMP-11**: compliance-scanner edge function runs daily, generates alerts, auto-creates next recurrence
 - [x] **COMP-12**: Compliance adapts based on DOT vs non-DOT carrier type
 - [ ] **COMP-13**: Upcoming deadlines calendar view (next 90 days)
 
@@ -391,11 +391,11 @@ Which phases cover which requirements. Updated during roadmap creation.
 | COMP-04 | Phase 7 | Complete |
 | COMP-05 | Phase 7 | Complete |
 | COMP-06 | Phase 7 | Complete |
-| COMP-07 | Phase 7 | Pending |
-| COMP-08 | Phase 7 | Pending |
+| COMP-07 | Phase 7 | Complete |
+| COMP-08 | Phase 7 | Complete |
 | COMP-09 | Phase 7 | Complete |
 | COMP-10 | Phase 7 | Complete |
-| COMP-11 | Phase 7 | Pending |
+| COMP-11 | Phase 7 | Complete |
 | COMP-12 | Phase 7 | Complete |
 | COMP-13 | Phase 7 | Pending |
 | FLET-01 | Phase 8 | Pending |
