@@ -5,6 +5,8 @@ import { usePathname } from 'next/navigation'
 import {
   LayoutDashboard,
   Truck,
+  Users,
+  Package,
   Navigation,
   FileText,
   Settings,
@@ -12,7 +14,9 @@ import {
 
 const navItems = [
   { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard, active: true },
-  { href: '#', label: 'Loads', icon: Truck, active: false, comingSoon: true },
+  { href: '/loads', label: 'Loads', icon: Package, active: true },
+  { href: '/drivers', label: 'Drivers', icon: Users, active: true },
+  { href: '/fleet', label: 'Fleet', icon: Truck, active: true },
   { href: '#', label: 'Dispatch', icon: Navigation, active: false, comingSoon: true },
   { href: '#', label: 'Invoices', icon: FileText, active: false, comingSoon: true },
   { href: '/settings/team', label: 'Settings', icon: Settings, active: true },
