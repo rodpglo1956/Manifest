@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import type { Driver, Vehicle, Load } from '@/types/database'
 import { StatusBadge } from '@/components/ui/status-badge'
-import { deactivateDriver } from '@/app/(app)/drivers/actions'
+import { deactivateDriver, linkDriverToUser } from '@/app/(app)/drivers/actions'
 
 interface DriverDetailProps {
   driver: Driver
@@ -14,6 +14,24 @@ interface DriverDetailProps {
 
 export function DriverDetail({ driver, vehicle, recentLoads }: DriverDetailProps) {
   const [actionLoading, setActionLoading] = useState(false)
+  const [showLinkForm, setShowLinkForm] = useState(false)
+  const [linkEmail, setLinkEmail] = useState(driver.email || '')
+  const [linkError, setLinkError] = useState<string | null>(null)
+  const [linkSuccess, setLinkSuccess] = useState(false)
+
+  async function handleLinkDriver(e: React.FormEvent) {
+    e.preventDefault()
+    setActionLoading(true)
+    setLinkError(null)
+    const result = await linkDriverToUser(driver.id, linkEmail)
+    if (result.error) {
+      setLinkError(result.error)
+    } else {
+      setLinkSuccess(true)
+      setShowLinkForm(false)
+    }
+    setActionLoading(false)
+  }
 
   async function handleStatusChange(newStatus: 'inactive' | 'terminated') {
     if (!confirm(`Are you sure you want to mark this driver as ${newStatus}?`)) return
@@ -188,6 +206,67 @@ export function DriverDetail({ driver, vehicle, recentLoads }: DriverDetailProps
           )}
         </section>
       </div>
+
+      {/* Link to User Account */}
+      {!driver.user_id && !linkSuccess && (
+        <section className="border border-gray-200 rounded-md p-4 space-y-3">
+          <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wide">
+            User Account
+          </h2>
+          <p className="text-sm text-gray-600">
+            This driver is not linked to a user account. Link to enable Driver PWA access.
+          </p>
+          {!showLinkForm ? (
+            <button
+              onClick={() => setShowLinkForm(true)}
+              className="px-4 py-2 bg-primary text-white font-medium rounded-md hover:bg-primary-hover transition-colors text-sm"
+            >
+              Link to User Account
+            </button>
+          ) : (
+            <form onSubmit={handleLinkDriver} className="flex gap-2 items-end">
+              <div className="flex-1">
+                <label htmlFor="link-email" className="block text-sm text-gray-600 mb-1">
+                  Email address
+                </label>
+                <input
+                  id="link-email"
+                  type="email"
+                  value={linkEmail}
+                  onChange={(e) => setLinkEmail(e.target.value)}
+                  className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50"
+                  required
+                />
+              </div>
+              <button
+                type="submit"
+                disabled={actionLoading}
+                className="px-4 py-2 bg-primary text-white font-medium rounded-md hover:bg-primary-hover transition-colors text-sm disabled:opacity-50"
+              >
+                {actionLoading ? 'Sending...' : 'Send Invite'}
+              </button>
+              <button
+                type="button"
+                onClick={() => setShowLinkForm(false)}
+                className="px-3 py-2 text-sm text-gray-500 hover:text-gray-700"
+              >
+                Cancel
+              </button>
+            </form>
+          )}
+          {linkError && (
+            <p className="text-sm text-red-600">{linkError}</p>
+          )}
+        </section>
+      )}
+
+      {linkSuccess && (
+        <section className="border border-green-200 bg-green-50 rounded-md p-4">
+          <p className="text-sm text-green-700">
+            Invitation sent successfully. The driver will receive an email to set up their account.
+          </p>
+        </section>
+      )}
 
       {/* Load History */}
       <section className="border border-gray-200 rounded-md p-4 space-y-3">

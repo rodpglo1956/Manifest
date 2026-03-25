@@ -3,8 +3,9 @@
 import { redirect } from 'next/navigation'
 import { revalidatePath } from 'next/cache'
 import { createClient } from '@/lib/supabase/server'
+import { supabaseAdmin } from '@/lib/supabase/admin'
 import { driverSchema } from '@/schemas/driver'
-import type { DriverStatus } from '@/types/database'
+import type { Driver, DriverStatus } from '@/types/database'
 
 export async function createDriver(formData: FormData) {
   const raw = {
@@ -150,4 +151,89 @@ export async function deactivateDriver(id: string, status: 'inactive' | 'termina
   revalidatePath(`/drivers/${id}`)
 
   return { success: true }
+}
+
+/**
+ * Link a driver record to a user account by sending an invitation email.
+ * Uses Supabase admin API to invite user with driver role metadata.
+ */
+export async function linkDriverToUser(
+  driverId: string,
+  email: string
+): Promise<{ error?: string }> {
+  const supabase = await createClient()
+
+  // Get current user and verify they are admin
+  const { data: { user } } = await supabase.auth.getUser()
+  if (!user) {
+    return { error: 'Not authenticated' }
+  }
+
+  const { data: profile } = await supabase
+    .from('profiles')
+    .select('role, org_id')
+    .eq('id', user.id)
+    .single()
+
+  if (!profile || profile.role !== 'admin') {
+    return { error: 'Only admins can link drivers to user accounts' }
+  }
+
+  if (!profile.org_id) {
+    return { error: 'No organization found' }
+  }
+
+  // Check if driver already has a user_id
+  const { data: driver } = await supabase
+    .from('drivers')
+    .select('id, user_id, org_id, first_name, last_name')
+    .eq('id', driverId)
+    .single() as { data: Driver | null }
+
+  if (!driver) {
+    return { error: 'Driver not found' }
+  }
+
+  if (driver.user_id) {
+    return { error: 'This driver is already linked to a user account' }
+  }
+
+  // Validate email
+  const trimmedEmail = email.trim().toLowerCase()
+  if (!trimmedEmail || !trimmedEmail.includes('@')) {
+    return { error: 'Please provide a valid email address' }
+  }
+
+  // Send invitation via Supabase admin API
+  const { data: inviteData, error: inviteError } = await supabaseAdmin.auth.admin.inviteUserByEmail(
+    trimmedEmail,
+    {
+      data: {
+        org_id: driver.org_id,
+        role: 'driver',
+        invited: true,
+        driver_id: driverId,
+      },
+      redirectTo: `${process.env.NEXT_PUBLIC_APP_URL}/callback?next=/driver/dashboard`,
+    }
+  )
+
+  if (inviteError) {
+    return { error: inviteError.message }
+  }
+
+  // Link the invited user to the driver record
+  if (inviteData?.user?.id) {
+    const { error: updateError } = await supabase
+      .from('drivers')
+      .update({ user_id: inviteData.user.id, email: trimmedEmail })
+      .eq('id', driverId)
+
+    if (updateError) {
+      return { error: `Invitation sent but failed to link: ${updateError.message}` }
+    }
+  }
+
+  revalidatePath(`/drivers/${driverId}`)
+  return {}
 }
