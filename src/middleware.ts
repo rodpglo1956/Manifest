@@ -1,6 +1,7 @@
 import { type NextRequest, NextResponse } from 'next/server'
 import { updateSession } from '@/lib/supabase/middleware'
 import { determineRoute } from '@/lib/middleware/routing'
+import { securityHeaders } from '@/lib/security/headers'
 
 export async function middleware(request: NextRequest) {
   const { supabase, supabaseResponse, claims, error } = await updateSession(request)
@@ -23,7 +24,16 @@ export async function middleware(request: NextRequest) {
   const result = determineRoute({ pathname, claims, error, profile })
 
   if (result.redirect) {
-    return NextResponse.redirect(new URL(result.redirect, request.url))
+    const redirectResponse = NextResponse.redirect(new URL(result.redirect, request.url))
+    for (const [key, value] of Object.entries(securityHeaders)) {
+      redirectResponse.headers.set(key, value)
+    }
+    return redirectResponse
+  }
+
+  // Apply security headers to every response
+  for (const [key, value] of Object.entries(securityHeaders)) {
+    supabaseResponse.headers.set(key, value)
   }
 
   return supabaseResponse
