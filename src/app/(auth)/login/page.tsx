@@ -1,5 +1,9 @@
 import { LoginForm } from '@/components/auth/login-form'
 
+export const metadata = {
+  title: 'Sign in to Manifest',
+}
+
 export default function LoginPage() {
   return (
     <div>

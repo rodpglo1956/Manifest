@@ -6,7 +6,7 @@ export type CompanyType = 'dot_carrier' | 'non_dot_carrier' | 'both'
 
 export type UserRole = 'admin' | 'dispatcher' | 'driver' | 'viewer'
 
-export interface Organization {
+export type Organization = {
   id: string
   name: string
   dot_number: string | null
@@ -22,7 +22,7 @@ export interface Organization {
   updated_at: string
 }
 
-export interface Profile {
+export type Profile = {
   id: string
   org_id: string | null
   full_name: string | null
@@ -33,7 +33,7 @@ export interface Profile {
   updated_at: string
 }
 
-export interface OrgMember {
+export type OrgMember = {
   id: string
   org_id: string
   user_id: string
@@ -55,6 +55,7 @@ export type Database = {
         Update: Partial<Omit<Organization, 'id' | 'created_at'>> & {
           updated_at?: string
         }
+        Relationships: []
       }
       profiles: {
         Row: Profile
@@ -65,6 +66,7 @@ export type Database = {
         Update: Partial<Omit<Profile, 'id' | 'created_at'>> & {
           updated_at?: string
         }
+        Relationships: []
       }
       org_members: {
         Row: OrgMember
@@ -75,6 +77,7 @@ export type Database = {
         Update: Partial<Omit<OrgMember, 'id'>> & {
           joined_at?: string
         }
+        Relationships: []
       }
     }
     Views: Record<string, never>
