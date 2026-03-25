@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 09-03-PLAN.md
-last_updated: "2026-03-25T22:16:31Z"
-last_activity: 2026-03-25 -- Plan 09-03 complete (Company UI & Management)
+stopped_at: Completed 09-05-PLAN.md
+last_updated: "2026-03-25T22:24:01Z"
+last_activity: 2026-03-25 -- Plan 09-05 complete (CRM Dashboard & Cross-Module Triggers)
 progress:
   total_phases: 12
-  completed_phases: 8
+  completed_phases: 9
   total_plans: 39
-  completed_plans: 37
-  percent: 95
+  completed_plans: 39
+  percent: 100
 ---
 
 # Project State
@@ -26,11 +26,11 @@ See: .planning/PROJECT.md (updated 2026-03-24)
 ## Current Position
 
 Phase: 9 of 12 (CRM & Cross-Module Integration)
-Plan: 3 of 5 in current phase (3 complete)
-Status: In Progress
-Last activity: 2026-03-25 -- Plan 09-03 complete (Company UI & Management)
+Plan: 5 of 5 in current phase (5 complete)
+Status: Phase Complete
+Last activity: 2026-03-25 -- Plan 09-05 complete (CRM Dashboard & Cross-Module Triggers)
 
-Progress: [█████████░] 95%
+Progress: [██████████] 100%
 
 ## Performance Metrics
 
@@ -86,6 +86,8 @@ Progress: [█████████░] 95%
 | Phase 09 P02 | 5min | 2 tasks | 2 files |
 | Phase 09 P03 | 11min | 2 tasks | 10 files |
 | Phase 09 P02 | 9min | 2 tasks | 2 files |
+| Phase 09 P04 | 5min | 2 tasks | 8 files |
+| Phase 09 P05 | 5min | 2 tasks | 7 files |
 
 ## Accumulated Context
 
@@ -196,6 +198,13 @@ Recent decisions affecting current work:
 - [Phase 09]: [09-02]: Separate queries + Map lookups for CRM junction tables due to Supabase Relationships: [] type degradation
 - [Phase 09]: [09-02]: Load delivery trigger uses LOWER() for case-insensitive company/lane matching
 - [Phase 09]: [09-02]: Follow-up reminder uses 24-hour NOT EXISTS window for proactive_alert de-duplication
+- [Phase 09]: [09-04]: LaneMap uses GeoJSON LineString features with MapLibre paint expressions for status-based arc coloring
+- [Phase 09]: [09-04]: getLaneDetail return type requires unknown-to-typed assertion due to Supabase spread inference loss
+- [Phase 09]: [09-04]: Added linkLaneCompany server action for company-lane association (not in original plan)
+- [Phase 09]: [09-05]: CrmDashboard uses inferred types from getCrmDashboard return for zero-drift type safety
+- [Phase 09]: [09-05]: OO customers page is a client component with expandable cards and simplified activity types (call/email/note only)
+- [Phase 09]: [09-05]: CDL expiry cron checks dispatch_members for active loads and creates separate critical alert
+- [Phase 09]: [09-05]: Marie RPC functions use security definer with explicit search_path for safe supabase.rpc() calls
 
 ### Pending Todos
 
@@ -207,6 +216,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-25T22:16:31Z
-Stopped at: Completed 09-03-PLAN.md
+Last session: 2026-03-25T22:24:01Z
+Stopped at: Completed 09-05-PLAN.md
 Resume file: None

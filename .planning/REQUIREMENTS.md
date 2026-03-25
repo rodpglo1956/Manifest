@@ -173,7 +173,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **CRM-01**: Company CRUD (customers, brokers, vendors, partners, prospects) with contact info, MC/DOT, payment terms
 - [x] **CRM-02**: Contact management per company with primary contact designation
 - [x] **CRM-03**: Lane tracking: origin-destination pairs with distance, rates, run count, preferred equipment
-- [ ] **CRM-04**: Lane map visualization showing active lanes as origin-destination arcs
+- [x] **CRM-04**: Lane map visualization showing active lanes as origin-destination arcs
 - [x] **CRM-05**: Rate agreements per company/lane with effective dates, rate type, volume minimums
 - [x] **CRM-06**: Activity logging (calls, emails, notes, meetings, follow-ups) per company/contact/lane
 - [x] **CRM-07**: Follow-up reminder edge function sends push notification on follow-up date
@@ -411,7 +411,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | CRM-01 | Phase 9 | Complete |
 | CRM-02 | Phase 9 | Complete |
 | CRM-03 | Phase 9 | Complete |
-| CRM-04 | Phase 9 | Pending |
+| CRM-04 | Phase 9 | Complete |
 | CRM-05 | Phase 9 | Complete |
 | CRM-06 | Phase 9 | Complete |
 | CRM-07 | Phase 9 | Complete |
