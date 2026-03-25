@@ -14,10 +14,10 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **AUTH-03**: User can log in via magic link as alternative to password
 - [x] **AUTH-04**: Database trigger creates profile record on signup
 - [x] **AUTH-05**: User can create a new organization with company details (name, address, DOT/MC numbers, company type)
-- [ ] **AUTH-06**: Admin can invite users to join their organization with role assignment
-- [ ] **AUTH-07**: Invited users can join an existing organization via invitation link
-- [ ] **AUTH-08**: Role-based access enforced: admin, dispatcher, driver, viewer
-- [ ] **AUTH-09**: Middleware redirects users to correct mode (Command, Driver, Owner-Operator) based on role
+- [x] **AUTH-06**: Admin can invite users to join their organization with role assignment
+- [x] **AUTH-07**: Invited users can join an existing organization via invitation link
+- [x] **AUTH-08**: Role-based access enforced: admin, dispatcher, driver, viewer
+- [x] **AUTH-09**: Middleware redirects users to correct mode (Command, Driver, Owner-Operator) based on role
 - [x] **AUTH-10**: RLS policy on organizations, profiles, and org_members tables with org_id isolation
 
 ### Driver Management
@@ -297,10 +297,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 | AUTH-03 | Phase 1 | Complete |
 | AUTH-04 | Phase 1 | Complete |
 | AUTH-05 | Phase 1 | Complete |
-| AUTH-06 | Phase 1 | Pending |
-| AUTH-07 | Phase 1 | Pending |
-| AUTH-08 | Phase 1 | Pending |
-| AUTH-09 | Phase 1 | Pending |
+| AUTH-06 | Phase 1 | Complete |
+| AUTH-07 | Phase 1 | Complete |
+| AUTH-08 | Phase 1 | Complete |
+| AUTH-09 | Phase 1 | Complete |
 | AUTH-10 | Phase 1 | Complete |
 | DRVR-01 | Phase 2 | Pending |
 | DRVR-02 | Phase 2 | Pending |

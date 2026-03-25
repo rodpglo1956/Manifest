@@ -12,7 +12,7 @@ Manifest delivers a complete carrier operations platform in 12 phases. Phases 1-
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Auth & Organization** - User accounts, org setup, roles, RLS foundation, and invitation flow
+- [x] **Phase 1: Auth & Organization** - User accounts, org setup, roles, RLS foundation, and invitation flow (completed 2026-03-25)
 - [ ] **Phase 2: Loads, Drivers & Vehicles** - Driver roster, vehicle registry, and complete load lifecycle management
 - [ ] **Phase 3: Dispatch** - Driver-to-load assignment, dispatch board, and driver PWA dispatch features
 - [ ] **Phase 4: Invoicing & Dashboard** - Invoice generation from delivered loads and operational dashboards for all modes
@@ -232,7 +232,7 @@ Note: Phases 7, 8, and 10 can execute in parallel after Phase 4. Phase 9 require
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Auth & Organization | 2/3 | In Progress|  |
+| 1. Auth & Organization | 3/3 | Complete   | 2026-03-25 |
 | 2. Loads, Drivers & Vehicles | 0/3 | Not started | - |
 | 3. Dispatch | 0/2 | Not started | - |
 | 4. Invoicing & Dashboard | 0/2 | Not started | - |
