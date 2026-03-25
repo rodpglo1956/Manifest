@@ -291,6 +291,25 @@ export type ProactiveAlert = {
   created_at: string
 }
 
+// Phase 6: Push notification types
+export type PushSubscription = {
+  id: string
+  user_id: string
+  org_id: string
+  endpoint: string
+  keys_p256dh: string
+  keys_auth: string
+  created_at: string
+}
+
+export type NotificationPreferences = {
+  new_dispatch: boolean
+  load_status_change: boolean
+  critical_alert: boolean
+  invoice_paid: boolean
+  driver_response: boolean
+}
+
 // Supabase Database type for client typing
 export type Database = {
   public: {
@@ -437,6 +456,15 @@ export type Database = {
           error_message?: string | null
         }
         Update: Partial<Omit<MarieQuery, 'id' | 'created_at'>>
+        Relationships: []
+      }
+      push_subscriptions: {
+        Row: PushSubscription
+        Insert: Omit<PushSubscription, 'id' | 'created_at'> & {
+          id?: string
+          created_at?: string
+        }
+        Update: Partial<Omit<PushSubscription, 'id' | 'created_at'>>
         Relationships: []
       }
       proactive_alerts: {
