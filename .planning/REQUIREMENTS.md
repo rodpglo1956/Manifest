@@ -107,18 +107,18 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Predictive Alerts
 
-- [ ] **ALRT-01**: Late pickup risk alert when driver > 100 miles from pickup with < 3 hours remaining
-- [ ] **ALRT-02**: Driver gone silent alert when no status update in > 4 hours while in_transit
-- [ ] **ALRT-03**: Overdue invoice alert (enhances Phase 1 scanner to write proactive_alerts)
-- [ ] **ALRT-04**: Dispatch conflict alert when overlapping pickup windows for same driver
-- [ ] **ALRT-05**: ETA risk alert when estimated delivery exceeds window
-- [ ] **ALRT-06**: Unassigned load alert when booked load has pickup < 24h with no dispatch
+- [x] **ALRT-01**: Late pickup risk alert when driver > 100 miles from pickup with < 3 hours remaining
+- [x] **ALRT-02**: Driver gone silent alert when no status update in > 4 hours while in_transit
+- [x] **ALRT-03**: Overdue invoice alert (enhances Phase 1 scanner to write proactive_alerts)
+- [x] **ALRT-04**: Dispatch conflict alert when overlapping pickup windows for same driver
+- [x] **ALRT-05**: ETA risk alert when estimated delivery exceeds window
+- [x] **ALRT-06**: Unassigned load alert when booked load has pickup < 24h with no dispatch
 - [ ] **ALRT-07**: Alerts appear in dashboard and Marie chat with severity badges
 - [ ] **ALRT-08**: Users can acknowledge alerts
 
 ### Analytics Foundation
 
-- [ ] **ANLY-01**: Daily snapshots generated nightly (loads, revenue, miles, on-time %, driver count)
+- [x] **ANLY-01**: Daily snapshots generated nightly (loads, revenue, miles, on-time %, driver count)
 - [ ] **ANLY-02**: Revenue trend line chart (last 30 days)
 - [ ] **ANLY-03**: Load volume bar chart (booked vs delivered per week)
 - [ ] **ANLY-04**: On-time performance gauge chart (current month)
@@ -126,17 +126,17 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Push Notifications
 
-- [ ] **PUSH-01**: Web Push API with service worker for desktop and Driver PWA
+- [x] **PUSH-01**: Web Push API with service worker for desktop and Driver PWA
 - [ ] **PUSH-02**: Driver receives push notification when new dispatch assigned
 - [ ] **PUSH-03**: Dispatcher receives push when driver updates load status
 - [ ] **PUSH-04**: Admins/dispatchers receive push for critical proactive alerts
-- [ ] **PUSH-05**: User can toggle notification types on/off in settings
+- [x] **PUSH-05**: User can toggle notification types on/off in settings
 
 ### Enhanced Dispatch
 
 - [ ] **EDSP-01**: Map view showing unassigned loads and available drivers as pins
 - [ ] **EDSP-02**: Timeline/Gantt view of driver schedules with gaps
-- [ ] **EDSP-03**: Conflict detection warns when assigning driver with overlapping load
+- [x] **EDSP-03**: Conflict detection warns when assigning driver with overlapping load
 - [ ] **EDSP-04**: Smart routing suggestion panel integrated into dispatch UI
 
 ### Compliance
@@ -363,27 +363,27 @@ Which phases cover which requirements. Updated during roadmap creation.
 | ROUT-03 | Phase 5 | Complete |
 | ROUT-04 | Phase 5 | Complete |
 | ROUT-05 | Phase 5 | Complete |
-| ALRT-01 | Phase 6 | Pending |
-| ALRT-02 | Phase 6 | Pending |
-| ALRT-03 | Phase 6 | Pending |
-| ALRT-04 | Phase 6 | Pending |
-| ALRT-05 | Phase 6 | Pending |
-| ALRT-06 | Phase 6 | Pending |
+| ALRT-01 | Phase 6 | Complete |
+| ALRT-02 | Phase 6 | Complete |
+| ALRT-03 | Phase 6 | Complete |
+| ALRT-04 | Phase 6 | Complete |
+| ALRT-05 | Phase 6 | Complete |
+| ALRT-06 | Phase 6 | Complete |
 | ALRT-07 | Phase 6 | Pending |
 | ALRT-08 | Phase 6 | Pending |
-| PUSH-01 | Phase 6 | Pending |
+| PUSH-01 | Phase 6 | Complete |
 | PUSH-02 | Phase 6 | Pending |
 | PUSH-03 | Phase 6 | Pending |
 | PUSH-04 | Phase 6 | Pending |
-| PUSH-05 | Phase 6 | Pending |
-| ANLY-01 | Phase 6 | Pending |
+| PUSH-05 | Phase 6 | Complete |
+| ANLY-01 | Phase 6 | Complete |
 | ANLY-02 | Phase 6 | Pending |
 | ANLY-03 | Phase 6 | Pending |
 | ANLY-04 | Phase 6 | Pending |
 | ANLY-05 | Phase 6 | Pending |
 | EDSP-01 | Phase 6 | Pending |
 | EDSP-02 | Phase 6 | Pending |
-| EDSP-03 | Phase 6 | Pending |
+| EDSP-03 | Phase 6 | Complete |
 | EDSP-04 | Phase 6 | Pending |
 | COMP-01 | Phase 7 | Pending |
 | COMP-02 | Phase 7 | Pending |

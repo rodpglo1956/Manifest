@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: completed
-stopped_at: Phase 6 context gathered
-last_updated: "2026-03-25T07:11:15.597Z"
-last_activity: 2026-03-25 -- Plan 05-02 complete (Marie Chat UI)
+stopped_at: Completed 06-01-PLAN.md
+last_updated: "2026-03-25T13:08:51.812Z"
+last_activity: 2026-03-25 -- Plan 06-01 complete (Database Foundation)
 progress:
   total_phases: 12
   completed_phases: 5
-  total_plans: 19
-  completed_plans: 19
-  percent: 95
+  total_plans: 24
+  completed_plans: 21
+  percent: 88
 ---
 
 # Project State
@@ -21,16 +21,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-24)
 
 **Core value:** A carrier can manage their entire operation -- loads, drivers, fleet, compliance, billing -- from one platform without needing separate tools.
-**Current focus:** Phase 5: Marie AI & Smart Routing
+**Current focus:** Phase 6: Alerts, Analytics & Enhanced Dispatch
 
 ## Current Position
 
-Phase: 5 of 12 (Marie AI & Smart Routing)
-Plan: 2 of 3 in current phase
-Status: Plan 05-02 Complete
-Last activity: 2026-03-25 -- Plan 05-02 complete (Marie Chat UI)
+Phase: 6 of 12 (Alerts, Analytics & Enhanced Dispatch)
+Plan: 2 of 5 in current phase
+Status: Plan 06-01 Complete (database foundation), Plan 06-02 Complete (push infra)
+Last activity: 2026-03-25 -- Plan 06-01 complete (Database Foundation)
 
-Progress: [██████████] 95%
+Progress: [█████████░] 88%
 
 ## Performance Metrics
 
@@ -67,6 +67,8 @@ Progress: [██████████] 95%
 | Phase 05 P01 | 8min | 2 tasks | 17 files |
 | Phase 05 P03 | 2min | 2 tasks | 3 files |
 | Phase 05 P02 | 3min | 2 tasks | 9 files |
+| Phase 06 P02 | 2min | 2 tasks | 12 files |
+| Phase 06 P01 | 4min | 2 tasks | 10 files |
 
 ## Accumulated Context
 
@@ -127,6 +129,13 @@ Recent decisions affecting current work:
 - [Phase 05-03]: Score color coding: green >70, yellow 40-70, red <40 for intuitive quality signal
 - [Phase 05]: Action marker regex uses [^:]+ for entityId to support any ID format
 - [Phase 05]: Driver chat uses full-screen slide-up panel for mobile UX
+- [06-02]: Used localStorage push_prompted flag to avoid re-prompting users after dismissal
+- [06-02]: Notification preferences stored as jsonb column on profiles for single-query access
+- [06-02]: Settings layout with sub-navigation (Team, Notifications) for extensibility
+- [06-02]: Optimistic toggle updates with server action revert on error
+- [Phase 06]: Alert generators use NOT EXISTS with time windows for de-duplication
+- [Phase 06]: City coords use static lookup with normalized city_state keys instead of geocoding API
+- [Phase 06]: Dispatch conflict uses pure checkDateOverlap function for testability
 
 ### Pending Todos
 
@@ -138,6 +147,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-25T07:11:15.595Z
-Stopped at: Phase 6 context gathered
-Resume file: .planning/phases/06-alerts-analytics-enhanced-dispatch/06-CONTEXT.md
+Last session: 2026-03-25T13:08:51.810Z
+Stopped at: Completed 06-01-PLAN.md
+Resume file: None
