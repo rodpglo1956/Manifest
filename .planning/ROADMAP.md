@@ -37,11 +37,12 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. Admin can invite users with role assignment and invitees can join via invitation link
   4. Users are redirected to the correct mode (Command, Driver, Owner-Operator) based on their role
   5. All data access is isolated by organization via RLS policies on auth-related tables
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 01-01: TBD
-- [ ] 01-02: TBD
+- [ ] 01-01-PLAN.md -- Project scaffolding, Supabase clients, database schema, RLS policies, auth trigger, test infrastructure
+- [ ] 01-02-PLAN.md -- Auth UI (signup, login, magic link), session management, organization creation flow
+- [ ] 01-03-PLAN.md -- Team invitation flow, role-based middleware routing, route group layouts, end-to-end verification
 
 ### Phase 2: Loads, Drivers & Vehicles
 **Goal**: Carrier can manage their driver roster, vehicle registry, and full load lifecycle from booking through delivery with document uploads and real-time status updates
@@ -231,7 +232,7 @@ Note: Phases 7, 8, and 10 can execute in parallel after Phase 4. Phase 9 require
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Auth & Organization | 0/2 | Not started | - |
+| 1. Auth & Organization | 0/3 | Planning complete | - |
 | 2. Loads, Drivers & Vehicles | 0/3 | Not started | - |
 | 3. Dispatch | 0/2 | Not started | - |
 | 4. Invoicing & Dashboard | 0/2 | Not started | - |
