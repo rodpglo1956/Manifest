@@ -15,6 +15,11 @@ export type VehicleStatus = 'active' | 'inactive'
 
 export type EquipmentType = VehicleType
 
+// Phase 4: Invoice types
+export type InvoiceStatus = 'draft' | 'sent' | 'paid' | 'overdue' | 'void'
+
+export type PaymentMethod = 'check' | 'ach' | 'wire' | 'credit_card' | 'other' | ''
+
 // Phase 3: Dispatch types
 export type DispatchStatus =
   | 'assigned'
@@ -226,6 +231,36 @@ export type Dispatch = {
   updated_at: string
 }
 
+export type Invoice = {
+  id: string
+  org_id: string
+  load_id: string | null
+  invoice_number: string
+  bill_to_company: string
+  bill_to_email: string | null
+  bill_to_address: string | null
+  amount: number
+  fuel_surcharge: number
+  accessorials: number
+  total: number
+  status: InvoiceStatus
+  issued_date: string | null
+  due_date: string | null
+  paid_date: string | null
+  paid_amount: number | null
+  payment_method: string | null
+  notes: string | null
+  pdf_url: string | null
+  created_at: string
+  updated_at: string
+}
+
+export type InvoiceNumberSequence = {
+  org_id: string
+  year_month: string
+  last_number: number
+}
+
 // Supabase Database type for client typing
 export type Database = {
   public: {
@@ -330,6 +365,25 @@ export type Database = {
         Row: LoadNumberSequence
         Insert: LoadNumberSequence
         Update: Partial<LoadNumberSequence>
+        Relationships: []
+      }
+      invoices: {
+        Row: Invoice
+        Insert: Omit<Invoice, 'id' | 'invoice_number' | 'created_at' | 'updated_at'> & {
+          id?: string
+          invoice_number?: string
+          created_at?: string
+          updated_at?: string
+        }
+        Update: Partial<Omit<Invoice, 'id' | 'invoice_number' | 'created_at'>> & {
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      invoice_number_sequences: {
+        Row: InvoiceNumberSequence
+        Insert: InvoiceNumberSequence
+        Update: Partial<InvoiceNumberSequence>
         Relationships: []
       }
     }
