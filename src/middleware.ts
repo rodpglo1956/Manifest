@@ -4,8 +4,18 @@ import { determineRoute } from '@/lib/middleware/routing'
 import { securityHeaders } from '@/lib/security/headers'
 
 export async function middleware(request: NextRequest) {
-  const { supabase, supabaseResponse, claims, error } = await updateSession(request)
   const { pathname } = request.nextUrl
+
+  // Skip middleware for API routes (they handle their own auth)
+  if (pathname.startsWith('/api/')) {
+    const response = NextResponse.next()
+    for (const [key, value] of Object.entries(securityHeaders)) {
+      response.headers.set(key, value)
+    }
+    return response
+  }
+
+  const { supabase, supabaseResponse, claims, error } = await updateSession(request)
 
   // For public and auth routes without a session, use fast path (no profile query)
   const needsProfile = !!(claims && !error)
