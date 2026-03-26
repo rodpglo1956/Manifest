@@ -248,10 +248,10 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### White Label
 
-- [ ] **WLBL-01**: white_label_config table with brand name, logo, colors, custom domain
-- [ ] **WLBL-02**: CSS custom properties for all brand colors
-- [ ] **WLBL-03**: Brand name and logo loaded from config (no hardcoded "Manifest" in JSX)
-- [ ] **WLBL-04**: White label available only on enterprise tier
+- [x] **WLBL-01**: white_label_config table with brand name, logo, colors, custom domain
+- [x] **WLBL-02**: CSS custom properties for all brand colors
+- [x] **WLBL-03**: Brand name and logo loaded from config (no hardcoded "Manifest" in JSX)
+- [x] **WLBL-04**: White label available only on enterprise tier
 
 ## v2 Requirements
 
@@ -462,10 +462,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 | SECR-04 | Phase 12 | Complete |
 | SECR-05 | Phase 12 | Complete |
 | SECR-06 | Phase 12 | Complete |
-| WLBL-01 | Phase 12 | Pending |
-| WLBL-02 | Phase 12 | Pending |
-| WLBL-03 | Phase 12 | Pending |
-| WLBL-04 | Phase 12 | Pending |
+| WLBL-01 | Phase 12 | Complete |
+| WLBL-02 | Phase 12 | Complete |
+| WLBL-03 | Phase 12 | Complete |
+| WLBL-04 | Phase 12 | Complete |
 
 **Coverage:**
 - v1 requirements: 174 total
