@@ -23,4 +23,4 @@ create index idx_vehicles_org_id on vehicles(org_id);
 
 -- RLS: org_id isolation
 create policy "vehicles_org_access" on vehicles
-  for all using (org_id = (select auth.org_id()));
+  for all using (org_id = (select public.org_id()));

@@ -86,4 +86,4 @@ create index idx_loads_driver_id on loads(driver_id);
 
 -- RLS: org_id isolation
 create policy "loads_org_access" on loads
-  for all using (org_id = (select auth.org_id()));
+  for all using (org_id = (select public.org_id()));

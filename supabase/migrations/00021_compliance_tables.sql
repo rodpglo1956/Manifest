@@ -1,7 +1,7 @@
 -- Phase 7: Compliance module tables
 -- 6 tables: compliance_profiles, compliance_items, compliance_alerts,
 -- driver_qualifications, inspections, ifta_records
--- All with RLS org isolation using (select auth.org_id()) pattern
+-- All with RLS org isolation using (select public.org_id()) pattern
 
 -- Carrier compliance profiles
 create table public.compliance_profiles (
@@ -149,17 +149,17 @@ alter table public.inspections enable row level security;
 alter table public.ifta_records enable row level security;
 
 create policy "org_isolation" on public.compliance_profiles
-  for all using (org_id = (select auth.org_id()));
+  for all using (org_id = (select public.org_id()));
 create policy "org_isolation" on public.compliance_items
-  for all using (org_id = (select auth.org_id()));
+  for all using (org_id = (select public.org_id()));
 create policy "org_isolation" on public.compliance_alerts
-  for all using (org_id = (select auth.org_id()));
+  for all using (org_id = (select public.org_id()));
 create policy "org_isolation" on public.driver_qualifications
-  for all using (org_id = (select auth.org_id()));
+  for all using (org_id = (select public.org_id()));
 create policy "org_isolation" on public.inspections
-  for all using (org_id = (select auth.org_id()));
+  for all using (org_id = (select public.org_id()));
 create policy "org_isolation" on public.ifta_records
-  for all using (org_id = (select auth.org_id()));
+  for all using (org_id = (select public.org_id()));
 
 -- Indexes
 create index idx_compliance_items_org_status on public.compliance_items(org_id, status);

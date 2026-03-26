@@ -30,7 +30,7 @@ create table invoices (
 alter table invoices enable row level security;
 
 create policy "org_invoices" on invoices
-  for all using (org_id = (select auth.org_id()));
+  for all using (org_id = (select public.org_id()));
 
 -- Indexes for common queries
 create index idx_invoices_org_id on invoices(org_id);
@@ -48,7 +48,7 @@ create table invoice_number_sequences (
 alter table invoice_number_sequences enable row level security;
 
 create policy "invoice_number_sequences_org_access" on invoice_number_sequences
-  for all using (org_id = (select auth.org_id()));
+  for all using (org_id = (select public.org_id()));
 
 grant select on invoice_number_sequences to authenticated;
 
@@ -106,9 +106,9 @@ on conflict (id) do nothing;
 create policy "invoice_documents_org_access" on storage.objects
   for all using (
     bucket_id = 'invoice-documents'
-    and (select auth.org_id())::text = (storage.foldername(name))[1]
+    and (select public.org_id())::text = (storage.foldername(name))[1]
   )
   with check (
     bucket_id = 'invoice-documents'
-    and (select auth.org_id())::text = (storage.foldername(name))[1]
+    and (select public.org_id())::text = (storage.foldername(name))[1]
   );

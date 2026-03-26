@@ -89,25 +89,25 @@ ALTER TABLE public.billing_invoices ENABLE ROW LEVEL SECURITY;
 
 -- billing_accounts: org-scoped
 CREATE POLICY billing_accounts_select ON public.billing_accounts
-  FOR SELECT USING (org_id = (SELECT auth.org_id()));
+  FOR SELECT USING (org_id = (SELECT public.org_id()));
 CREATE POLICY billing_accounts_insert ON public.billing_accounts
-  FOR INSERT WITH CHECK (org_id = (SELECT auth.org_id()));
+  FOR INSERT WITH CHECK (org_id = (SELECT public.org_id()));
 CREATE POLICY billing_accounts_update ON public.billing_accounts
-  FOR UPDATE USING (org_id = (SELECT auth.org_id()));
+  FOR UPDATE USING (org_id = (SELECT public.org_id()));
 
 -- usage_records: org-scoped
 CREATE POLICY usage_records_select ON public.usage_records
-  FOR SELECT USING (org_id = (SELECT auth.org_id()));
+  FOR SELECT USING (org_id = (SELECT public.org_id()));
 CREATE POLICY usage_records_insert ON public.usage_records
-  FOR INSERT WITH CHECK (org_id = (SELECT auth.org_id()));
+  FOR INSERT WITH CHECK (org_id = (SELECT public.org_id()));
 CREATE POLICY usage_records_update ON public.usage_records
-  FOR UPDATE USING (org_id = (SELECT auth.org_id()));
+  FOR UPDATE USING (org_id = (SELECT public.org_id()));
 
 -- billing_invoices: org-scoped
 CREATE POLICY billing_invoices_select ON public.billing_invoices
-  FOR SELECT USING (org_id = (SELECT auth.org_id()));
+  FOR SELECT USING (org_id = (SELECT public.org_id()));
 CREATE POLICY billing_invoices_insert ON public.billing_invoices
-  FOR INSERT WITH CHECK (org_id = (SELECT auth.org_id()));
+  FOR INSERT WITH CHECK (org_id = (SELECT public.org_id()));
 
 -- plan_limits: public read for authenticated users (no RLS needed, grant select)
 GRANT SELECT ON public.plan_limits TO authenticated;

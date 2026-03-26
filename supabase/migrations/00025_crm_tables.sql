@@ -3,6 +3,17 @@
 -- Phase 09: CRM & Cross-Module Integration
 -- ============================================================
 
+-- Ensure trigger_set_updated_at function exists
+CREATE OR REPLACE FUNCTION public.trigger_set_updated_at()
+RETURNS TRIGGER
+LANGUAGE plpgsql
+AS $$
+BEGIN
+  NEW.updated_at = now();
+  RETURN NEW;
+END;
+$$;
+
 -- 1. crm_companies
 CREATE TABLE public.crm_companies (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -133,25 +144,25 @@ ALTER TABLE public.crm_rate_agreements ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.crm_activities ENABLE ROW LEVEL SECURITY;
 
 CREATE POLICY "org_isolation" ON public.crm_companies
-  FOR ALL USING (org_id = (SELECT auth.org_id()));
+  FOR ALL USING (org_id = (SELECT public.org_id()));
 
 CREATE POLICY "org_isolation" ON public.crm_contacts
-  FOR ALL USING (org_id = (SELECT auth.org_id()));
+  FOR ALL USING (org_id = (SELECT public.org_id()));
 
 CREATE POLICY "org_isolation" ON public.crm_lanes
-  FOR ALL USING (org_id = (SELECT auth.org_id()));
+  FOR ALL USING (org_id = (SELECT public.org_id()));
 
 -- crm_lane_companies: no org_id column, isolate via lane's org_id
 CREATE POLICY "org_isolation" ON public.crm_lane_companies
   FOR ALL USING (
-    lane_id IN (SELECT id FROM public.crm_lanes WHERE org_id = (SELECT auth.org_id()))
+    lane_id IN (SELECT id FROM public.crm_lanes WHERE org_id = (SELECT public.org_id()))
   );
 
 CREATE POLICY "org_isolation" ON public.crm_rate_agreements
-  FOR ALL USING (org_id = (SELECT auth.org_id()));
+  FOR ALL USING (org_id = (SELECT public.org_id()));
 
 CREATE POLICY "org_isolation" ON public.crm_activities
-  FOR ALL USING (org_id = (SELECT auth.org_id()));
+  FOR ALL USING (org_id = (SELECT public.org_id()));
 
 -- ============================================================
 -- Indexes

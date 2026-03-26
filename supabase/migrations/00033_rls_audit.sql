@@ -93,7 +93,7 @@ ALTER TABLE public.onboarding_progress ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.notifications ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.notification_preferences ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.driver_performance ENABLE ROW LEVEL SECURITY;
-ALTER TABLE public.white_label_config ENABLE ROW LEVEL SECURITY;
+-- white_label_config RLS moved to 00034 (table created there)
 
 -- plan_limits: public reference data -- confirm SELECT grant, no RLS
 GRANT SELECT ON public.plan_limits TO authenticated;

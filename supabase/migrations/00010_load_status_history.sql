@@ -24,7 +24,7 @@ create policy "load_status_history_org_select" on load_status_history
     exists (
       select 1 from loads
       where loads.id = load_status_history.load_id
-        and loads.org_id = (select auth.org_id())
+        and loads.org_id = (select public.org_id())
     )
   );
 
@@ -34,6 +34,6 @@ create policy "load_status_history_org_insert" on load_status_history
     exists (
       select 1 from loads
       where loads.id = load_status_history.load_id
-        and loads.org_id = (select auth.org_id())
+        and loads.org_id = (select public.org_id())
     )
   );

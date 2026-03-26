@@ -1,7 +1,7 @@
 -- Phase 8: Fleet Management tables
 -- Expands vehicles table, adds maintenance_records, maintenance_schedules,
 -- fuel_transactions, vehicle_assignments
--- All with RLS org isolation using (select auth.org_id()) pattern
+-- All with RLS org isolation using (select public.org_id()) pattern
 
 -- ============================================================
 -- ALTER vehicles table: expand enums and add new columns
@@ -154,13 +154,13 @@ ALTER TABLE public.fuel_transactions ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.vehicle_assignments ENABLE ROW LEVEL SECURITY;
 
 CREATE POLICY "org_isolation" ON public.maintenance_records
-  FOR ALL USING (org_id = (SELECT auth.org_id()));
+  FOR ALL USING (org_id = (SELECT public.org_id()));
 CREATE POLICY "org_isolation" ON public.maintenance_schedules
-  FOR ALL USING (org_id = (SELECT auth.org_id()));
+  FOR ALL USING (org_id = (SELECT public.org_id()));
 CREATE POLICY "org_isolation" ON public.fuel_transactions
-  FOR ALL USING (org_id = (SELECT auth.org_id()));
+  FOR ALL USING (org_id = (SELECT public.org_id()));
 CREATE POLICY "org_isolation" ON public.vehicle_assignments
-  FOR ALL USING (org_id = (SELECT auth.org_id()));
+  FOR ALL USING (org_id = (SELECT public.org_id()));
 
 -- ============================================================
 -- Indexes

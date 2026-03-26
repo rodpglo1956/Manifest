@@ -32,4 +32,4 @@ create index idx_drivers_org_id on drivers(org_id);
 
 -- RLS: org_id isolation
 create policy "drivers_org_access" on drivers
-  for all using (org_id = (select auth.org_id()));
+  for all using (org_id = (select public.org_id()));

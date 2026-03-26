@@ -21,16 +21,16 @@ CREATE TABLE IF NOT EXISTS white_label_config (
 ALTER TABLE white_label_config ENABLE ROW LEVEL SECURITY;
 
 CREATE POLICY "white_label_config_select" ON white_label_config
-  FOR SELECT USING (org_id = (SELECT auth.org_id()));
+  FOR SELECT USING (org_id = (SELECT public.org_id()));
 
 CREATE POLICY "white_label_config_insert" ON white_label_config
-  FOR INSERT WITH CHECK (org_id = (SELECT auth.org_id()));
+  FOR INSERT WITH CHECK (org_id = (SELECT public.org_id()));
 
 CREATE POLICY "white_label_config_update" ON white_label_config
-  FOR UPDATE USING (org_id = (SELECT auth.org_id()));
+  FOR UPDATE USING (org_id = (SELECT public.org_id()));
 
 -- Updated-at trigger
 CREATE TRIGGER set_white_label_config_updated_at
   BEFORE UPDATE ON white_label_config
   FOR EACH ROW
-  EXECUTE FUNCTION update_updated_at();
+  EXECUTE FUNCTION public.trigger_set_updated_at();

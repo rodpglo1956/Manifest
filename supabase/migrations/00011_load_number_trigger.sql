@@ -12,7 +12,7 @@ alter table load_number_sequences enable row level security;
 
 -- RLS: org_id isolation
 create policy "load_number_sequences_org_access" on load_number_sequences
-  for all using (org_id = (select auth.org_id()));
+  for all using (org_id = (select public.org_id()));
 
 -- Trigger function to auto-generate load numbers
 create or replace function public.generate_load_number()

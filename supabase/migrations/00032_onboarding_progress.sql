@@ -26,11 +26,11 @@ CREATE TABLE public.onboarding_progress (
 ALTER TABLE public.onboarding_progress ENABLE ROW LEVEL SECURITY;
 
 CREATE POLICY onboarding_progress_select ON public.onboarding_progress
-  FOR SELECT USING (org_id = (SELECT auth.org_id()));
+  FOR SELECT USING (org_id = (SELECT public.org_id()));
 CREATE POLICY onboarding_progress_insert ON public.onboarding_progress
-  FOR INSERT WITH CHECK (org_id = (SELECT auth.org_id()));
+  FOR INSERT WITH CHECK (org_id = (SELECT public.org_id()));
 CREATE POLICY onboarding_progress_update ON public.onboarding_progress
-  FOR UPDATE USING (org_id = (SELECT auth.org_id()));
+  FOR UPDATE USING (org_id = (SELECT public.org_id()));
 
 -- ============================================================
 -- 3. Auto-create onboarding_progress row on organization insert

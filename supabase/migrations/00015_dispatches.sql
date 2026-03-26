@@ -19,10 +19,10 @@ create table dispatches (
   updated_at timestamptz default now()
 );
 
--- RLS: org_id isolation using auth.org_id() helper
+-- RLS: org_id isolation using public.org_id() helper
 alter table dispatches enable row level security;
 create policy "org_dispatches" on dispatches
-  for all using (org_id = (select auth.org_id()));
+  for all using (org_id = (select public.org_id()));
 
 -- Indexes for common query patterns
 create index idx_dispatches_org_id on dispatches(org_id);
