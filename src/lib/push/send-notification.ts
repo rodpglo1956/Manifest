@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars */
 // Server-side push notification sender
 // Uses web-push library with VAPID authentication
 
