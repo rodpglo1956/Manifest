@@ -101,7 +101,7 @@ export async function createLoadForMarie(
       load_number: data.load_number ?? undefined,
       load_id: data.id,
     }
-  } catch (err) {
+  } catch {
     return { success: false, error: 'Failed to create load' }
   }
 }
@@ -181,7 +181,7 @@ export async function createDispatchForMarie(
       .eq('id', params.load_id)
 
     return { success: true }
-  } catch (err) {
+  } catch {
     return { success: false, error: 'Failed to create dispatch' }
   }
 }
@@ -238,7 +238,7 @@ export async function createInvoiceForMarie(
       .eq('id', params.load_id)
 
     return { success: true, invoice_id: invoice.id }
-  } catch (err) {
+  } catch {
     return { success: false, error: 'Failed to create invoice' }
   }
 }

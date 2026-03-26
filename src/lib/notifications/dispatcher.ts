@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars */
 // Centralized notification dispatcher
 // Routes notifications to enabled channels (in-app, push, email, SMS)
 
