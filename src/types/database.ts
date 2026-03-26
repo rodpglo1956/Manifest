@@ -860,6 +860,39 @@ export type VehicleAssignment = {
   created_at: string
 }
 
+// Phase 12: White-label types
+export type WhiteLabelConfig = {
+  id: string
+  org_id: string
+  enabled: boolean
+  brand_name: string | null
+  logo_url: string | null
+  favicon_url: string | null
+  primary_color: string | null
+  secondary_color: string | null
+  custom_domain: string | null
+  support_email: string | null
+  support_phone: string | null
+  created_at: string
+  updated_at: string
+}
+
+// Phase 12: Onboarding types
+export type OnboardingProgress = {
+  id: string
+  org_id: string
+  step_completed: number
+  business_profile_done: boolean
+  first_vehicle_done: boolean
+  first_driver_done: boolean
+  integrations_done: boolean
+  plan_selected: boolean
+  checklist_dismissed: boolean
+  completed_at: string | null
+  created_at: string
+  updated_at: string
+}
+
 // Supabase Database type for client typing
 export type Database = {
   public: {
@@ -900,10 +933,23 @@ export type Database = {
       }
       drivers: {
         Row: Driver
-        Insert: Omit<Driver, 'id' | 'created_at' | 'updated_at'> & {
+        Insert: Omit<Driver, 'id' | 'created_at' | 'updated_at' | 'user_id' | 'license_state' | 'license_class' | 'license_expiration' | 'hire_date' | 'current_vehicle_id' | 'home_terminal' | 'notes' | 'emergency_contact_name' | 'emergency_contact_phone' | 'email' | 'phone' | 'license_number'> & {
           id?: string
           created_at?: string
           updated_at?: string
+          user_id?: string | null
+          license_state?: string | null
+          license_class?: LicenseClass | null
+          license_expiration?: string | null
+          hire_date?: string | null
+          current_vehicle_id?: string | null
+          home_terminal?: string | null
+          notes?: string | null
+          emergency_contact_name?: string | null
+          emergency_contact_phone?: string | null
+          email?: string | null
+          phone?: string | null
+          license_number?: string | null
         }
         Update: Partial<Omit<Driver, 'id' | 'created_at'>> & {
           updated_at?: string
@@ -1467,6 +1513,47 @@ export type Database = {
           timezone?: string
         }
         Update: Partial<Omit<NotificationPreferencesV2, 'id' | 'created_at'>> & {
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      white_label_config: {
+        Row: WhiteLabelConfig
+        Insert: Omit<WhiteLabelConfig, 'id' | 'created_at' | 'updated_at' | 'enabled' | 'brand_name' | 'logo_url' | 'favicon_url' | 'primary_color' | 'secondary_color' | 'custom_domain' | 'support_email' | 'support_phone'> & {
+          id?: string
+          created_at?: string
+          updated_at?: string
+          enabled?: boolean
+          brand_name?: string | null
+          logo_url?: string | null
+          favicon_url?: string | null
+          primary_color?: string | null
+          secondary_color?: string | null
+          custom_domain?: string | null
+          support_email?: string | null
+          support_phone?: string | null
+        }
+        Update: Partial<Omit<WhiteLabelConfig, 'id' | 'created_at'>> & {
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      onboarding_progress: {
+        Row: OnboardingProgress
+        Insert: Omit<OnboardingProgress, 'id' | 'created_at' | 'updated_at' | 'step_completed' | 'business_profile_done' | 'first_vehicle_done' | 'first_driver_done' | 'integrations_done' | 'plan_selected' | 'checklist_dismissed' | 'completed_at'> & {
+          id?: string
+          created_at?: string
+          updated_at?: string
+          step_completed?: number
+          business_profile_done?: boolean
+          first_vehicle_done?: boolean
+          first_driver_done?: boolean
+          integrations_done?: boolean
+          plan_selected?: boolean
+          checklist_dismissed?: boolean
+          completed_at?: string | null
+        }
+        Update: Partial<Omit<OnboardingProgress, 'id' | 'created_at'>> & {
           updated_at?: string
         }
         Relationships: []
