@@ -1,10 +1,22 @@
-export default function Home() {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-8">
-      <h1 className="text-4xl font-bold text-primary">Manifest</h1>
-      <p className="mt-4 text-lg text-foreground/70">
-        All-in-one logistics operations platform
-      </p>
-    </main>
-  );
+import { redirect } from 'next/navigation'
+import { createClient } from '@/lib/supabase/server'
+
+export default async function Home() {
+  const supabase = await createClient()
+  const { data: { user } } = await supabase.auth.getUser()
+
+  if (user) {
+    const { data: profile } = await supabase
+      .from('profiles')
+      .select('role, org_id')
+      .eq('id', user.id)
+      .single()
+
+    if (!profile?.org_id) {
+      redirect('/onboarding')
+    }
+    redirect(profile.role === 'driver' ? '/driver/dashboard' : '/dashboard')
+  }
+
+  redirect('/login')
 }

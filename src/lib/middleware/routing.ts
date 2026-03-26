@@ -12,7 +12,7 @@ type RoutingResult = {
   redirect: string | null // null means allow through
 }
 
-const PUBLIC_ROUTES = ['/', '/callback']
+const PUBLIC_ROUTES = ['/callback']
 const AUTH_ROUTES = ['/login', '/signup']
 
 function isPublicRoute(pathname: string): boolean {
