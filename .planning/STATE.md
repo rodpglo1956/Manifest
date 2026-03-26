@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 12-02-PLAN.md
-last_updated: "2026-03-26T01:05:27.488Z"
+stopped_at: Completed 12-05-PLAN.md
+last_updated: "2026-03-26T01:06:51.395Z"
 last_activity: 2026-03-25 -- Plan 12-02 complete (Security Hardening)
 progress:
   total_phases: 12
   completed_phases: 11
   total_plans: 54
-  completed_plans: 50
+  completed_plans: 51
   percent: 93
 ---
 
@@ -99,6 +99,7 @@ Progress: [█████████░] 93%
 | Phase 11 P05 | 3min | 2 tasks | 5 files |
 | Phase 11 P06 | 5min | 2 tasks | 5 files |
 | Phase 12 P02 | 4min | 2 tasks | 6 files |
+| Phase 12 P05 | 3min | 2 tasks | 10 files |
 
 ## Accumulated Context
 
@@ -249,6 +250,9 @@ Recent decisions affecting current work:
 - [Phase 12-02]: Regex-based HTML stripping instead of DOMPurify since React auto-escapes
 - [Phase 12-02]: In-memory rate limiter with Map (no Redis for v1 single-instance)
 - [Phase 12-02]: RLS audit confirms all 39 tables covered; plan_limits intentionally public
+- [Phase 12]: Offline queue uses idb-keyval for simple IndexedDB key-value storage
+- [Phase 12]: Sync manager replays per-action with individual error handling (failed actions kept in queue)
+- [Phase 12]: Offline DVIR/fuel forms use async queueOfflineAction without startTransition
 
 ### Pending Todos
 
@@ -260,6 +264,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-26T01:05:26.575Z
-Stopped at: Completed 12-02-PLAN.md
+Last session: 2026-03-26T01:06:51.392Z
+Stopped at: Completed 12-05-PLAN.md
 Resume file: None

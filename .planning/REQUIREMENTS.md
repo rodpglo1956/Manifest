@@ -231,11 +231,11 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### PWA & Performance
 
-- [ ] **PWA-01**: Driver PWA service worker caches app shell, current vehicle, active load, notifications
-- [ ] **PWA-02**: Pre-trip/post-trip inspection forms work fully offline, sync when connection returns
-- [ ] **PWA-03**: Fuel log entries queue offline, sync on reconnect
-- [ ] **PWA-04**: Performance targets: < 2s FMP on 3G, < 4s TTI, Lighthouse PWA > 90
-- [ ] **PWA-05**: Command mode: virtualized lists, code splitting, < 300KB initial bundle
+- [x] **PWA-01**: Driver PWA service worker caches app shell, current vehicle, active load, notifications
+- [x] **PWA-02**: Pre-trip/post-trip inspection forms work fully offline, sync when connection returns
+- [x] **PWA-03**: Fuel log entries queue offline, sync on reconnect
+- [x] **PWA-04**: Performance targets: < 2s FMP on 3G, < 4s TTI, Lighthouse PWA > 90
+- [x] **PWA-05**: Command mode: virtualized lists, code splitting, < 300KB initial bundle
 
 ### Security
 
@@ -451,11 +451,11 @@ Which phases cover which requirements. Updated during roadmap creation.
 | ONBD-02 | Phase 12 | Pending |
 | ONBD-03 | Phase 12 | Pending |
 | ONBD-04 | Phase 12 | Pending |
-| PWA-01 | Phase 12 | Pending |
-| PWA-02 | Phase 12 | Pending |
-| PWA-03 | Phase 12 | Pending |
-| PWA-04 | Phase 12 | Pending |
-| PWA-05 | Phase 12 | Pending |
+| PWA-01 | Phase 12 | Complete |
+| PWA-02 | Phase 12 | Complete |
+| PWA-03 | Phase 12 | Complete |
+| PWA-04 | Phase 12 | Complete |
+| PWA-05 | Phase 12 | Complete |
 | SECR-01 | Phase 12 | Complete |
 | SECR-02 | Phase 12 | Complete |
 | SECR-03 | Phase 12 | Complete |
