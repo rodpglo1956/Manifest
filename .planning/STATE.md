@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 12-01-PLAN.md
-last_updated: "2026-03-26T01:07:00Z"
-last_activity: 2026-03-26 -- Plan 12-01 complete (Onboarding Wizard)
+stopped_at: Completed 12-04-PLAN.md
+last_updated: "2026-03-26T01:15:00Z"
+last_activity: 2026-03-26 -- Plan 12-04 complete (Getting Started Checklist & Driver Onboarding)
 progress:
   total_phases: 12
   completed_phases: 11
   total_plans: 54
-  completed_plans: 54
+  completed_plans: 55
   percent: 100
 ---
 
@@ -26,9 +26,9 @@ See: .planning/PROJECT.md (updated 2026-03-24)
 ## Current Position
 
 Phase: 12 of 12 (Onboarding, PWA, Security & Polish)
-Plan: 4 of 5 in current phase (4 complete)
+Plan: 5 of 5 in current phase (5 complete)
 Status: In Progress
-Last activity: 2026-03-26 -- Plan 12-01 complete (Onboarding Wizard)
+Last activity: 2026-03-26 -- Plan 12-04 complete (Getting Started Checklist & Driver Onboarding)
 
 Progress: [██████████] 100%
 
@@ -102,6 +102,7 @@ Progress: [██████████] 100%
 | Phase 12 P02 | 4min | 2 tasks | 6 files |
 | Phase 12 P05 | 3min | 2 tasks | 10 files |
 | Phase 12 P03 | 3min | 2 tasks | 8 files |
+| Phase 12 P04 | 5min | 2 tasks | 14 files |
 
 ## Accumulated Context
 
@@ -261,6 +262,10 @@ Recent decisions affecting current work:
 - [Phase 12]: [12-01]: Driver Insert type updated to make nullable fields optional for ergonomic inserts
 - [Phase 12]: [12-01]: Wizard uses visibleSteps array filtering for OO mode instead of step index remapping
 - [Phase 12]: [12-01]: Plan recommendation based on fleet_size_range from step 1
+- [Phase 12]: [12-04]: Dashboard route group is (app) not (command) -- plan path adapted
+- [Phase 12]: [12-04]: Middleware queries driver.is_onboarded only for role=driver to minimize overhead
+- [Phase 12]: [12-04]: Onboarding routes allowed through for all authenticated users to prevent redirect loops
+- [Phase 12]: [12-04]: Existing drivers default is_onboarded=true in migration
 
 ### Pending Todos
 
@@ -272,6 +277,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-26T01:07:00Z
-Stopped at: Completed 12-01-PLAN.md
+Last session: 2026-03-26T01:15:00Z
+Stopped at: Completed 12-04-PLAN.md
 Resume file: None
