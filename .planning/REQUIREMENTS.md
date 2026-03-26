@@ -224,10 +224,10 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Onboarding
 
-- [ ] **ONBD-01**: Guided setup wizard after signup: business profile, first vehicle, first driver, integrations, plan selection
+- [x] **ONBD-01**: Guided setup wizard after signup: business profile, first vehicle, first driver, integrations, plan selection
 - [ ] **ONBD-02**: Getting Started checklist widget on dashboard (persists until dismissed)
 - [ ] **ONBD-03**: Driver onboarding: invite link, PWA install prompt, account creation, first pre-trip tutorial
-- [ ] **ONBD-04**: Onboarding progress tracked per org
+- [x] **ONBD-04**: Onboarding progress tracked per org
 
 ### PWA & Performance
 
@@ -447,10 +447,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 | NOTF-04 | Phase 11 | Complete |
 | NOTF-05 | Phase 11 | Complete |
 | NOTF-06 | Phase 11 | Complete |
-| ONBD-01 | Phase 12 | Pending |
+| ONBD-01 | Phase 12 | Complete |
 | ONBD-02 | Phase 12 | Pending |
 | ONBD-03 | Phase 12 | Pending |
-| ONBD-04 | Phase 12 | Pending |
+| ONBD-04 | Phase 12 | Complete |
 | PWA-01 | Phase 12 | Complete |
 | PWA-02 | Phase 12 | Complete |
 | PWA-03 | Phase 12 | Complete |
