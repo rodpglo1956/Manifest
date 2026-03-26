@@ -10,6 +10,8 @@ import { RevenueTrendChart } from './charts/revenue-trend-chart'
 import { LoadVolumeChart } from './charts/load-volume-chart'
 import { OnTimeGauge } from './charts/on-time-gauge'
 import { RpmTrendChart } from './charts/rpm-trend-chart'
+import { GettingStartedChecklist } from '@/components/onboarding/getting-started-checklist'
+import type { ChecklistItem } from '@/lib/onboarding/actions'
 import type { DailySnapshot, ProactiveAlert } from '@/types/database'
 
 interface DashboardViewProps {
@@ -23,6 +25,7 @@ interface DashboardViewProps {
   activityItems: ActivityItem[]
   isOwnerOperator?: boolean
   userName?: string
+  checklistItems?: ChecklistItem[]
 }
 
 export function DashboardView({
@@ -36,6 +39,7 @@ export function DashboardView({
   activityItems,
   isOwnerOperator,
   userName,
+  checklistItems,
 }: DashboardViewProps) {
   // Subscribe to realtime updates for dashboard refresh
   useRealtimeDashboard(orgId)
@@ -54,6 +58,10 @@ export function DashboardView({
           </p>
         )}
       </div>
+
+      {checklistItems && checklistItems.length > 0 && (
+        <GettingStartedChecklist items={checklistItems} />
+      )}
 
       <StatCards
         activeLoads={activeLoads}

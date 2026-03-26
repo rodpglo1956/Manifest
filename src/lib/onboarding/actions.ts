@@ -279,6 +279,126 @@ export async function savePlanSelection(formData: unknown) {
 }
 
 // ============================================================
+// Getting Started checklist
+// ============================================================
+
+export type ChecklistItem = {
+  label: string
+  completed: boolean
+  href: string
+}
+
+export async function getChecklistStatus(): Promise<{
+  items: ChecklistItem[]
+  dismissed: boolean
+} | null> {
+  const { error, supabase, orgId } = await getAuthContext()
+  if (error || !orgId) return null
+
+  // Check onboarding progress for dismissed state
+  const { data: progress } = await supabase
+    .from('onboarding_progress')
+    .select('checklist_dismissed')
+    .eq('org_id', orgId)
+    .single()
+
+  if (!progress) return null
+
+  // Detect OO
+  const { count: memberCount } = await supabase
+    .from('org_members')
+    .select('id', { count: 'exact', head: true })
+    .eq('org_id', orgId)
+
+  const isOO = (memberCount ?? 0) === 1
+
+  // Query counts in parallel
+  const [vehiclesResult, driversResult, loadsResult, complianceResult, membersResult] =
+    await Promise.all([
+      supabase
+        .from('vehicles')
+        .select('id', { count: 'exact', head: true })
+        .eq('org_id', orgId),
+      supabase
+        .from('drivers')
+        .select('id', { count: 'exact', head: true })
+        .eq('org_id', orgId),
+      supabase
+        .from('loads')
+        .select('id', { count: 'exact', head: true }),
+      supabase
+        .from('compliance_profiles')
+        .select('id', { count: 'exact', head: true })
+        .eq('org_id', orgId),
+      supabase
+        .from('org_members')
+        .select('id', { count: 'exact', head: true })
+        .eq('org_id', orgId),
+    ])
+
+  const items: ChecklistItem[] = [
+    {
+      label: 'Add a vehicle',
+      completed: (vehiclesResult.count ?? 0) > 0,
+      href: '/fleet',
+    },
+  ]
+
+  // Skip driver and invite items for owner-operators
+  if (!isOO) {
+    items.push({
+      label: 'Add a driver',
+      completed: (driversResult.count ?? 0) > 0,
+      href: '/drivers',
+    })
+  }
+
+  items.push(
+    {
+      label: 'Create first load',
+      completed: (loadsResult.count ?? 0) > 0,
+      href: '/loads/new',
+    },
+    {
+      label: 'Set up compliance profile',
+      completed: (complianceResult.count ?? 0) > 0,
+      href: '/compliance',
+    },
+  )
+
+  if (!isOO) {
+    items.push({
+      label: 'Invite a team member',
+      completed: (membersResult.count ?? 0) > 1,
+      href: '/settings/team',
+    })
+  }
+
+  return {
+    items,
+    dismissed: progress.checklist_dismissed,
+  }
+}
+
+export async function dismissChecklist() {
+  const { error: authError, supabase, orgId } = await getAuthContext()
+  if (authError || !orgId) return { error: authError ?? 'No org' }
+
+  const { error: updateError } = await supabase
+    .from('onboarding_progress')
+    .update({
+      checklist_dismissed: true,
+      updated_at: new Date().toISOString(),
+    })
+    .eq('org_id', orgId)
+
+  if (updateError) return { error: updateError.message }
+
+  revalidatePath('/dashboard')
+  return { success: true }
+}
+
+// ============================================================
 // Complete onboarding -- redirect to dashboard
 // ============================================================
 

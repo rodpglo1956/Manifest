@@ -2,6 +2,7 @@ import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 import { startOfMonth, startOfToday, format } from 'date-fns'
 import { DashboardView } from './dashboard-view'
+import { getChecklistStatus } from '@/lib/onboarding/actions'
 import type { ActivityItem } from './activity-feed'
 import type { DailySnapshot, ProactiveAlert } from '@/types/database'
 import type { Metadata } from 'next'
@@ -220,6 +221,9 @@ export default async function DashboardPage() {
   // Sort by timestamp descending
   activityItems.sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime())
 
+  // Fetch Getting Started checklist status
+  const checklistData = await getChecklistStatus()
+
   return (
     <DashboardView
       orgId={orgId}
@@ -232,6 +236,7 @@ export default async function DashboardPage() {
       activityItems={activityItems}
       isOwnerOperator={isOwnerOperator}
       userName={profile?.full_name ?? undefined}
+      checklistItems={checklistData && !checklistData.dismissed ? checklistData.items : undefined}
     />
   )
 }
