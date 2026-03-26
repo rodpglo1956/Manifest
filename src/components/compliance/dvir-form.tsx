@@ -6,7 +6,9 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { DVIR_INSPECTION_ITEMS, dvirSchema } from '@/lib/compliance/dvir-schema'
 import { submitDVIR } from '@/lib/compliance/actions'
-import { CheckCircle2, XCircle, Camera, Loader2 } from 'lucide-react'
+import { CheckCircle2, XCircle, Camera, Loader2, WifiOff } from 'lucide-react'
+import { queueOfflineAction } from '@/lib/pwa/offline-store'
+import { useOnlineStatus } from '@/lib/pwa/use-online-status'
 
 type DVIRFormValues = z.input<typeof dvirSchema>
 
@@ -39,7 +41,9 @@ interface DVIRFormProps {
 export function DVIRForm({ vehicleId, vehicleInfo, onComplete }: DVIRFormProps) {
   const [isPending, startTransition] = useTransition()
   const [success, setSuccess] = useState(false)
+  const [savedOffline, setSavedOffline] = useState(false)
   const [serverError, setServerError] = useState<string | null>(null)
+  const { isOnline } = useOnlineStatus()
 
   // Build default items: all pass
   const defaultItems: Record<string, 'pass' | 'fail'> = {}
@@ -101,6 +105,18 @@ export function DVIRForm({ vehicleId, vehicleInfo, onComplete }: DVIRFormProps) 
 
   function onSubmit(data: DVIRFormValues) {
     setServerError(null)
+
+    if (!isOnline) {
+      // Queue for offline sync
+      queueOfflineAction({ type: 'dvir', data, timestamp: Date.now() })
+        .then(() => {
+          setSavedOffline(true)
+          onComplete?.()
+        })
+        .catch(() => setServerError('Failed to save offline. Please try again.'))
+      return
+    }
+
     startTransition(async () => {
       const result = await submitDVIR(data)
       if (result.error) {
@@ -110,6 +126,22 @@ export function DVIRForm({ vehicleId, vehicleInfo, onComplete }: DVIRFormProps) 
         onComplete?.()
       }
     })
+  }
+
+  if (savedOffline) {
+    return (
+      <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6 text-center">
+        <WifiOff className="w-12 h-12 text-yellow-500 mx-auto mb-3" />
+        <h3 className="text-lg font-semibold text-yellow-800">Inspection Saved Offline</h3>
+        <p className="text-yellow-600 text-sm mt-1">Will sync automatically when connection returns.</p>
+        <button
+          onClick={() => setSavedOffline(false)}
+          className="mt-4 text-sm text-yellow-700 underline"
+        >
+          Submit another inspection
+        </button>
+      </div>
+    )
   }
 
   if (success) {

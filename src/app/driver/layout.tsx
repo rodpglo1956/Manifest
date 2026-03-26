@@ -5,6 +5,8 @@ import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import { LayoutDashboard, Navigation, Package, ClipboardCheck, Truck, Settings } from 'lucide-react'
 import { MarieDriverChat } from '@/components/marie/marie-driver-chat'
+import { OfflineIndicator } from '@/components/pwa/offline-indicator'
+import { InstallPrompt } from '@/components/pwa/install-prompt'
 
 const bottomNavItems = [
   { href: '/driver/dashboard', label: 'Dashboard', icon: LayoutDashboard },
@@ -19,12 +21,14 @@ export default function DriverLayout({ children }: { children: React.ReactNode }
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
+      <OfflineIndicator />
       <DriverHeader />
       <main className="flex-1 p-4 pb-20">
         {children}
       </main>
 
       <MarieDriverChat />
+      <InstallPrompt />
 
       {/* Bottom navigation */}
       <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 flex justify-around py-2 px-4 z-50">

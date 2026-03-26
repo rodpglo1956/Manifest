@@ -2,6 +2,9 @@
 
 import { useTransition, useState, useRef, useEffect } from 'react'
 import { createFuelTransaction } from '@/lib/fleet/actions'
+import { queueOfflineAction } from '@/lib/pwa/offline-store'
+import { useOnlineStatus } from '@/lib/pwa/use-online-status'
+import { WifiOff } from 'lucide-react'
 
 interface DriverFuelFormProps {
   vehicleId: string
@@ -12,8 +15,10 @@ interface DriverFuelFormProps {
 export function DriverFuelForm({ vehicleId, driverId, onClose }: DriverFuelFormProps) {
   const [isPending, startTransition] = useTransition()
   const [success, setSuccess] = useState(false)
+  const [savedOffline, setSavedOffline] = useState(false)
   const [errors, setErrors] = useState<string[]>([])
   const formRef = useRef<HTMLFormElement>(null)
+  const { isOnline } = useOnlineStatus()
 
   // Auto-calculated price per gallon
   const [gallons, setGallons] = useState('')
@@ -36,6 +41,24 @@ export function DriverFuelForm({ vehicleId, driverId, onClose }: DriverFuelFormP
 
   function handleSubmit(formData: FormData) {
     setErrors([])
+
+    if (!isOnline) {
+      // Convert FormData to plain object for offline queue
+      const data: Record<string, string> = {}
+      formData.forEach((value, key) => {
+        data[key] = String(value)
+      })
+      queueOfflineAction({ type: 'fuel_log', data, timestamp: Date.now() })
+        .then(() => {
+          setSavedOffline(true)
+          formRef.current?.reset()
+          setGallons('')
+          setTotalCost('')
+        })
+        .catch(() => setErrors(['Failed to save offline. Please try again.']))
+      return
+    }
+
     startTransition(async () => {
       const result = await createFuelTransaction(formData)
       if (result.error) {
@@ -63,6 +86,13 @@ export function DriverFuelForm({ vehicleId, driverId, onClose }: DriverFuelFormP
           {errors.map((e, i) => (
             <p key={i} className="text-sm text-red-700">{e}</p>
           ))}
+        </div>
+      )}
+
+      {savedOffline && (
+        <div className="p-3 bg-yellow-50 border border-yellow-200 rounded-lg flex items-center gap-2">
+          <WifiOff className="w-4 h-4 text-yellow-600 flex-shrink-0" />
+          <p className="text-sm text-yellow-700">Fuel log saved offline. Will sync when connection returns.</p>
         </div>
       )}
 
