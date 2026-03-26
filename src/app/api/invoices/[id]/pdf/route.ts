@@ -77,7 +77,7 @@ export async function GET(
     }
 
     // Return PDF binary response
-    return new NextResponse(buffer, {
+    return new NextResponse(buffer as unknown as BodyInit, {
       headers: {
         'Content-Type': 'application/pdf',
         'Content-Disposition': `inline; filename="${invoice.invoice_number}.pdf"`,
