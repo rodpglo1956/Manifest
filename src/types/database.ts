@@ -122,6 +122,7 @@ export type Driver = {
   notes: string | null
   emergency_contact_name: string | null
   emergency_contact_phone: string | null
+  is_onboarded: boolean
   created_at: string
   updated_at: string
 }
@@ -933,7 +934,7 @@ export type Database = {
       }
       drivers: {
         Row: Driver
-        Insert: Omit<Driver, 'id' | 'created_at' | 'updated_at' | 'user_id' | 'license_state' | 'license_class' | 'license_expiration' | 'hire_date' | 'current_vehicle_id' | 'home_terminal' | 'notes' | 'emergency_contact_name' | 'emergency_contact_phone' | 'email' | 'phone' | 'license_number'> & {
+        Insert: Omit<Driver, 'id' | 'created_at' | 'updated_at' | 'user_id' | 'license_state' | 'license_class' | 'license_expiration' | 'hire_date' | 'current_vehicle_id' | 'home_terminal' | 'notes' | 'emergency_contact_name' | 'emergency_contact_phone' | 'email' | 'phone' | 'license_number' | 'is_onboarded'> & {
           id?: string
           created_at?: string
           updated_at?: string
@@ -950,6 +951,7 @@ export type Database = {
           email?: string | null
           phone?: string | null
           license_number?: string | null
+          is_onboarded?: boolean
         }
         Update: Partial<Omit<Driver, 'id' | 'created_at'>> & {
           updated_at?: string

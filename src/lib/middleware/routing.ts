@@ -5,7 +5,7 @@ type RoutingInput = {
   pathname: string
   claims: { sub: string } | null
   error: Error | null
-  profile: { role: string; org_id: string | null } | null
+  profile: { role: string; org_id: string | null; is_onboarded?: boolean } | null
 }
 
 type RoutingResult = {
@@ -65,9 +65,22 @@ export function determineRoute(input: RoutingInput): RoutingResult {
     return { redirect: '/login' }
   }
 
-  // Authenticated but no org
+  // Authenticated but no org -- allow onboarding routes through
   if (!profile?.org_id) {
+    if (pathname.startsWith('/onboarding')) {
+      return { redirect: null }
+    }
     return { redirect: '/onboarding' }
+  }
+
+  // Allow onboarding routes through for any authenticated user
+  if (pathname.startsWith('/onboarding')) {
+    return { redirect: null }
+  }
+
+  // Driver not yet onboarded -- redirect to driver onboarding
+  if (profile.role === 'driver' && profile.is_onboarded === false) {
+    return { redirect: '/onboarding/driver' }
   }
 
   // Driver trying to access Command mode routes

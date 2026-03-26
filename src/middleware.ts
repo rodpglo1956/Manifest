@@ -10,7 +10,7 @@ export async function middleware(request: NextRequest) {
   // For public and auth routes without a session, use fast path (no profile query)
   const needsProfile = !!(claims && !error)
 
-  let profile: { role: string; org_id: string | null } | null = null
+  let profile: { role: string; org_id: string | null; is_onboarded?: boolean } | null = null
 
   if (needsProfile) {
     const { data } = await supabase
@@ -19,6 +19,18 @@ export async function middleware(request: NextRequest) {
       .eq('id', claims.sub)
       .single()
     profile = data
+
+    // For drivers, check if they completed driver onboarding
+    if (profile?.role === 'driver') {
+      const { data: driver } = await supabase
+        .from('drivers')
+        .select('is_onboarded')
+        .eq('user_id', claims.sub)
+        .single()
+      if (profile) {
+        profile.is_onboarded = driver?.is_onboarded ?? false
+      }
+    }
   }
 
   const result = determineRoute({ pathname, claims, error, profile })
