@@ -1,31 +1,30 @@
 'use client'
 
 import { useState } from 'react'
-import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { loginSchema, type LoginInput } from '@/schemas/auth'
+import { useFormStatus } from 'react-dom'
 import { login } from '@/app/(auth)/login/actions'
 import { MagicLinkForm } from './magic-link-form'
 import Link from 'next/link'
+
+function SubmitButton() {
+  const { pending } = useFormStatus()
+  return (
+    <button
+      type="submit"
+      disabled={pending}
+      className="w-full py-2 px-4 bg-primary text-white font-medium rounded-md hover:bg-primary-hover disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+    >
+      {pending ? 'Signing in...' : 'Sign in'}
+    </button>
+  )
+}
 
 export function LoginForm() {
   const [mode, setMode] = useState<'password' | 'magic-link'>('password')
   const [serverError, setServerError] = useState<string | null>(null)
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isSubmitting },
-  } = useForm<LoginInput>({
-    resolver: zodResolver(loginSchema),
-  })
-
-  async function onSubmit(data: LoginInput) {
+  async function handleLogin(formData: FormData) {
     setServerError(null)
-    const formData = new FormData()
-    formData.append('email', data.email)
-    formData.append('password', data.password)
-
     const result = await login(formData)
     if (result?.error?.form) {
       setServerError(result.error.form[0])
@@ -60,45 +59,34 @@ export function LoginForm() {
       </div>
 
       {mode === 'password' ? (
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+        <form action={handleLogin} className="space-y-4">
           <div>
             <label htmlFor="email" className="block text-sm font-medium mb-1">
               Email
             </label>
             <input
               id="email"
+              name="email"
               type="email"
               autoComplete="email"
-              {...register('email')}
+              required
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
               placeholder="you@example.com"
             />
-            {errors.email && (
-              <p className="mt-1 text-sm text-red-600">
-                {errors.email.message}
-              </p>
-            )}
           </div>
 
           <div>
-            <label
-              htmlFor="password"
-              className="block text-sm font-medium mb-1"
-            >
+            <label htmlFor="password" className="block text-sm font-medium mb-1">
               Password
             </label>
             <input
               id="password"
+              name="password"
               type="password"
               autoComplete="current-password"
-              {...register('password')}
+              required
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
             />
-            {errors.password && (
-              <p className="mt-1 text-sm text-red-600">
-                {errors.password.message}
-              </p>
-            )}
           </div>
 
           {serverError && (
@@ -107,13 +95,7 @@ export function LoginForm() {
             </div>
           )}
 
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className="w-full py-2 px-4 bg-primary text-white font-medium rounded-md hover:bg-primary-hover disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-          >
-            {isSubmitting ? 'Signing in...' : 'Sign in'}
-          </button>
+          <SubmitButton />
         </form>
       ) : (
         <MagicLinkForm />
