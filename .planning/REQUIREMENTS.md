@@ -239,12 +239,12 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Security
 
-- [ ] **SECR-01**: RLS verified on every table with org_id isolation
-- [ ] **SECR-02**: CSRF protection on all mutation endpoints
-- [ ] **SECR-03**: Rate limiting: 100 req/min standard, 10 req/min auth endpoints
-- [ ] **SECR-04**: Input sanitization on all user-provided text fields
-- [ ] **SECR-05**: Content Security Policy headers
-- [ ] **SECR-06**: Stripe webhook signature verification
+- [x] **SECR-01**: RLS verified on every table with org_id isolation
+- [x] **SECR-02**: CSRF protection on all mutation endpoints
+- [x] **SECR-03**: Rate limiting: 100 req/min standard, 10 req/min auth endpoints
+- [x] **SECR-04**: Input sanitization on all user-provided text fields
+- [x] **SECR-05**: Content Security Policy headers
+- [x] **SECR-06**: Stripe webhook signature verification
 
 ### White Label
 
@@ -456,12 +456,12 @@ Which phases cover which requirements. Updated during roadmap creation.
 | PWA-03 | Phase 12 | Pending |
 | PWA-04 | Phase 12 | Pending |
 | PWA-05 | Phase 12 | Pending |
-| SECR-01 | Phase 12 | Pending |
-| SECR-02 | Phase 12 | Pending |
-| SECR-03 | Phase 12 | Pending |
-| SECR-04 | Phase 12 | Pending |
-| SECR-05 | Phase 12 | Pending |
-| SECR-06 | Phase 12 | Pending |
+| SECR-01 | Phase 12 | Complete |
+| SECR-02 | Phase 12 | Complete |
+| SECR-03 | Phase 12 | Complete |
+| SECR-04 | Phase 12 | Complete |
+| SECR-05 | Phase 12 | Complete |
+| SECR-06 | Phase 12 | Complete |
 | WLBL-01 | Phase 12 | Pending |
 | WLBL-02 | Phase 12 | Pending |
 | WLBL-03 | Phase 12 | Pending |
